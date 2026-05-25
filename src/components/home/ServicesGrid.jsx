@@ -1,194 +1,176 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
+import { ArrowRight, Sparkles, MonitorSmartphone, TrendingUp, Search, Video, Bot, BrainCircuit, LineChart, Globe, Palette } from 'lucide-react'
 
-const ServiceCard = ({ title, desc, features, delay }) => {
-  const divRef = useRef(null)
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [opacity, setOpacity] = useState(0)
+const servicesData = [
+  {
+    icon: <Sparkles size={24} color="#D4AF37" />,
+    title: "Brand Architecture",
+    desc: "We construct strategic brand frameworks that secure elite market positioning. From visual identity to core messaging, we build the foundation required for lasting industry authority and trust."
+  },
+  {
+    icon: <MonitorSmartphone size={24} color="#D4AF37" />,
+    title: "Website Systems",
+    desc: "We engineer high-performance, SEO-optimized digital platforms. These aren't just websites; they are conversion engines designed with immersive UI and seamless functionality."
+  },
+  {
+    icon: <TrendingUp size={24} color="#D4AF37" />,
+    title: "Social Media Growth",
+    desc: "We deploy curated growth engines to build premium audiences systematically. By decoding platform algorithms, we scale your influence and capture targeted demographics."
+  },
+  {
+    icon: <Search size={24} color="#D4AF37" />,
+    title: "SEO Optimization",
+    desc: "Achieve authority-driven organic visibility through precision keyword engineering. We optimize your digital footprint so your brand ranks at the top when it matters most."
+  },
+  {
+    icon: <Video size={24} color="#D4AF37" />,
+    title: "Content Production",
+    desc: "Deliver your message through cinematic storytelling and editorial content. We craft high-end visual narratives that elevate your brand's perception."
+  },
+  {
+    icon: <Bot size={24} color="#D4AF37" />,
+    title: "AI Integration",
+    desc: "Deploy intelligent automation into your workflows. We integrate custom AI agents and chatbots to streamline operations and enhance client interactions 24/7."
+  },
+  {
+    icon: <BrainCircuit size={24} color="#D4AF37" />,
+    title: "Personal Branding",
+    desc: "Executive presence engineering for founders and leaders. We build your individual authority halo to establish thought leadership and open elite networking channels."
+  },
+  {
+    icon: <LineChart size={24} color="#D4AF37" />,
+    title: "Performance Marketing",
+    desc: "Data-driven paid acquisition systems. We manage high-converting ad campaigns across Google and Meta platforms to generate immediate, scalable ROI."
+  },
+  {
+    icon: <Globe size={24} color="#D4AF37" />,
+    title: "Web3 & Blockchain",
+    desc: "Navigate the decentralized frontier. We provide strategic consulting and aesthetic web architecture for emerging Web3, crypto, and blockchain projects."
+  },
+  {
+    icon: <Palette size={24} color="#D4AF37" />,
+    title: "UI/UX Engineering",
+    desc: "Craft frictionless user journeys. We design intuitive, aesthetically superior interfaces that reduce bounce rates and maximize user retention for your software."
+  }
+]
 
-  const handleMouseMove = (e) => {
-    if (!divRef.current) return
-    const rect = divRef.current.getBoundingClientRect()
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+const ServicesGrid = () => {
+  const navigate = useNavigate()
+  const scrollRef = useRef(null)
+
+  const handleScroll = (dir) => {
+    if (scrollRef.current) {
+      const scrollAmount = 344 // 320px width + 24px gap = 1 exactly item
+      scrollRef.current.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' })
+    }
   }
 
   return (
-    <motion.div
-      ref={divRef}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setOpacity(1)}
-      onMouseLeave={() => setOpacity(0)}
-      style={{
-        position: 'relative',
-        backgroundColor: '#0a0a0a',
-        border: '1px solid #222',
-        borderRadius: '16px',
-        padding: '2.5rem',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-      className="svc-card"
-    >
-      <style>{`
-        .svc-card:hover { border-color: #D4AF37 !important; transform: translateY(-5px); }
-      `}</style>
-      <div
-        style={{
-          position: 'absolute',
-          pointerEvents: 'none',
-          inset: 0,
-          opacity,
-          background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, rgba(212,175,55,0.08), transparent 40%)`,
-          transition: 'opacity 0.3s ease',
-        }}
-      />
-      <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <div style={{ color: '#D4AF37', fontSize: '1.5rem', marginBottom: '1rem' }}>✦</div>
-        <h3 style={{ fontFamily: '"Cinzel", serif', fontSize: '1.5rem', color: '#fff', marginBottom: '1rem' }}>
-          {title}
-        </h3>
-        <p style={{ color: '#888', fontSize: '0.875rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-          {desc}
-        </p>
-        <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', flex: 1, marginBottom: '2rem' }}>
-          {features.map((feature, i) => (
-            <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: '#ccc', fontSize: '0.875rem' }}>
-              <div style={{ color: '#D4AF37', fontSize: '0.75rem' }}>+</div>
-              {feature}
-            </li>
-          ))}
-        </ul>
-        <div style={{ display: 'flex', gap: '1rem', marginTop: 'auto' }}>
-          <a
-            href={`https://wa.me/917075853225?text=Hello Novelleyx, I'm interested in ${title}.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              flex: 1,
-              textAlign: 'center',
-              padding: '0.75rem',
-              border: '1px solid #D4AF37',
-              color: '#D4AF37',
-              fontFamily: '"Space Mono", monospace',
-              fontSize: '0.75rem',
-              textTransform: 'uppercase',
-              borderRadius: '4px',
-              transition: 'all 0.3s ease',
-              background: 'transparent'
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = '#D4AF37'; e.currentTarget.style.color = '#000' }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#D4AF37' }}
+    <section id="services" style={{ padding: '60px 0', background: '#0a0a0a' }}>
+      <div style={{ width: 'min(1280px, 92%)', marginInline: 'auto' }}>
+        
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem' }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            style={{ textAlign: 'left' }}
           >
-            WhatsApp
-          </a>
-          <a
-            href={`mailto:novelleyx@gmail.com?subject=Inquiry About ${title}`}
-            style={{
-              flex: 1,
-              textAlign: 'center',
-              padding: '0.75rem',
-              border: '1px solid #333',
-              color: '#888',
-              fontFamily: '"Space Mono", monospace',
-              fontSize: '0.75rem',
-              textTransform: 'uppercase',
-              borderRadius: '4px',
-              transition: 'all 0.3s ease',
-              background: 'transparent'
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = '#222'; e.currentTarget.style.color = '#D4AF37'; e.currentTarget.style.borderColor = '#D4AF37' }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#888'; e.currentTarget.style.borderColor = '#333' }}
-          >
-            Email
-          </a>
+            <span style={{ 
+              display: 'inline-block', fontSize: '0.72rem', fontWeight: 600, 
+              letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D4AF37', 
+              marginBottom: '1.2rem' 
+            }}>
+              What We Build
+            </span>
+            <div style={{ width: '48px', height: '2px', background: '#D4AF37', margin: '0 0 1.2rem 0' }}></div>
+            <h2 style={{ fontFamily: '"Poppins", sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1rem', color: '#fff' }}>
+              Premium Digital Systems
+            </h2>
+            <p style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', color: '#D6D6D6', maxWidth: '560px' }}>
+              Designed for modern brands that demand authority, precision, and lasting presence.
+            </p>
+          </motion.div>
+
+          {/* Navigation Controls */}
+          <div className="desktop-controls">
+            <button onClick={() => handleScroll('left')} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              &larr;
+            </button>
+            <button onClick={() => handleScroll('right')} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              &rarr;
+            </button>
+          </div>
         </div>
-      </div>
-    </motion.div>
-  )
-}
 
-const ServicesGrid = () => {
-  const services = [
-    {
-      title: 'Brand Architecture',
-      desc: 'We construct strategic brand frameworks that secure elite market positioning. From visual identity to core messaging, we build the foundation required for lasting industry authority and trust.',
-      features: ['Brand Identity Design', 'Positioning Systems', 'Messaging Frameworks', 'Visual Direction', 'Brand Strategy', 'Competitive Analysis']
-    },
-    {
-      title: 'Website Systems',
-      desc: "We engineer high-performance, SEO-optimized digital platforms. These aren't just websites; they are conversion engines designed with immersive UI and seamless functionality to turn visitors into clients.",
-      features: ['Premium UI/UX', 'Mobile Optimization', 'SEO Architecture', 'Speed Optimization', 'Conversion Systems', 'Responsive Development']
-    },
-    {
-      title: 'Social Media Growth',
-      desc: 'We deploy curated growth engines to build premium audiences systematically. By decoding platform algorithms, we scale your influence and capture highly targeted demographics.',
-      features: ['Instagram Growth', 'LinkedIn Authority', 'Content Scaling', 'Audience Positioning', 'Engagement Systems', 'Algorithm Optimization']
-    },
-    {
-      title: 'SEO Optimization',
-      desc: 'Achieve authority-driven organic visibility through precision keyword engineering. We optimize your digital footprint so your brand ranks at the top when it matters most.',
-      features: ['Technical SEO', 'Keyword Research', 'On-Page SEO', 'Portfolio SEO', 'Search Visibility', 'Ranking Optimization']
-    },
-    {
-      title: 'Content Production',
-      desc: "Deliver your message through cinematic storytelling and editorial content. We craft high-end visual narratives that elevate your brand's perception and captivate your audience.",
-      features: ['Video Editing', 'Motion Graphics', 'Short-form Content', 'Thumbnail Systems', 'Creative Direction', 'Content Planning']
-    },
-    {
-      title: 'Media Management',
-      desc: 'End-to-end asset orchestration and multi-platform channel management. We handle the distribution, scheduling, and analytics so your brand remains active and unavoidable.',
-      features: ['Channel Management', 'Publishing Systems', 'Scheduling Pipelines', 'Analytics Tracking', 'Optimization Reports', 'Multi-platform Scaling']
-    },
-    {
-      title: 'AI Systems',
-      desc: 'We integrate intelligent automation and decision engines into your workflows. Leverage cutting-edge AI models to analyze data, streamline operations, and stay ahead of the curve.',
-      features: ['AI Integrations', 'GPT Systems', 'Workflow Intelligence', 'AI Automation', 'Smart Assistants', 'Prompt Engineering']
-    },
-    {
-      title: 'Automation Systems',
-      desc: 'Eliminate manual friction with seamless process pipelines. We build custom outbound and operational systems that scale your output without scaling your workload.',
-      features: ['Workflow Pipelines', 'CRM Automation', 'Outreach Systems', 'Business Automation', 'Lead Systems', 'Process Engineering']
-    },
-    {
-      title: 'Portfolio Engineering',
-      desc: 'We design showcase portfolios specifically engineered to convert opportunity into traction. Perfect for creators and developers looking to highlight their projects with a premium aesthetic.',
-      features: ['Portfolio Design', 'Case Studies', 'Resume Systems', 'Developer Showcases', 'Project Positioning', 'Career Branding']
-    },
-    {
-      title: 'Personal Branding',
-      desc: 'We craft compelling personal narratives for founders, creators, and emerging leaders. Transition from an unseen professional to a recognized industry voice.',
-      features: ['Founder Branding', 'LinkedIn Identity', 'Public Positioning', 'Authority Building', 'Executive Presence', 'Content Direction']
-    }
-  ]
+        <style>{`
+          .desktop-controls { display: none; gap: 1rem; }
+          @media (min-width: 768px) { .desktop-controls { display: flex; } }
+          .hide-scroll::-webkit-scrollbar { display: none; }
+          .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+          .service-panel-card:hover { border-color: rgba(212,175,55,0.4) !important; transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+        `}</style>
 
-  return (
-    <section id="services" style={{ padding: '8rem 2rem', backgroundColor: '#000000', position: 'relative' }}>
-      <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
-        <h2 style={{ fontFamily: '"Cinzel", serif', fontSize: '3rem', color: '#fff' }}>
-          WHAT WE BUILD
-        </h2>
-        <p style={{ color: '#D4AF37', fontFamily: '"Space Mono", monospace', marginTop: '1rem', letterSpacing: '0.2em' }}>
-          PREMIUM DIGITAL SYSTEMS
-        </p>
-      </div>
-
-      <div
-        style={{
-          maxWidth: '1440px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '2rem',
-        }}
-      >
-        {services.map((svc, index) => (
-          <ServiceCard key={svc.title} {...svc} delay={0.1 * (index % 3)} />
-        ))}
+        {/* Scrolling Panel */}
+        <div 
+          ref={scrollRef}
+          className="hide-scroll"
+          style={{
+            display: 'flex',
+            gap: '1.5rem',
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            paddingBottom: '2rem',
+            marginLeft: '-1rem',
+            paddingLeft: '1rem',
+            marginRight: '-1rem',
+            paddingRight: '1rem',
+          }}
+        >
+          {servicesData.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              style={{
+                minWidth: '320px',
+                width: '320px',
+                scrollSnapAlign: 'start',
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.06)',
+                borderRadius: '12px',
+                padding: '2.5rem',
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'all 0.3s ease'
+              }}
+              className="service-panel-card"
+              onClick={() => {
+                window.scrollTo(0, 0)
+                const slug = service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+                navigate('/services/' + slug)
+              }}
+            >
+              <div style={{ marginBottom: '1.5rem' }}>{service.icon}</div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, fontFamily: '"Poppins", sans-serif', color: '#fff', marginBottom: '1rem' }}>
+                {service.title}
+              </h3>
+              <p style={{ fontSize: '0.88rem', color: '#A8A8A8', lineHeight: 1.6, flexGrow: 1 }}>
+                {service.desc}
+              </p>
+              
+              <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#D4AF37', fontSize: '0.85rem', fontWeight: 600 }}>
+                View Details <ArrowRight size={16} />
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   )

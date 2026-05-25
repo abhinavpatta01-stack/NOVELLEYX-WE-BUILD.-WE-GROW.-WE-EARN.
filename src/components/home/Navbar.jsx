@@ -13,16 +13,27 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 60)
     }
     window.addEventListener('scroll', handleScroll)
+
+    // Handle hash on load or when location changes
+    if (location.hash) {
+      setTimeout(() => {
+        const id = location.hash.substring(1)
+        const el = document.getElementById(id)
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 100
+          window.scrollTo({ top: y, behavior: 'smooth' })
+        }
+      }, 100)
+    }
+
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [location])
 
   const navLinks = [
-    { name: 'Identity', path: '/#identity' },
     { name: 'About', path: '/#about' },
     { name: 'Services', path: '/#services' },
-    { name: '72-Hour Gauntlet', path: '/#gauntlet' },
+    { name: 'Work Flow', path: '/#workflow' },
     { name: 'Pricing', path: '/pricing' },
-    { name: 'Media', path: '/#media' },
     { name: 'Architect Engine', path: '/#architect' },
     { name: 'Contact', path: '/#contact' }
   ]
@@ -30,10 +41,20 @@ const Navbar = () => {
   // Helper to handle hash links smoothly if on same page
   const handleHashLink = (path) => {
     setIsOpen(false)
-    if (path.startsWith('/#') && location.pathname === '/') {
+    if (path.startsWith('/#')) {
       const id = path.substring(2)
-      const el = document.getElementById(id)
-      if (el) el.scrollIntoView({ behavior: 'smooth' })
+      
+      // If already on home page, scroll smoothly with offset
+      if (location.pathname === '/') {
+        const el = document.getElementById(id)
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 100; // offset for fixed navbar
+          window.scrollTo({ top: y, behavior: 'smooth' })
+        }
+      } else {
+        // We let Link navigate to /#id, but we could add a short timeout or just let useEffect handle hash scrolling if needed.
+        // Actually, just standard Link behavior handles the navigation.
+      }
     }
   }
 
@@ -59,7 +80,7 @@ const Navbar = () => {
           transition: 'all 0.28s cubic-bezier(.4,0,.2,1)'
         }}
       >
-        <Link to="/" style={{ fontSize: '1.1rem', fontWeight: 700, letterSpacing: '0.12em', color: '#D4AF37', whiteSpace: 'nowrap' }} onClick={() => window.scrollTo(0, 0)}>
+        <Link to="/" style={{ fontFamily: '"Cinzel", serif', fontSize: '1.25rem', fontWeight: 800, letterSpacing: '0.15em', color: '#D4AF37', whiteSpace: 'nowrap', textDecoration: 'none' }} onClick={() => window.scrollTo(0, 0)}>
           NOVELLEYX
         </Link>
 

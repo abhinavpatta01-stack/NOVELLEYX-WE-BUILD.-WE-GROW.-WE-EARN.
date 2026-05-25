@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const CreatorPartnership = () => {
   return (
-    <section id="creator" style={{ padding: '100px 0', background: '#000000' }}>
+    <section id="creator" style={{ padding: '60px 0', background: '#000000' }}>
       <div style={{ width: 'min(1280px, 92%)', marginInline: 'auto' }}>
         
         <motion.div 

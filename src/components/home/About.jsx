@@ -31,11 +31,65 @@ const AboutCard = ({ title, desc, delay }) => {
   )
 }
 
+const ProtocolStep = ({ step, title, time, desc, align }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: align === 'left' ? -30 : 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      style={{
+        display: 'flex',
+        flexDirection: align === 'left' ? 'row' : 'row-reverse',
+        alignItems: 'center',
+        gap: '3rem',
+        width: '100%',
+        margin: '3rem 0',
+        textAlign: align
+      }}
+      className="protocol-step"
+    >
+      <style>{`
+        @media (max-width: 768px) {
+          .protocol-step { flex-direction: column !important; gap: 1.5rem !important; text-align: center !important; }
+        }
+      `}</style>
+      <div style={{ flex: 1 }}>
+        <div style={{ color: 'rgba(198,161,91,0.4)', fontSize: '4rem', fontWeight: 800, lineHeight: 1, fontFamily: '"Space Mono", monospace' }}>
+          {step}
+        </div>
+      </div>
+      <div style={{ flex: 2 }}>
+        <div style={{
+          display: 'inline-block',
+          background: 'rgba(198,161,91,0.1)',
+          border: '1px solid rgba(198,161,91,0.25)',
+          color: '#D4AF37',
+          fontSize: '0.72rem',
+          fontWeight: 600,
+          padding: '0.2rem 0.7rem',
+          borderRadius: '100px',
+          marginBottom: '1rem'
+        }}>
+          {time}
+        </div>
+        <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1rem', color: '#fff', fontFamily: '"Poppins", sans-serif' }}>
+          {title}
+        </h3>
+        <p style={{ fontSize: '0.95rem', color: '#A8A8A8', lineHeight: 1.6 }}>
+          {desc}
+        </p>
+      </div>
+    </motion.div>
+  )
+}
+
 const About = () => {
   return (
-    <section id="about" style={{ padding: '100px 0', background: '#000000' }}>
+    <section id="about" style={{ padding: '60px 0', background: '#000000', overflow: 'hidden' }}>
       <div style={{ width: 'min(1280px, 92%)', marginInline: 'auto' }}>
         
+        {/* About Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +113,8 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+        {/* Advantage Cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '8rem' }}>
           <AboutCard 
             title="The 72-Hour Execution Protocol"
             desc="Systematic rapid assembly and deployment of custom recruiter-ready profiles or automated storefronts."
@@ -81,6 +136,59 @@ const About = () => {
             delay={0.4}
           />
         </div>
+
+        {/* Integrated 72-Hour Gauntlet */}
+        <div id="gauntlet" style={{ position: 'relative' }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            style={{ textAlign: 'center', marginBottom: '5rem' }}
+          >
+            <h2 style={{ fontFamily: '"Cinzel", serif', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', color: '#fff', marginBottom: '1rem', textShadow: '0 0 40px rgba(198,161,91,0.2)' }}>
+              THE 72-HOUR GAUNTLET
+            </h2>
+            <div style={{ color: '#D4AF37', letterSpacing: '0.4em', fontSize: '0.875rem', fontWeight: 'bold' }}>EXECUTION PROTOCOL</div>
+          </motion.div>
+
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '800px',
+            height: '800px',
+            background: 'radial-gradient(circle, rgba(198,161,91,0.05) 0%, transparent 60%)',
+            pointerEvents: 'none',
+            zIndex: 0
+          }}></div>
+
+          <div style={{ position: 'relative', zIndex: 1, maxWidth: '900px', margin: '0 auto' }}>
+            <ProtocolStep
+              step="01"
+              time="0-24H: Foundation Engineering"
+              title="Identity Disassembly & Core Synthesis"
+              desc="We extract your raw data—achievements, goals, and metrics—and rebuild it into a high-converting architectural framework. Brand messaging, positioning, and visual tokens are established to align with top-tier market standards."
+              align="left"
+            />
+            <ProtocolStep
+              step="02"
+              time="24-48H: Algorithmic Alignment"
+              title="SEO Matrix & Platform Native Structuring"
+              desc="Your digital assets are infused with platform-specific semantic markers. We optimize LinkedIn profiles for ATS bypass, engineer YouTube thumbnails for CTR supremacy, and structure web elements for Google dominance."
+              align="right"
+            />
+            <ProtocolStep
+              step="03"
+              time="48-72H: Global Launch"
+              title="Deployment & Visibility Propagation"
+              desc="The optimized systems go live. Automated outreach sequences fire, recruiter networks are pinged, and audience capturing protocols initiate. Your new elite identity is actively pushed to key decision-makers globally."
+              align="left"
+            />
+          </div>
+        </div>
+
       </div>
     </section>
   )
