@@ -15,8 +15,8 @@ const ContentProduction = () => {
       <Navbar />
       
       <main style={{ flex: 1, backgroundColor: '#050505', position: 'relative', zIndex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ position: 'absolute', inset: 0, opacity: 0.6, pointerEvents: 'none', zIndex: 0 }}>
-          <Hills color="#D4AF37" />
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', opacity: 0.3, pointerEvents: 'none', zIndex: 0 }}>
+          <Hills color="#22c55e" />
         </div>
         
         <div style={{ position: 'relative', zIndex: 1, padding: '150px 2rem 8rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

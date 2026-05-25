@@ -137,7 +137,7 @@ const Pricing = () => {
       {!isLoading && (
         <>
           <main style={{ backgroundColor: '#050505', position: 'relative', zIndex: 1, minHeight: '100vh', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', inset: 0, opacity: 0.6, pointerEvents: 'none', zIndex: 0 }}>
+            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', opacity: 0.6, pointerEvents: 'none', zIndex: 0 }}>
               <Hills color="#22c55e" />
             </div>
             
@@ -279,8 +279,8 @@ const Pricing = () => {
                 </div>
               </section>
 
-              <Media />
               <BentoGrid />
+              <Media />
             </motion.div>
           </main>
           <Footer />

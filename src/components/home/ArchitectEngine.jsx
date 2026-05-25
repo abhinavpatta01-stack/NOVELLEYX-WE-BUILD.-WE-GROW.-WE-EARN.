@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { SparklesCore } from '../ui/SparklesCore'
 
 const ArchitectEngine = () => {
   const [step, setStep] = useState(1)
@@ -61,8 +62,19 @@ const ArchitectEngine = () => {
 
   return (
     <>
-      <section id="architect" style={{ padding: '4rem 2rem', position: 'relative', backgroundColor: '#000' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+      <section id="architect" style={{ padding: '4rem 2rem', position: 'relative', backgroundColor: '#000', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+          <SparklesCore
+            id="architect-sparkles"
+            background="transparent"
+            minSize={0.6}
+            maxSize={1.5}
+            particleDensity={120}
+            className="w-full h-full"
+            particleColor="#D4AF37"
+          />
+        </div>
+        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
           
           {step < 5 && !isAnalyzing && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>

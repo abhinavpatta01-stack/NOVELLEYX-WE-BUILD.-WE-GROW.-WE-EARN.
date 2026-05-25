@@ -55,12 +55,12 @@ const Media = () => {
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <span style={{ 
           display: 'inline-block', fontSize: '0.72rem', fontWeight: 600, 
-          letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D4AF37', 
+          letterSpacing: '0.18em', textTransform: 'uppercase', color: '#22c55e', 
           marginBottom: '1rem',
-          border: '1px solid rgba(212,175,55,0.3)',
+          border: '1px solid rgba(34,197,94,0.3)',
           padding: '0.4rem 1rem',
           borderRadius: '100px',
-          background: 'rgba(212,175,55,0.05)'
+          background: 'rgba(34,197,94,0.05)'
         }}>
           Channel Management Hub
         </span>
@@ -88,31 +88,31 @@ const Media = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: idx * 0.1 }}
             style={{
-              background: tier.popular ? 'linear-gradient(180deg, rgba(26,26,26,0.9) 0%, rgba(10,10,10,0.95) 100%)' : 'rgba(15,15,15,0.6)',
-              border: tier.popular ? '1px solid #D4AF37' : '1px solid rgba(255,255,255,0.08)',
+              background: tier.popular ? 'linear-gradient(180deg, rgba(20,40,20,0.9) 0%, rgba(10,20,10,0.95) 100%)' : 'rgba(15,15,15,0.7)',
+              border: tier.popular ? '1px solid #22c55e' : '1px solid rgba(255,255,255,0.08)',
               borderRadius: '24px',
               padding: '3rem 2rem',
               position: 'relative',
               transform: tier.popular ? 'scale(1.05)' : 'scale(1)',
-              boxShadow: tier.popular ? '0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.1)' : 'none',
+              boxShadow: tier.popular ? '0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(34,197,94,0.15)' : 'none',
               zIndex: tier.popular ? 2 : 1
             }}
             className="modern-pricing-card"
           >
             <style>{`
-              .modern-pricing-card:hover { transform: ${tier.popular ? 'scale(1.05) translateY(-5px)' : 'scale(1) translateY(-5px)'}; border-color: rgba(212,175,55,0.5); }
+              .modern-pricing-card:hover { transform: ${tier.popular ? 'scale(1.05) translateY(-5px)' : 'scale(1) translateY(-5px)'}; border-color: rgba(34,197,94,0.5); }
               @media (max-width: 1024px) {
                 .modern-pricing-card { transform: scale(1) !important; }
               }
             `}</style>
             
             {tier.popular && (
-              <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', background: '#D4AF37', color: '#000', padding: '0.4rem 1.2rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em' }}>
+              <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', background: '#22c55e', color: '#000', padding: '0.4rem 1.2rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em' }}>
                 MOST POPULAR
               </div>
             )}
 
-            <div style={{ color: '#D4AF37', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '1rem', textTransform: 'uppercase' }}>
+            <div style={{ color: '#22c55e', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '1rem', textTransform: 'uppercase' }}>
               {tier.phase}
             </div>
             <h3 style={{ fontSize: '2rem', fontWeight: 700, color: '#fff', fontFamily: '"Poppins", sans-serif', marginBottom: '0.5rem' }}>
@@ -136,7 +136,7 @@ const Media = () => {
                 width: '100%',
                 textAlign: 'center',
                 padding: '1rem',
-                background: tier.popular ? '#D4AF37' : 'transparent',
+                background: tier.popular ? '#22c55e' : 'transparent',
                 border: tier.popular ? 'none' : '1px solid rgba(255,255,255,0.1)',
                 color: tier.popular ? '#000' : '#fff',
                 fontWeight: 700,
@@ -160,7 +160,7 @@ const Media = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {tier.features.map((feature, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(212,175,55,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D4AF37' }}>
+                  <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#22c55e' }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                   </div>
                   <span style={{ color: '#D6D6D6', fontSize: '0.9rem' }}>{feature}</span>
