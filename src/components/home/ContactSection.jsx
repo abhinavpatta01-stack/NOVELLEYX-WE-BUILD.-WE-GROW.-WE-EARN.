@@ -18,8 +18,8 @@ const ContactSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const { firstName, lastName, email, subject, message } = formData
-    const body = `Name: ${firstName} ${lastName}%0AEmail: ${email}%0A%0A${message}`
-    window.location.href = `mailto:novelleyx@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`
+    const bodyText = `Name: ${firstName} ${lastName}\nEmail: ${email}\n\n${message}`
+    window.location.href = `mailto:novelleyx@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`
   }
 
   return (

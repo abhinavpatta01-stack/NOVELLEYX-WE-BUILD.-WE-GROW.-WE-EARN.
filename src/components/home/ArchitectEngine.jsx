@@ -186,10 +186,10 @@ const ArchitectEngine = () => {
                 </div>
                 
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <a href={`https://wa.me/917075853225?text=Hello NovelleyX, the AI audit recommended the ${recommendation.title} for me. Let's start.`} target="_blank" rel="noopener noreferrer" className="action-btn primary">
+                  <a href={`https://wa.me/917075853225?text=${encodeURIComponent(`Hello NovelleyX, the AI audit recommended the ${recommendation.title} for me. Let's start.`)}`} target="_blank" rel="noopener noreferrer" className="action-btn primary">
                     WhatsApp Us
                   </a>
-                  <a href={`mailto:novelleyx@gmail.com?subject=AI Audit Result: ${recommendation.title}&body=Hello NovelleyX,%0A%0AThe AI audit recommended the ${recommendation.title} for me. I would like to proceed with the action plan.%0A%0AThanks.`} className="action-btn secondary" style={{ borderColor: 'rgba(212,175,55,0.4)', color: '#D4AF37' }}>
+                  <a href={`mailto:novelleyx@gmail.com?subject=${encodeURIComponent(`AI Audit Result: ${recommendation.title}`)}&body=${encodeURIComponent(`Hello NovelleyX,\n\nThe AI audit recommended the ${recommendation.title} for me. I would like to proceed with the action plan.\n\nThanks.`)}`} className="action-btn secondary" style={{ borderColor: 'rgba(212,175,55,0.4)', color: '#D4AF37' }}>
                     Email Team
                   </a>
                   <button className="action-btn secondary" onClick={() => setStep(1)} style={{ marginLeft: 'auto' }}>
