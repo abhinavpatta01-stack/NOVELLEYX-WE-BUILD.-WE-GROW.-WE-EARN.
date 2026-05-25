@@ -27,23 +27,22 @@ const Footer = () => {
             <Link to="/" style={{ fontFamily: '"Cinzel", serif', fontSize: '1.75rem', fontWeight: 800, letterSpacing: '0.15em', color: '#D4AF37', textDecoration: 'none' }}>
               NOVELLEYX
             </Link>
-            <p style={{ color: '#A8A8A8', fontSize: '0.95rem', lineHeight: 1.6, maxWidth: '300px' }}>
-              An elite creative studio pushing the boundaries of digital identity and performance. We engineer absolute market dominance.
+            <p style={{ color: '#888', fontSize: '0.95rem', lineHeight: 1.6, maxWidth: '300px' }}>
+              Architecting elite digital ecosystems. We build the infrastructure required for market dominance.
             </p>
-            <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap' }}>
-              <a href="https://wa.me/917075853225" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0.75rem 1.5rem', background: '#D4AF37', color: '#000', fontWeight: 700, fontSize: '0.9rem', borderRadius: '8px', textDecoration: 'none', transition: 'all 0.3s ease' }} onMouseEnter={e => { e.currentTarget.style.background = '#FFD166'; e.currentTarget.style.transform = 'translateY(-2px)' }} onMouseLeave={e => { e.currentTarget.style.background = '#D4AF37'; e.currentTarget.style.transform = 'translateY(0)' }}>
-                WhatsApp Us
-              </a>
+            <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
               <a href="mailto:novelleyx@gmail.com?subject=Project%20Inquiry&body=Hello%20Novelleyx%20team%2C%0A%0AI%20am%20interested%20in%20discussing%20a%20project.%0A%0AThanks" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0.75rem 1.5rem', background: 'transparent', border: '1px solid rgba(212,175,55,0.4)', color: '#D4AF37', fontWeight: 700, fontSize: '0.9rem', borderRadius: '8px', textDecoration: 'none', transition: 'all 0.3s ease' }} onMouseEnter={e => { e.currentTarget.style.background = 'rgba(212,175,55,0.1)'; e.currentTarget.style.transform = 'translateY(-2px)' }} onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = 'translateY(0)' }}>
                 Email Us
+              </a>
+              <a href="https://wa.me/917075853225?text=Hello Novelleyx team, I am interested in discussing a project." target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '0.75rem 1.5rem', background: '#D4AF37', border: '1px solid #D4AF37', color: '#000', fontWeight: 700, fontSize: '0.9rem', borderRadius: '8px', textDecoration: 'none', transition: 'all 0.3s ease' }} onMouseEnter={e => { e.currentTarget.style.background = '#FFD166'; e.currentTarget.style.transform = 'translateY(-2px)' }} onMouseLeave={e => { e.currentTarget.style.background = '#D4AF37'; e.currentTarget.style.transform = 'translateY(0)' }}>
+                WhatsApp Us
               </a>
             </div>
           </div>
 
-          {/* Navigation */}
           <div>
-            <h4 style={{ color: '#D4AF37', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Navigation</h4>
-            <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem', listStyle: 'none', padding: 0, margin: 0 }}>
+            <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem' }}>Navigation</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
               <li><Link to="/#about" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>About Us</Link></li>
               <li><Link to="/#services" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Services</Link></li>
               <li><Link to="/pricing" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Pricing</Link></li>
