@@ -13,19 +13,21 @@ import Footer from '../components/home/Footer'
 
 const Home = () => {
   return (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#000' }}>
       <Navbar />
-      <HeroSection />
-      <About />
-      <ServicesGrid />
-      <IdentityStrip />
-      {/* Note: Pricing is on its own route /#/pricing */}
-      <CreatorPartnership />
-      <StackFeatureSection />
-      <ArchitectEngine />
-      <ContactSection />
+      <main style={{ flex: 1, position: 'relative', zIndex: 1, backgroundColor: '#000' }}>
+        <HeroSection />
+        <About />
+        <ServicesGrid />
+        <IdentityStrip />
+        {/* Note: Pricing is on its own route /#/pricing */}
+        <CreatorPartnership />
+        <StackFeatureSection />
+        <ArchitectEngine />
+        <ContactSection />
+      </main>
       <Footer />
-    </>
+    </div>
   )
 }
 

@@ -5,6 +5,7 @@ import Footer from '../components/home/Footer'
 import BentoGrid from '../components/pricing/BentoGrid'
 import Media from '../components/home/Media'
 import DottedSurface from '../components/home/DottedSurface'
+import Hills from '../components/glsl/Hills'
 
 const PricingLoader = () => {
   return (
@@ -126,7 +127,7 @@ const Pricing = () => {
   }, [])
 
   return (
-    <div style={{ backgroundColor: '#000', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ backgroundColor: '#000', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
       <AnimatePresence>
         {isLoading && <PricingLoader />}
       </AnimatePresence>
@@ -134,150 +135,156 @@ const Pricing = () => {
       <Navbar />
       
       {!isLoading && (
-        <DottedSurface>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            style={{ flex: 1 }}
-          >
-          {/* Hero section for pricing */}
-          <section style={{ 
-            paddingTop: '160px', 
-            paddingBottom: '4rem', 
-            textAlign: 'center', 
-            position: 'relative'
-          }}>
-            <div style={{ position: 'absolute', top: '0', left: '50%', transform: 'translateX(-50%)', width: '800px', height: '400px', background: 'radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 70%)', filter: 'blur(50px)', pointerEvents: 'none', zIndex: 0 }}></div>
+        <>
+          <main style={{ backgroundColor: '#050505', position: 'relative', zIndex: 1, minHeight: '100vh', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', inset: 0, opacity: 0.6, pointerEvents: 'none', zIndex: 0 }}>
+              <Hills color="#22c55e" />
+            </div>
             
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <span style={{ 
-                display: 'inline-block', fontSize: '0.72rem', fontWeight: 600, 
-                letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D4AF37', 
-                marginBottom: '1rem',
-                border: '1px solid rgba(212,175,55,0.3)',
-                padding: '0.4rem 1rem',
-                borderRadius: '100px',
-                background: 'rgba(212,175,55,0.05)'
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column' }}
+            >
+              {/* Hero section for pricing */}
+              <section style={{ 
+                paddingTop: '160px', 
+                paddingBottom: '4rem', 
+                textAlign: 'center', 
+                position: 'relative'
               }}>
-                Investment & ROI
-              </span>
-              <h1 style={{ fontFamily: '"Poppins", sans-serif', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800, color: '#fff', marginBottom: '1rem' }}>
-                Transparent Pricing
-              </h1>
-              <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem', lineHeight: 1.6 }}>
-                Choose the architecture that fits your current velocity. Designed exclusively for students, graduates, and high-performers.
-              </p>
-            </div>
-          </section>
-
-          {/* Pricing Table (Modern Layout) */}
-          <section style={{ padding: '0 2rem 3rem', position: 'relative', zIndex: 10 }}>
-            <div style={{ 
-              maxWidth: '1200px', 
-              margin: '0 auto', 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
-              gap: '2rem',
-              alignItems: 'center'
-            }}>
-              {pricingTiers.map((tier, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  style={{
-                    background: tier.popular ? 'linear-gradient(180deg, rgba(26,26,26,0.9) 0%, rgba(10,10,10,0.95) 100%)' : 'rgba(15,15,15,0.6)',
-                    border: tier.popular ? '1px solid #D4AF37' : '1px solid rgba(255,255,255,0.08)',
-                    borderRadius: '24px',
-                    padding: '3rem 2rem',
-                    position: 'relative',
-                    transform: tier.popular ? 'scale(1.05)' : 'scale(1)',
-                    boxShadow: tier.popular ? '0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.1)' : 'none',
-                    zIndex: tier.popular ? 2 : 1
-                  }}
-                  className="modern-pricing-card"
-                >
-                  <style>{`
-                    .modern-pricing-card:hover { transform: ${tier.popular ? 'scale(1.05) translateY(-5px)' : 'scale(1) translateY(-5px)'}; border-color: rgba(212,175,55,0.5); }
-                    @media (max-width: 1024px) {
-                      .modern-pricing-card { transform: scale(1) !important; }
-                    }
-                  `}</style>
-                  
-                  {tier.popular && (
-                    <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', background: '#D4AF37', color: '#000', padding: '0.4rem 1.2rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em' }}>
-                      MOST POPULAR
-                    </div>
-                  )}
-
-                  <div style={{ color: '#D4AF37', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '1rem', textTransform: 'uppercase' }}>
-                    {tier.phase}
-                  </div>
-                  <h3 style={{ fontSize: '2rem', fontWeight: 700, color: '#fff', fontFamily: '"Poppins", sans-serif', marginBottom: '0.5rem' }}>
-                    {tier.name}
-                  </h3>
-                  <p style={{ color: '#A8A8A8', fontSize: '0.9rem', lineHeight: 1.6, minHeight: '60px', marginBottom: '2rem' }}>
-                    {tier.target}
+                <div style={{ position: 'absolute', top: '0', left: '50%', transform: 'translateX(-50%)', width: '800px', height: '400px', background: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%)', filter: 'blur(50px)', pointerEvents: 'none', zIndex: 0 }}></div>
+                
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <span style={{ 
+                    display: 'inline-block', fontSize: '0.72rem', fontWeight: 600, 
+                    letterSpacing: '0.18em', textTransform: 'uppercase', color: '#22c55e', 
+                    marginBottom: '1rem',
+                    border: '1px solid rgba(34,197,94,0.3)',
+                    padding: '0.4rem 1rem',
+                    borderRadius: '100px',
+                    background: 'rgba(34,197,94,0.05)'
+                  }}>
+                    Investment & ROI
+                  </span>
+                  <h1 style={{ fontFamily: '"Poppins", sans-serif', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800, color: '#fff', marginBottom: '1rem' }}>
+                    Transparent Pricing
+                  </h1>
+                  <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem', lineHeight: 1.6 }}>
+                    Choose the architecture that fits your current velocity. Designed exclusively for students, graduates, and high-performers.
                   </p>
+                </div>
+              </section>
 
-                  <div style={{ marginBottom: '2.5rem' }}>
-                    <span style={{ fontSize: '2.5rem', fontWeight: 800, color: '#fff' }}>₹{tier.price}</span>
-                    {tier.maxPrice && <span style={{ fontSize: '1.5rem', color: '#888' }}> - {tier.maxPrice}</span>}
-                    <span style={{ color: '#888', fontSize: '0.9rem', marginLeft: '0.5rem' }}>{tier.period}</span>
-                  </div>
-
-                  <a
-                    href={`https://wa.me/917075853225?text=Hello Novelleyx, I'm interested in the ${tier.name}.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'block',
-                      width: '100%',
-                      textAlign: 'center',
-                      padding: '1rem',
-                      background: tier.popular ? '#D4AF37' : 'transparent',
-                      border: tier.popular ? 'none' : '1px solid rgba(255,255,255,0.1)',
-                      color: tier.popular ? '#000' : '#fff',
-                      fontWeight: 700,
-                      borderRadius: '12px',
-                      marginBottom: '2.5rem',
-                      transition: 'all 0.3s ease'
-                    }}
-                    onMouseEnter={(e) => {
-                      if(!tier.popular) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-                      else e.currentTarget.style.opacity = '0.9'
-                    }}
-                    onMouseLeave={(e) => {
-                      if(!tier.popular) e.currentTarget.style.background = 'transparent'
-                      else e.currentTarget.style.opacity = '1'
-                    }}
-                  >
-                    Get Started
-                  </a>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    {tier.features.map((feature, i) => (
-                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(212,175,55,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D4AF37' }}>
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              {/* Pricing Table (Modern Layout) */}
+              <section style={{ padding: '0 2rem 3rem', position: 'relative', zIndex: 10 }}>
+                <div style={{ 
+                  maxWidth: '1200px', 
+                  margin: '0 auto', 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+                  gap: '2rem',
+                  alignItems: 'center'
+                }}>
+                  {pricingTiers.map((tier, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: idx * 0.1 }}
+                      style={{
+                        background: tier.popular ? 'linear-gradient(180deg, rgba(20,40,20,0.9) 0%, rgba(10,20,10,0.95) 100%)' : 'rgba(15,15,15,0.7)',
+                        border: tier.popular ? '1px solid #22c55e' : '1px solid rgba(255,255,255,0.08)',
+                        borderRadius: '24px',
+                        padding: '3rem 2rem',
+                        position: 'relative',
+                        transform: tier.popular ? 'scale(1.05)' : 'scale(1)',
+                        boxShadow: tier.popular ? '0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(34,197,94,0.15)' : 'none',
+                        zIndex: tier.popular ? 2 : 1
+                      }}
+                      className="modern-pricing-card"
+                    >
+                      <style>{`
+                        .modern-pricing-card:hover { transform: ${tier.popular ? 'scale(1.05) translateY(-5px)' : 'scale(1) translateY(-5px)'}; border-color: rgba(34,197,94,0.5); }
+                        @media (max-width: 1024px) {
+                          .modern-pricing-card { transform: scale(1) !important; }
+                        }
+                      `}</style>
+                      
+                      {tier.popular && (
+                        <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', background: '#22c55e', color: '#000', padding: '0.4rem 1.2rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em' }}>
+                          MOST POPULAR
                         </div>
-                        <span style={{ color: '#D6D6D6', fontSize: '0.9rem' }}>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </section>
+                      )}
 
-          <Media />
-          <BentoGrid />
+                      <div style={{ color: '#22c55e', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '1rem', textTransform: 'uppercase' }}>
+                        {tier.phase}
+                      </div>
+                      <h3 style={{ fontSize: '2rem', fontWeight: 700, color: '#fff', fontFamily: '"Poppins", sans-serif', marginBottom: '0.5rem' }}>
+                        {tier.name}
+                      </h3>
+                      <p style={{ color: '#A8A8A8', fontSize: '0.9rem', lineHeight: 1.6, minHeight: '60px', marginBottom: '2rem' }}>
+                        {tier.target}
+                      </p>
+
+                      <div style={{ marginBottom: '2.5rem' }}>
+                        <span style={{ fontSize: '2.5rem', fontWeight: 800, color: '#fff' }}>₹{tier.price}</span>
+                        {tier.maxPrice && <span style={{ fontSize: '1.5rem', color: '#888' }}> - {tier.maxPrice}</span>}
+                        <span style={{ color: '#888', fontSize: '0.9rem', marginLeft: '0.5rem' }}>{tier.period}</span>
+                      </div>
+
+                      <a
+                        href={`https://wa.me/917075853225?text=Hello Novelleyx, I'm interested in the ${tier.name}.`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: 'block',
+                          width: '100%',
+                          textAlign: 'center',
+                          padding: '1rem',
+                          background: tier.popular ? '#22c55e' : 'transparent',
+                          border: tier.popular ? 'none' : '1px solid rgba(255,255,255,0.1)',
+                          color: tier.popular ? '#000' : '#fff',
+                          fontWeight: 700,
+                          borderRadius: '12px',
+                          marginBottom: '2.5rem',
+                          transition: 'all 0.3s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          if(!tier.popular) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+                          else e.currentTarget.style.opacity = '0.9'
+                        }}
+                        onMouseLeave={(e) => {
+                          if(!tier.popular) e.currentTarget.style.background = 'transparent'
+                          else e.currentTarget.style.opacity = '1'
+                        }}
+                      >
+                        Get Started
+                      </a>
+
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        {tier.features.map((feature, i) => (
+                          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                            <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#22c55e' }}>
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <span style={{ color: '#D6D6D6', fontSize: '0.9rem' }}>{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </section>
+
+              <Media />
+              <BentoGrid />
+            </motion.div>
+          </main>
           <Footer />
-          </motion.div>
-        </DottedSurface>
+        </>
       )}
     </div>
   )

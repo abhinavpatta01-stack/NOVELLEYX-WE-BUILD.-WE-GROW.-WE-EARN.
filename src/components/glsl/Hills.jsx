@@ -1,15 +1,15 @@
-import React, { useRef, useMemo } from 'react'
+import React, { useRef, useMemo, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-const HillsMesh = () => {
+const HillsMesh = ({ color }) => {
   const meshRef = useRef()
 
   const shaderArgs = useMemo(
     () => ({
       uniforms: {
         uTime: { value: 0 },
-        uColor: { value: new THREE.Color('#D4AF37') },
+        uColor: { value: new THREE.Color(color || '#D4AF37') },
       },
       vertexShader: `
         uniform float uTime;
@@ -43,6 +43,12 @@ const HillsMesh = () => {
     []
   )
 
+  useEffect(() => {
+    if (meshRef.current) {
+      meshRef.current.material.uniforms.uColor.value = new THREE.Color(color || '#D4AF37')
+    }
+  }, [color])
+
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.material.uniforms.uTime.value = state.clock.elapsedTime
@@ -57,7 +63,7 @@ const HillsMesh = () => {
   )
 }
 
-const Hills = () => {
+const Hills = ({ color }) => {
   return (
     <div
       style={{
@@ -71,7 +77,7 @@ const Hills = () => {
       }}
     >
       <Canvas camera={{ position: [0, 0, 2], fov: 75 }}>
-        <HillsMesh />
+        <HillsMesh color={color} />
       </Canvas>
     </div>
   )

@@ -61,7 +61,7 @@ const ArchitectEngine = () => {
 
   return (
     <>
-      <section id="architect" style={{ padding: '4rem 2rem', position: 'relative' }}>
+      <section id="architect" style={{ padding: '4rem 2rem', position: 'relative', backgroundColor: '#000' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
           
           {step < 5 && !isAnalyzing && (
