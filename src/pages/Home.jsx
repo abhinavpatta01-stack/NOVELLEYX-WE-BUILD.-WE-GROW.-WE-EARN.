@@ -8,6 +8,7 @@ import Media from '../components/home/Media'
 import CreatorPartnership from '../components/home/CreatorPartnership'
 import StackFeatureSection from '../components/home/StackFeatureSection'
 import ArchitectEngine from '../components/home/ArchitectEngine'
+import Testimonials from '../components/home/Testimonials'
 import ContactSection from '../components/home/ContactSection'
 import Footer from '../components/home/Footer'
 
@@ -24,6 +25,7 @@ const Home = () => {
         <CreatorPartnership />
         <StackFeatureSection />
         <ArchitectEngine />
+        <Testimonials />
         <ContactSection />
       </main>
       <Footer />

@@ -30,28 +30,43 @@ const ArchitectEngine = () => {
 
   const analyzeData = () => {
     const { experience, goal } = formData
-    let rec = { title: '', desc: '', phase: '', price: '' }
+    let rec = { title: '', desc: '', phase: '', price: '', steps: [] }
 
     if (experience === '0-2 Years' || experience === 'Student/Grad') {
       rec = {
         title: 'Starter Plan',
         phase: 'Phase 01',
         desc: 'Baseline engineering for portfolio, resume, and algorithmic visibility.',
-        price: '₹299/mo'
+        price: '₹299/mo',
+        steps: [
+          'Optimize LinkedIn Profile & Foundation',
+          'Engineer ATS-Friendly Resume Systems',
+          'Build Primary Digital Portfolio'
+        ]
       }
     } else if (experience === '2-5 Years' && goal !== 'Thought Leadership') {
       rec = {
         title: 'Growth Plan',
         phase: 'Phase 02',
         desc: 'High-performers ready to aggressively capture major roles and improve outreach.',
-        price: '₹999/mo'
+        price: '₹999/mo',
+        steps: [
+          'Deploy Direct Recruiter Outreach Strategy',
+          'Implement Custom Keyword Architecture',
+          'Secure Interview-Ready Profile Setup'
+        ]
       }
     } else {
       rec = {
         title: 'Premium Plan + Growth Acceleration Engine',
         phase: 'Phase 03',
         desc: 'Ultimate personal-brand architecture for absolute market dominance.',
-        price: '₹18,000/3mo'
+        price: '₹18,000/3mo',
+        steps: [
+          'Full Scale Identity Architecture',
+          'Managed Premium Content Distribution',
+          'Execute Top 1% SEO & Authority Dominance'
+        ]
       }
     }
     
@@ -156,11 +171,28 @@ const ArchitectEngine = () => {
                 <h3 style={{ fontSize: '2rem', color: '#fff', marginBottom: '1rem' }}>{recommendation.title}</h3>
                 <p style={{ color: '#A8A8A8', marginBottom: '2rem' }}>{recommendation.desc}</p>
                 
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                <div style={{ textAlign: 'left', background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '12px', border: '1px solid rgba(212,175,55,0.2)', marginBottom: '3rem' }}>
+                  <h4 style={{ color: '#fff', marginBottom: '1.5rem', fontSize: '1.2rem' }}>Your 3-Step Action Plan:</h4>
+                  <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {recommendation.steps.map((step, idx) => (
+                      <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#D6D6D6' }}>
+                        <div style={{ minWidth: '30px', height: '30px', borderRadius: '50%', background: 'rgba(212,175,55,0.1)', color: '#D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
+                          {idx + 1}
+                        </div>
+                        {step}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                   <a href={`https://wa.me/917075853225?text=Hello NovelleyX, the AI audit recommended the ${recommendation.title} for me. Let's start.`} target="_blank" rel="noopener noreferrer" className="action-btn primary">
-                    Proceed to {recommendation.phase}
+                    WhatsApp Us
                   </a>
-                  <button className="action-btn secondary" onClick={() => setStep(1)}>
+                  <a href={`mailto:novelleyx@gmail.com?subject=AI Audit Result: ${recommendation.title}&body=Hello NovelleyX,%0A%0AThe AI audit recommended the ${recommendation.title} for me. I would like to proceed with the action plan.%0A%0AThanks.`} className="action-btn secondary" style={{ borderColor: 'rgba(212,175,55,0.4)', color: '#D4AF37' }}>
+                    Email Team
+                  </a>
+                  <button className="action-btn secondary" onClick={() => setStep(1)} style={{ marginLeft: 'auto' }}>
                     Run New Audit
                   </button>
                 </div>

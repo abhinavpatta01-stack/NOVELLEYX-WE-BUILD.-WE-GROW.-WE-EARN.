@@ -127,7 +127,10 @@ const Pricing = () => {
   }, [])
 
   return (
-    <div style={{ backgroundColor: '#000', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+    <div style={{ backgroundColor: '#050505', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.2 }}>
+        <Hills color="#22c55e" />
+      </div>
       <AnimatePresence>
         {isLoading && <PricingLoader />}
       </AnimatePresence>
@@ -136,10 +139,7 @@ const Pricing = () => {
       
       {!isLoading && (
         <>
-          <main style={{ backgroundColor: '#050505', position: 'relative', zIndex: 1, minHeight: '100vh', overflow: 'hidden' }}>
-            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', opacity: 0.6, pointerEvents: 'none', zIndex: 0 }}>
-              <Hills color="#22c55e" />
-            </div>
+          <main style={{ position: 'relative', zIndex: 1, minHeight: '100vh', overflow: 'hidden' }}>
             
             <motion.div
               initial={{ opacity: 0, y: 30 }}

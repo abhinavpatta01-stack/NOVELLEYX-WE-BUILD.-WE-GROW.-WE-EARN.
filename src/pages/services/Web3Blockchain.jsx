@@ -11,13 +11,14 @@ const Web3Blockchain = () => {
   }, [])
 
   return (
-    <div style={{ backgroundColor: '#000', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+    <div style={{ backgroundColor: '#050505', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.2 }}>
+        <Hills color="#22c55e" />
+      </div>
       <Navbar />
       
-      <main style={{ flex: 1, backgroundColor: '#050505', position: 'relative', zIndex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', opacity: 0.3, pointerEvents: 'none', zIndex: 0 }}>
-          <Hills color="#22c55e" />
-        </div>
+      <main style={{ flex: 1, position: 'relative', zIndex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+
         
         <div style={{ position: 'relative', zIndex: 1, padding: '150px 2rem 8rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <motion.div 
