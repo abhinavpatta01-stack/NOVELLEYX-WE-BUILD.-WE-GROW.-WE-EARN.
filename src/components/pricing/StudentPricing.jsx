@@ -58,16 +58,18 @@ const StudentPricingCard = ({ phase, name, price, period, target, features, popu
 
       <div style={{ display: 'flex', gap: '0.5rem' }}>
         <a 
-          href={`https://wa.me/917075853225?text=Hello NovelleyX, I'm interested in the ${name}.`} 
+          href={`https://wa.me/917075853225?text=${encodeURIComponent(`Hello NovelleyX, I'm interested in the ${name}.`)}`} 
           target="_blank" 
           rel="noopener noreferrer"
-          style={{ flex: 1, textAlign: 'center', padding: '0.75rem', background: '#25D366', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold', borderRadius: '6px' }}
+          style={{ flex: 1, textAlign: 'center', padding: '0.75rem', background: '#25D366', color: '#fff', fontSize: '0.8rem', fontWeight: 'bold', borderRadius: '6px', textDecoration: 'none' }}
         >
           WhatsApp
         </a>
         <a 
-          href={`mailto:novelleyx@gmail.com?subject=Inquiry About ${name}`}
-          style={{ flex: 1, textAlign: 'center', padding: '0.75rem', background: 'transparent', border: '1px solid rgba(212,175,55,0.3)', color: '#ccc', fontSize: '0.8rem', fontWeight: 'bold', borderRadius: '6px' }}
+          href={`mailto:novelleyx@gmail.com?subject=${encodeURIComponent(`Inquiry About ${name}`)}&body=${encodeURIComponent(`Hello Novelleyx team,\n\nI am interested in the ${name} plan. Please share the details and how we can proceed.\n\nThanks.`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ flex: 1, textAlign: 'center', padding: '0.75rem', background: 'transparent', border: '1px solid rgba(212,175,55,0.3)', color: '#ccc', fontSize: '0.8rem', fontWeight: 'bold', borderRadius: '6px', textDecoration: 'none' }}
         >
           Email
         </a>

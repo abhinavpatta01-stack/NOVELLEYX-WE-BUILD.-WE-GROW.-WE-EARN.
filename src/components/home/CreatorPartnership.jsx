@@ -80,15 +80,17 @@ const CreatorPartnership = () => {
             </p>
             <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
               <a 
-                href="https://wa.me/917075853225?text=Hello NovelleyX, I'm interested in the Instagram Creator Partnership." 
+                href="https://wa.me/917075853225?text=Hello%20NovelleyX%2C%20I%27m%20interested%20in%20the%20Instagram%20Creator%20Partnership." 
                 target="_blank" rel="noopener noreferrer"
-                style={{ padding: '0.52rem 1.1rem', fontSize: '0.82rem', background: '#25D366', color: '#fff', fontWeight: 600, borderRadius: '6px' }}
+                style={{ padding: '0.52rem 1.1rem', fontSize: '0.82rem', background: '#25D366', color: '#fff', fontWeight: 600, borderRadius: '6px', textDecoration: 'none' }}
               >
                 💬 WhatsApp
               </a>
               <a 
-                href="mailto:novelleyx@gmail.com?subject=Inquiry About Creator Partnership"
-                style={{ padding: '0.52rem 1.1rem', fontSize: '0.82rem', background: '#1C1C1C', border: '1px solid rgba(198,161,91,0.3)', color: '#A8A8A8', fontWeight: 600, borderRadius: '6px' }}
+                href="mailto:novelleyx@gmail.com?subject=Inquiry%20About%20Creator%20Partnership&body=Hello%20Novelleyx%20team%2C%0A%0AI%20am%20interested%20in%20the%20Instagram%20Creator%20Partnership.%20Please%20share%20the%20details%20and%20how%20we%20can%20proceed.%0A%0AThanks."
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ padding: '0.52rem 1.1rem', fontSize: '0.82rem', background: '#1C1C1C', border: '1px solid rgba(198,161,91,0.3)', color: '#A8A8A8', fontWeight: 600, borderRadius: '6px', textDecoration: 'none' }}
               >
                 ✉ Email
               </a>

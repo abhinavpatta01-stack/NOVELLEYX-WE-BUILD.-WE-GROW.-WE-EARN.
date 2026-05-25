@@ -127,35 +127,46 @@ const Media = () => {
               <span style={{ color: '#888', fontSize: '0.9rem', marginLeft: '0.5rem' }}>{tier.period}</span>
             </div>
 
-            <a
-              href={`https://wa.me/917075853225?text=Hello Novelleyx, I'm interested in the ${tier.name} for Outsourced Media.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'block',
-                width: '100%',
-                textAlign: 'center',
-                padding: '1rem',
-                background: tier.popular ? '#22c55e' : 'transparent',
-                border: tier.popular ? 'none' : '1px solid rgba(255,255,255,0.1)',
-                color: tier.popular ? '#000' : '#fff',
-                fontWeight: 700,
-                borderRadius: '12px',
-                marginBottom: '2.5rem',
-                transition: 'all 0.3s ease',
-                textDecoration: 'none'
-              }}
-              onMouseEnter={(e) => {
-                if(!tier.popular) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-                else e.currentTarget.style.opacity = '0.9'
-              }}
-              onMouseLeave={(e) => {
-                if(!tier.popular) e.currentTarget.style.background = 'transparent'
-                else e.currentTarget.style.opacity = '1'
-              }}
-            >
-              Get Started
-            </a>
+            <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '2.5rem' }}>
+              <a
+                href={`https://wa.me/917075853225?text=${encodeURIComponent(`Hello Novelleyx, I'm interested in the ${tier.name} for Outsourced Media.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  padding: '1rem',
+                  background: tier.popular ? '#22c55e' : 'transparent',
+                  border: tier.popular ? 'none' : '1px solid rgba(255,255,255,0.1)',
+                  color: tier.popular ? '#000' : '#fff',
+                  fontWeight: 700,
+                  borderRadius: '12px',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none'
+                }}
+              >
+                WhatsApp
+              </a>
+              <a
+                href={`mailto:novelleyx@gmail.com?subject=${encodeURIComponent(`Inquiry About ${tier.name} — Outsourced Media`)}&body=${encodeURIComponent(`Hello Novelleyx team,\n\nI am interested in your ${tier.name} plan for Outsourced Media. Please let me know how we can proceed.\n\nThanks.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  flex: 1,
+                  textAlign: 'center',
+                  padding: '1rem',
+                  background: 'transparent',
+                  border: '1px solid rgba(34,197,94,0.3)',
+                  color: '#22c55e',
+                  fontWeight: 700,
+                  borderRadius: '12px',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none'
+                }}
+              >
+                Email
+              </a>
+            </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {tier.features.map((feature, i) => (

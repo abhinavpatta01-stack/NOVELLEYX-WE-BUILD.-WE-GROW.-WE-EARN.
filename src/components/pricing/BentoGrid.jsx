@@ -57,16 +57,18 @@ const PricingCard = ({ title, target, price, period, features, featured, delay, 
 
       <div style={{ display: 'flex', gap: '1rem' }}>
         <a 
-          href={`https://wa.me/917075853225?text=Hello Novelleyx, I'm interested in the ${title} subscription.`} 
+          href={`https://wa.me/917075853225?text=${encodeURIComponent(`Hello Novelleyx, I'm interested in the ${title} subscription.`)}`} 
           target="_blank" 
           rel="noopener noreferrer"
-          style={{ flex: 1, textAlign: 'center', padding: '1rem', background: featured ? '#D4AF37' : 'transparent', border: featured ? 'none' : '1px solid #D4AF37', color: featured ? '#000' : '#D4AF37', fontWeight: 'bold', borderRadius: '8px', textTransform: 'uppercase', fontSize: '0.875rem' }}
+          style={{ flex: 1, textAlign: 'center', padding: '1rem', background: featured ? '#D4AF37' : 'transparent', border: featured ? 'none' : '1px solid #D4AF37', color: featured ? '#000' : '#D4AF37', fontWeight: 'bold', borderRadius: '8px', textTransform: 'uppercase', fontSize: '0.875rem', textDecoration: 'none' }}
         >
           WhatsApp
         </a>
         <a 
-          href={`mailto:novelleyx@gmail.com?subject=Inquiry About ${title} Subscription`}
-          style={{ flex: 1, textAlign: 'center', padding: '1rem', background: 'transparent', border: '1px solid #333', color: '#888', fontWeight: 'bold', borderRadius: '8px', textTransform: 'uppercase', fontSize: '0.875rem' }}
+          href={`mailto:novelleyx@gmail.com?subject=${encodeURIComponent(`Inquiry About ${title} Subscription`)}&body=${encodeURIComponent(`Hello Novelleyx team,\n\nI am interested in the ${title} subscription. Please share the details and how we can proceed.\n\nThanks.`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ flex: 1, textAlign: 'center', padding: '1rem', background: 'transparent', border: '1px solid #333', color: '#888', fontWeight: 'bold', borderRadius: '8px', textTransform: 'uppercase', fontSize: '0.875rem', textDecoration: 'none' }}
         >
           Email
         </a>

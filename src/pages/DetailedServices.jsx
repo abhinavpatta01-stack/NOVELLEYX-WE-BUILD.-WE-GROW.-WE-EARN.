@@ -143,7 +143,7 @@ const DetailedServices = () => {
               
               <div style={{ display: 'flex', gap: '0.8rem', marginTop: 'auto' }}>
                 <a
-                  href={`https://wa.me/917075853225?text=Hello Novelleyx, I'm interested in ${svc.title}.`}
+                  href={`https://wa.me/917075853225?text=${encodeURIComponent(`Hello Novelleyx, I'm interested in ${svc.title}.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -155,7 +155,8 @@ const DetailedServices = () => {
                     fontWeight: 600,
                     fontSize: '0.85rem',
                     borderRadius: '8px',
-                    transition: 'opacity 0.3s'
+                    transition: 'opacity 0.3s',
+                    textDecoration: 'none'
                   }}
                   onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
                   onMouseLeave={e => e.currentTarget.style.opacity = '1'}
@@ -163,7 +164,9 @@ const DetailedServices = () => {
                   WhatsApp
                 </a>
                 <a
-                  href={`mailto:novelleyx@gmail.com?subject=Inquiry%20About%20${svc.title}&body=Hello%20Novelleyx%20team,%0D%0A%0D%0AI%20am%20interested%20in%20your%20${svc.title}%20services.%20Please%20let%20me%20know%20how%20we%20can%20proceed.%0D%0A%0D%0AThanks.`}
+                  href={`mailto:novelleyx@gmail.com?subject=${encodeURIComponent(`Inquiry About ${svc.title}`)}&body=${encodeURIComponent(`Hello Novelleyx team,\n\nI am interested in your ${svc.title} services. Please let me know how we can proceed.\n\nThanks.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     flex: 1,
                     textAlign: 'center',
@@ -174,7 +177,8 @@ const DetailedServices = () => {
                     fontWeight: 600,
                     fontSize: '0.85rem',
                     borderRadius: '8px',
-                    transition: 'background 0.3s'
+                    transition: 'background 0.3s',
+                    textDecoration: 'none'
                   }}
                   onMouseEnter={e => e.currentTarget.style.background = 'rgba(212,175,55,0.1)'}
                   onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
