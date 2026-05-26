@@ -86,7 +86,7 @@ const Footer = () => {
               <li><Link to="/#workflow" onClick={() => handleHashLink('/#workflow')} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Our Execution Process</Link></li>
               <li><Link to="/pricing#business" onClick={() => handleHashLink('/pricing#business')} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Startup & Enterprise Pricing</Link></li>
               <li><Link to="/services" onClick={() => window.scrollTo(0, 0)} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Detailed Service Grid</Link></li>
-              <li><Link to="/#contact" onClick={() => handleHashLink('/#contact')} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Book Strategy Call</Link></li>
+              <li><Link to="/#cta" onClick={() => handleHashLink('/#cta')} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Book Strategy Call</Link></li>
             </ul>
           </div>
           
@@ -104,8 +104,8 @@ const Footer = () => {
           <div>
             <h4 style={{ color: '#D4AF37', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>Legal</h4>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem', listStyle: 'none', padding: 0, margin: 0, fontFamily: 'var(--font-body)' }}>
-              <li><a href="#" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Privacy Policy</a></li>
-              <li><a href="#" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Terms of Service</a></li>
+              <li><a href={`${import.meta.env.BASE_URL}privacy-policy.pdf`} target="_blank" rel="noopener noreferrer" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Privacy Policy</a></li>
+              <li><a href={`${import.meta.env.BASE_URL}terms-of-service.pdf`} target="_blank" rel="noopener noreferrer" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Terms of Service</a></li>
             </ul>
           </div>
         </div>

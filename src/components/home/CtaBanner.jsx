@@ -4,7 +4,7 @@ import { ArrowRight, Phone } from 'lucide-react'
 
 const CtaBanner = () => {
   return (
-    <section style={{
+    <section id="cta" style={{
       padding: 'var(--section-py) 2rem',
       background: '#000',
       position: 'relative',
