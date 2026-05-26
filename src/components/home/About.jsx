@@ -21,10 +21,10 @@ const AboutCard = ({ title, desc, delay }) => {
       <style>{`
         .about-card:hover { transform: translateY(-5px); border-color: rgba(198,161,91,0.4); box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
       `}</style>
-      <h3 style={{ color: '#FFD166', fontFamily: '"Poppins", sans-serif', fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+      <h3 style={{ color: '#FFD166', fontFamily: 'var(--font-heading)', fontSize: 'var(--h3)', fontWeight: 'var(--h3-weight)', marginBottom: '0.5rem' }}>
         {title}
       </h3>
-      <p style={{ fontSize: '0.88rem', color: '#A8A8A8', lineHeight: 1.6 }}>
+      <p style={{ fontSize: 'var(--body)', color: '#A8A8A8', lineHeight: 1.7 }}>
         {desc}
       </p>
     </motion.div>
@@ -55,7 +55,7 @@ const ProtocolStep = ({ step, title, time, desc, align }) => {
         }
       `}</style>
       <div style={{ flex: 1 }}>
-        <div style={{ color: 'rgba(198,161,91,0.4)', fontSize: '4rem', fontWeight: 800, lineHeight: 1, fontFamily: '"Space Mono", monospace' }}>
+        <div style={{ color: 'rgba(198,161,91,0.4)', fontSize: '4rem', fontWeight: 800, lineHeight: 1, fontFamily: 'var(--font-heading)' }}>
           {step}
         </div>
       </div>
@@ -65,7 +65,7 @@ const ProtocolStep = ({ step, title, time, desc, align }) => {
           background: 'rgba(198,161,91,0.1)',
           border: '1px solid rgba(198,161,91,0.25)',
           color: '#D4AF37',
-          fontSize: '0.72rem',
+          fontSize: 'var(--caption)',
           fontWeight: 600,
           padding: '0.2rem 0.7rem',
           borderRadius: '100px',
@@ -73,7 +73,7 @@ const ProtocolStep = ({ step, title, time, desc, align }) => {
         }}>
           {time}
         </div>
-        <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '1rem', color: '#fff', fontFamily: '"Poppins", sans-serif' }}>
+        <h3 style={{ fontSize: 'var(--h3)', fontWeight: 'var(--h3-weight)', marginBottom: '1rem', color: '#fff', fontFamily: 'var(--font-heading)' }}>
           {title}
         </h3>
         <p style={{ fontSize: '0.95rem', color: '#A8A8A8', lineHeight: 1.6 }}>
@@ -86,7 +86,7 @@ const ProtocolStep = ({ step, title, time, desc, align }) => {
 
 const About = () => {
   return (
-    <section id="about" style={{ padding: '60px 0', background: '#000000', overflow: 'hidden' }}>
+    <section id="about" style={{ padding: 'var(--section-py) 0', background: '#000000', overflow: 'hidden' }}>
       <div style={{ width: 'min(1280px, 92%)', marginInline: 'auto' }}>
         
         {/* About Header */}
@@ -98,17 +98,17 @@ const About = () => {
           style={{ textAlign: 'center', marginBottom: '3rem' }}
         >
           <span style={{ 
-            display: 'inline-block', fontSize: '0.72rem', fontWeight: 600, 
-            letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D4AF37', 
+            display: 'inline-block', fontSize: 'var(--caption)', fontWeight: 600, 
+            letterSpacing: 'var(--caption-tracking)', textTransform: 'uppercase', color: '#D4AF37', 
             marginBottom: '1.2rem' 
           }}>
             The Novelleyx Advantage
           </span>
           <div style={{ width: '48px', height: '2px', background: '#D4AF37', margin: '1.2rem auto' }}></div>
-          <h2 style={{ fontFamily: '"Poppins", sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1rem', color: '#fff' }}>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--h2)', fontWeight: 'var(--h2-weight)', marginBottom: 'var(--heading-subtext-gap)', color: '#fff' }}>
             ABOUT US
           </h2>
-          <p style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', color: '#D6D6D6', maxWidth: '560px', margin: '0 auto' }}>
+          <p style={{ fontSize: 'var(--body)', color: '#D6D6D6', maxWidth: '560px', margin: '0 auto' }}>
             We don't just build systems; we engineer absolute market dominance. Novelleyx is an elite creative studio pushing the boundaries of digital identity and performance.
           </p>
         </motion.div>
@@ -146,7 +146,7 @@ const About = () => {
             transition={{ duration: 0.7 }}
             style={{ textAlign: 'center', marginBottom: '5rem' }}
           >
-            <h2 style={{ fontFamily: '"Cinzel", serif', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', color: '#fff', marginBottom: '1rem', textShadow: '0 0 40px rgba(198,161,91,0.2)' }}>
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--h2)', fontWeight: 'var(--h2-weight)', color: '#fff', marginBottom: 'var(--heading-subtext-gap)', textShadow: '0 0 40px rgba(198,161,91,0.2)' }}>
               THE 72-HOUR GAUNTLET
             </h2>
             <div style={{ color: '#D4AF37', letterSpacing: '0.4em', fontSize: '0.875rem', fontWeight: 'bold' }}>EXECUTION PROTOCOL</div>

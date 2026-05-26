@@ -1,29 +1,34 @@
 import React from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { PhoneCall, FileText, Code2, Rocket } from 'lucide-react'
 
 const stackData = [
   {
     step: "01",
-    title: "Trajectory Audit",
-    desc: "We analyze your current digital footprint, market positioning, and core objectives. This is where we define the exact vector to achieve market dominance.",
+    icon: <PhoneCall size={28} color="#D4AF37" />,
+    title: "Discovery Call",
+    desc: "Book a free 30-minute strategy call. We learn about your brand, goals, challenges, and where you want to be. No pitch — just clarity.",
     color: "#0a0a0a"
   },
   {
     step: "02",
-    title: "System Assembly",
-    desc: "Our engineers and strategists construct your bespoke assets—ranging from cinematic websites to algorithmic content systems and executive branding.",
+    icon: <FileText size={28} color="#D4AF37" />,
+    title: "Strategy & Proposal",
+    desc: "Within 48 hours, you receive a custom roadmap with scope, timeline, deliverables, and investment. Transparent — no hidden costs, no surprises.",
     color: "#0f0f0f"
   },
   {
     step: "03",
-    title: "Algorithmic Deployment",
-    desc: "Assets go live. We push your new identity through advanced SEO, targeted growth engines, and high-converting workflows to capture your audience.",
+    icon: <Code2 size={28} color="#D4AF37" />,
+    title: "Build & Execute",
+    desc: "Our engineers and strategists build your digital systems. You review milestones at every stage with full visibility into progress and revisions.",
     color: "#141414"
   },
   {
     step: "04",
-    title: "Optimization & Scaling",
-    desc: "We monitor data, split-test assets, and continuously refine the system to ensure long-term ROI and compounding digital authority.",
+    icon: <Rocket size={28} color="#D4AF37" />,
+    title: "Launch & Optimize",
+    desc: "We deploy, monitor performance metrics, and iterate. Ongoing support ensures your systems keep delivering compounding ROI month after month.",
     color: "#1a1a1a"
   }
 ]
@@ -50,7 +55,7 @@ const StackCard = ({ data, index, total }) => {
         style={{
           width: '100%',
           maxWidth: '800px',
-          height: '300px',
+          minHeight: '280px',
           background: data.color,
           border: '1px solid rgba(212,175,55,0.15)',
           borderRadius: '24px',
@@ -63,14 +68,33 @@ const StackCard = ({ data, index, total }) => {
         }}
         className="stack-card"
       >
-        <div style={{ color: '#D4AF37', fontSize: '3rem', fontWeight: 800, fontFamily: '"Space Mono", monospace', opacity: 0.5, lineHeight: 1 }}>
-          {data.step}
+        <div style={{
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem',
+          minWidth: '60px'
+        }}>
+          <div style={{
+            width: '56px', height: '56px', borderRadius: '14px',
+            background: 'rgba(212,175,55,0.08)',
+            border: '1px solid rgba(212,175,55,0.15)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}>
+            {data.icon}
+          </div>
+          <div style={{
+            color: 'rgba(212,175,55,0.4)', fontSize: '1.5rem',
+            fontWeight: 800, fontFamily: 'var(--font-heading)', lineHeight: 1
+          }}>
+            {data.step}
+          </div>
         </div>
         <div>
-          <h3 style={{ fontSize: '1.8rem', fontWeight: 700, fontFamily: '"Poppins", sans-serif', color: '#fff', marginBottom: '1rem' }}>
+          <h3 style={{
+            fontSize: 'var(--h3)', fontWeight: 'var(--h3-weight)',
+            fontFamily: 'var(--font-heading)', color: '#fff', marginBottom: '1rem'
+          }}>
             {data.title}
           </h3>
-          <p style={{ fontSize: '1rem', color: '#A8A8A8', lineHeight: 1.7 }}>
+          <p style={{ fontSize: 'var(--body)', color: '#A8A8A8', lineHeight: 1.7 }}>
             {data.desc}
           </p>
         </div>
@@ -81,7 +105,7 @@ const StackCard = ({ data, index, total }) => {
 
 const StackFeatureSection = () => {
   return (
-    <section id="workflow" style={{ padding: '120px 2rem', background: '#000', position: 'relative' }}>
+    <section id="workflow" style={{ padding: 'var(--section-py) 2rem', background: '#000', position: 'relative' }}>
       <div style={{ width: 'min(1280px, 100%)', marginInline: 'auto' }}>
         
         <motion.div 
@@ -92,18 +116,21 @@ const StackFeatureSection = () => {
           style={{ textAlign: 'center', marginBottom: '8rem' }}
         >
           <span style={{ 
-            display: 'inline-block', fontSize: '0.72rem', fontWeight: 600, 
-            letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D4AF37', 
+            display: 'inline-block', fontSize: 'var(--caption)', fontWeight: 600, 
+            letterSpacing: 'var(--caption-tracking)', textTransform: 'uppercase', color: '#D4AF37', 
             marginBottom: '1.2rem' 
           }}>
-            Workflow
+            Our Process
           </span>
           <div style={{ width: '48px', height: '2px', background: '#D4AF37', margin: '0 auto 1.2rem auto' }}></div>
-          <h2 style={{ fontFamily: '"Poppins", sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1rem', color: '#fff' }}>
-            Get Started With Us
+          <h2 style={{
+            fontFamily: 'var(--font-heading)', fontSize: 'var(--h2)',
+            fontWeight: 'var(--h2-weight)', marginBottom: 'var(--heading-subtext-gap)', color: '#fff'
+          }}>
+            How We Work With You
           </h2>
-          <p style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', color: '#D6D6D6', maxWidth: '560px', margin: '0 auto' }}>
-            Four steps to absolute market dominance. Our process is engineered for speed, precision, and overwhelming results.
+          <p style={{ fontSize: 'var(--body)', color: '#D6D6D6', maxWidth: '560px', margin: '0 auto', lineHeight: 1.7 }}>
+            Four clear steps from first call to live results. No guesswork — just a proven system engineered for speed, transparency, and ROI.
           </p>
         </motion.div>
 

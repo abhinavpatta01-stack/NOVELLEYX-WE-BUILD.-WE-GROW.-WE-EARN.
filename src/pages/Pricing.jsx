@@ -47,7 +47,7 @@ const PricingLoader = () => {
             filter: 'blur(10px)',
           }}
         />
-        <div style={{ position: 'absolute', color: '#fff', fontFamily: '"Space Mono", monospace', fontSize: '0.8rem', letterSpacing: '0.2em' }}>
+        <div style={{ position: 'absolute', color: '#fff', fontFamily: 'var(--font-heading)', fontSize: '0.8rem', letterSpacing: '0.2em' }}>
           LOADING
         </div>
       </div>

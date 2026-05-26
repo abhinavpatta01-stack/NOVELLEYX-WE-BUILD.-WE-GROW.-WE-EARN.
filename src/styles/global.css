@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Cinzel:wght@400;600;800&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&family=Cinzel:wght@700;800&display=swap');
 
 :root {
+  /* ── Color Tokens (unchanged) ── */
   --bg-base: #000000;
   --bg-panel: #0a0a0a;
   --bg-panel-light: #111111;
@@ -16,6 +17,32 @@
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
+
+  /* ── Typography Scale ── */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-brand: 'Cinzel', serif;
+
+  --h1: clamp(3.5rem, 7vw, 6rem);
+  --h2: clamp(2.2rem, 4vw, 3.25rem);
+  --h3: clamp(1.25rem, 2vw, 1.5rem);
+  --body: clamp(0.95rem, 1.2vw, 1.1rem);
+  --caption: 0.8rem;
+
+  --h1-weight: 800;
+  --h2-weight: 700;
+  --h3-weight: 600;
+
+  --h1-tracking: -0.03em;
+  --h2-tracking: -0.02em;
+  --h3-tracking: -0.01em;
+  --caption-tracking: 0.14em;
+
+  /* ── Spacing Tokens ── */
+  --section-py: 100px;
+  --section-py-mobile: 64px;
+  --section-header-gap: 4rem;
+  --heading-subtext-gap: 1.5rem;
 }
 
 * {
@@ -25,16 +52,45 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--font-body);
   background-color: var(--bg-base);
   color: var(--text-primary);
+  font-size: var(--body);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ── Heading Defaults ── */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: var(--h1);
+  font-weight: var(--h1-weight);
+  letter-spacing: var(--h1-tracking);
+}
+
+h2 {
+  font-size: var(--h2);
+  font-weight: var(--h2-weight);
+  letter-spacing: var(--h2-tracking);
+}
+
+h3 {
+  font-size: var(--h3);
+  font-weight: var(--h3-weight);
+  letter-spacing: var(--h3-tracking);
+}
+
+p {
+  font-size: var(--body);
+  line-height: 1.7;
+  color: #A8A8A8;
 }
 
 a {
@@ -46,6 +102,25 @@ ul {
   list-style: none;
 }
 
+/* ── Section Label (overline / badge) ── */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--caption);
+  font-weight: 600;
+  letter-spacing: var(--caption-tracking);
+  text-transform: uppercase;
+  color: var(--gold-primary);
+}
+
+/* ── Section Divider ── */
+.section-divider {
+  width: 48px;
+  height: 2px;
+  background: var(--gold-primary);
+}
+
+/* ── Scrollbar ── */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -63,7 +138,7 @@ ul {
   background: var(--gold-primary);
 }
 
-/* Original Site Animations */
+/* ── Animations ── */
 @keyframes fallFlake {
   0% { opacity: 0.8; transform: translate(-50%, -50%) translateY(0) scale(1); }
   100% { opacity: 0; transform: translate(-50%, -50%) translateY(40px) scale(0); }
@@ -100,4 +175,12 @@ ul {
 @keyframes scrollLeftToRight {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
+}
+
+/* ── Responsive section padding helper ── */
+@media (max-width: 768px) {
+  :root {
+    --section-py: 64px;
+    --section-header-gap: 3rem;
+  }
 }

@@ -94,7 +94,7 @@ const ArchitectEngine = () => {
           {step < 5 && !isAnalyzing && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <span style={{ color: '#D4AF37', letterSpacing: '0.2em', fontSize: '0.8rem', fontWeight: 600 }}>NOVELLEYX AI AUDIT</span>
-              <h2 style={{ fontFamily: '"Cinzel", serif', fontSize: '2.5rem', color: '#fff', margin: '1rem 0 3rem' }}>
+              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--h2)', fontWeight: 'var(--h2-weight)', color: '#fff', margin: '1rem 0 3rem' }}>
                 ARCHITECT ENGINE
               </h2>
             </motion.div>

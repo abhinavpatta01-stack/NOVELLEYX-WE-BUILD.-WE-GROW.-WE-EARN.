@@ -47,10 +47,11 @@ const IdentityStrip = () => {
           align-items: center;
           gap: 0.6rem;
           padding: 0.8rem 1.2rem;
-          font-size: 0.85rem;
+          font-size: var(--caption);
           color: #A8A8A8;
           font-weight: 500;
           letter-spacing: 0.04em;
+          font-family: var(--font-body);
           background: rgba(255,255,255,0.04);
           backdrop-filter: blur(10px);
           border: 1px solid rgba(255,255,255,0.08);

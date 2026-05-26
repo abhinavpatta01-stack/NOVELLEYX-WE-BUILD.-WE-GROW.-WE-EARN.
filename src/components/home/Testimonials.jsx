@@ -28,8 +28,8 @@ const Testimonials = () => {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <span style={{ 
-            display: 'inline-block', fontSize: '0.72rem', fontWeight: 600, 
-            letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D4AF37', 
+            display: 'inline-block', fontSize: 'var(--caption)', fontWeight: 600, 
+            letterSpacing: 'var(--caption-tracking)', textTransform: 'uppercase', color: '#D4AF37', 
             marginBottom: '1rem',
             border: '1px solid rgba(212,175,55,0.3)',
             padding: '0.4rem 1rem',
@@ -38,10 +38,10 @@ const Testimonials = () => {
           }}>
             Client Success
           </span>
-          <h2 style={{ fontFamily: '"Cinzel", serif', fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#fff', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--h2)', fontWeight: 'var(--h2-weight)', color: '#fff', marginBottom: 'var(--heading-subtext-gap)' }}>
             Trusted by the Elite
           </h2>
-          <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem', lineHeight: 1.6 }}>
+          <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto', fontSize: 'var(--body)', lineHeight: 1.7 }}>
             Our systems have scaled brands, creators, and enterprises globally.
           </p>
         </div>

@@ -33,10 +33,10 @@ const PricingCard = ({ title, target, price, period, features, featured, delay, 
         </div>
       )}
 
-      <h3 style={{ fontFamily: '"Cinzel", serif', fontSize: '1.8rem', color: featured ? '#D4AF37' : '#fff', marginBottom: '0.5rem' }}>
+      <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', color: featured ? '#D4AF37' : '#fff', marginBottom: '0.5rem' }}>
         {title}
       </h3>
-      <p style={{ color: '#888', fontSize: '0.875rem', marginBottom: '1.5rem', fontFamily: '"Space Mono", monospace' }}>
+      <p style={{ color: '#888', fontSize: '0.875rem', marginBottom: '1.5rem', fontFamily: 'var(--font-body)' }}>
         {target}
       </p>
 
@@ -82,7 +82,7 @@ const BentoGrid = () => {
     <section style={{ padding: '8rem 2rem', backgroundColor: '#000' }}>
       <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
         <span style={{ color: '#D4AF37', letterSpacing: '0.2em', fontSize: '0.875rem', fontWeight: 'bold' }}>STARTUPS & RUNNING COMPANIES</span>
-        <h2 style={{ fontFamily: '"Cinzel", serif', fontSize: '3rem', color: '#fff', marginTop: '1rem', marginBottom: '1rem' }}>
+        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '3rem', color: '#fff', marginTop: '1rem', marginBottom: '1rem' }}>
           CHOOSE YOUR VELOCITY
         </h2>
         <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto', fontSize: '1rem', lineHeight: 1.6 }}>

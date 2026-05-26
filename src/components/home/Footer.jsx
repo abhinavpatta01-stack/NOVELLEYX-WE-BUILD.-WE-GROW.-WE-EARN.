@@ -24,7 +24,7 @@ const Footer = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '4rem', marginBottom: '4rem' }}>
           {/* Brand & About */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <Link to="/" style={{ fontFamily: '"Cinzel", serif', fontSize: '1.75rem', fontWeight: 800, letterSpacing: '0.15em', color: '#D4AF37', textDecoration: 'none' }}>
+            <Link to="/" style={{ fontFamily: 'var(--font-brand)', fontSize: '1.75rem', fontWeight: 800, letterSpacing: '0.15em', color: '#D4AF37', textDecoration: 'none' }}>
               NOVELLEYX
             </Link>
             <p style={{ color: '#888', fontSize: '0.95rem', lineHeight: 1.6, maxWidth: '300px' }}>
@@ -72,7 +72,7 @@ const Footer = () => {
 
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center', width: '100%', overflow: 'hidden' }}>
           <h2 style={{
-            fontFamily: '"Cinzel", serif',
+            fontFamily: 'var(--font-brand)',
             fontSize: 'clamp(4rem, 15vw, 16rem)',
             lineHeight: 0.8,
             fontWeight: 800,

@@ -80,7 +80,7 @@ const Navbar = () => {
           transition: 'all 0.28s cubic-bezier(.4,0,.2,1)'
         }}
       >
-        <Link to="/" style={{ fontFamily: '"Cinzel", serif', fontSize: '1.25rem', fontWeight: 800, letterSpacing: '0.15em', color: '#D4AF37', whiteSpace: 'nowrap', textDecoration: 'none' }} onClick={() => window.scrollTo(0, 0)}>
+        <Link to="/" style={{ fontFamily: 'var(--font-brand)', fontSize: '1.25rem', fontWeight: 800, letterSpacing: '0.15em', color: '#D4AF37', whiteSpace: 'nowrap', textDecoration: 'none' }} onClick={() => window.scrollTo(0, 0)}>
           NOVELLEYX
         </Link>
 
@@ -93,7 +93,7 @@ const Navbar = () => {
               key={link.name}
               to={link.path}
               onClick={() => handleHashLink(link.path)}
-              style={{ fontSize: '0.87rem', fontWeight: 500, color: '#A8A8A8', whiteSpace: 'nowrap', transition: 'color 0.28s' }}
+              style={{ fontFamily: 'var(--font-body)', fontSize: '0.87rem', fontWeight: 500, color: '#A8A8A8', whiteSpace: 'nowrap', transition: 'color 0.28s' }}
               onMouseEnter={(e) => e.currentTarget.style.color = '#D4AF37'}
               onMouseLeave={(e) => e.currentTarget.style.color = '#A8A8A8'}
             >

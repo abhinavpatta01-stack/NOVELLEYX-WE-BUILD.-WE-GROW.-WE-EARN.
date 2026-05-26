@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const CreatorPartnership = () => {
   return (
-    <section id="creator" style={{ padding: '60px 0', background: '#000000' }}>
+    <section id="creator" style={{ padding: 'var(--section-py) 0', background: '#000000' }}>
       <div style={{ width: 'min(1280px, 92%)', marginInline: 'auto' }}>
         
         <motion.div 
@@ -14,14 +14,14 @@ const CreatorPartnership = () => {
           style={{ textAlign: 'center', marginBottom: '3rem' }}
         >
           <span style={{ 
-            display: 'inline-block', fontSize: '0.72rem', fontWeight: 600, 
-            letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D4AF37', 
+            display: 'inline-block', fontSize: 'var(--caption)', fontWeight: 600, 
+            letterSpacing: 'var(--caption-tracking)', textTransform: 'uppercase', color: '#D4AF37', 
             marginBottom: '1.2rem' 
           }}>
             Creator Partnerships
           </span>
           <div style={{ width: '48px', height: '2px', background: '#D4AF37', margin: '1.2rem auto' }}></div>
-          <h2 style={{ fontFamily: '"Poppins", sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1rem', color: '#fff' }}>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--h2)', fontWeight: 'var(--h2-weight)', marginBottom: 'var(--heading-subtext-gap)', color: '#fff' }}>
             Instagram Creator Partnership
           </h2>
         </motion.div>

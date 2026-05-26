@@ -50,13 +50,13 @@ const ContactSection = () => {
             display: 'flex',
             flexDirection: 'column'
           }}>
-            <span style={{ color: '#D4AF37', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+            <span style={{ color: '#D4AF37', fontSize: 'var(--caption)', fontWeight: 600, letterSpacing: 'var(--caption-tracking)', textTransform: 'uppercase', marginBottom: '1rem' }}>
               Let's Talk
             </span>
-            <h2 style={{ fontFamily: '"Cinzel", serif', fontSize: '3rem', color: '#fff', marginBottom: '2rem' }}>
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--h2)', fontWeight: 'var(--h2-weight)', color: '#fff', marginBottom: '2rem' }}>
               Get in Touch
             </h2>
-            <p style={{ color: '#A8A8A8', lineHeight: 1.6, marginBottom: '3rem', fontSize: '1rem' }}>
+            <p style={{ color: '#A8A8A8', lineHeight: 1.7, marginBottom: '3rem', fontSize: 'var(--body)' }}>
               Ready to architect your digital ecosystem? Reach out to our strategy team and let's build market dominance together.
             </p>
 

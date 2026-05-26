@@ -68,7 +68,7 @@ const ServicesGrid = () => {
   }
 
   return (
-    <section id="services" style={{ padding: '60px 0', background: '#0a0a0a' }}>
+    <section id="services" style={{ padding: 'var(--section-py) 0', background: '#0a0a0a' }}>
       <div style={{ width: 'min(1280px, 92%)', marginInline: 'auto' }}>
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem' }}>
@@ -80,17 +80,17 @@ const ServicesGrid = () => {
             style={{ textAlign: 'left' }}
           >
             <span style={{ 
-              display: 'inline-block', fontSize: '0.72rem', fontWeight: 600, 
-              letterSpacing: '0.18em', textTransform: 'uppercase', color: '#D4AF37', 
+              display: 'inline-block', fontSize: 'var(--caption)', fontWeight: 600, 
+              letterSpacing: 'var(--caption-tracking)', textTransform: 'uppercase', color: '#D4AF37', 
               marginBottom: '1.2rem' 
             }}>
               What We Build
             </span>
             <div style={{ width: '48px', height: '2px', background: '#D4AF37', margin: '0 0 1.2rem 0' }}></div>
-            <h2 style={{ fontFamily: '"Poppins", sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1rem', color: '#fff' }}>
+            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--h2)', fontWeight: 'var(--h2-weight)', marginBottom: 'var(--heading-subtext-gap)', color: '#fff' }}>
               Premium Digital Systems
             </h2>
-            <p style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', color: '#D6D6D6', maxWidth: '560px' }}>
+            <p style={{ fontSize: 'var(--body)', color: '#D6D6D6', maxWidth: '560px' }}>
               Designed for modern brands that demand authority, precision, and lasting presence.
             </p>
           </motion.div>
@@ -158,10 +158,10 @@ const ServicesGrid = () => {
               }}
             >
               <div style={{ marginBottom: '1.5rem' }}>{service.icon}</div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, fontFamily: '"Poppins", sans-serif', color: '#fff', marginBottom: '1rem' }}>
+              <h3 style={{ fontSize: 'var(--h3)', fontWeight: 'var(--h3-weight)', fontFamily: 'var(--font-heading)', color: '#fff', marginBottom: '1rem' }}>
                 {service.title}
               </h3>
-              <p style={{ fontSize: '0.88rem', color: '#A8A8A8', lineHeight: 1.6, flexGrow: 1 }}>
+              <p style={{ fontSize: 'var(--body)', color: '#A8A8A8', lineHeight: 1.7, flexGrow: 1 }}>
                 {service.desc}
               </p>
               

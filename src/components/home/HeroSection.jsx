@@ -51,7 +51,7 @@ const HeroSection = () => {
         justifyContent: 'center',
         overflow: 'hidden',
         textAlign: 'center',
-        padding: '120px 1.5rem 80px',
+        padding: '140px 1.5rem var(--section-py)',
       }}
     >
       {/* Background Orbs & WebGL */}
@@ -88,9 +88,9 @@ const HeroSection = () => {
             padding: '0.5rem 1.2rem',
             border: '1px solid rgba(198,161,91,0.3)',
             borderRadius: '100px',
-            fontSize: '0.72rem',
+            fontSize: 'var(--caption)',
             fontWeight: 600,
-            letterSpacing: '0.16em',
+            letterSpacing: 'var(--caption-tracking)',
             textTransform: 'uppercase',
             color: '#D4AF37',
             background: 'linear-gradient(180deg, rgba(198,161,91,0.08) 0%, rgba(198,161,91,0.02) 100%)',
@@ -107,11 +107,11 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
           style={{
-            fontFamily: '"Poppins", sans-serif',
-            fontSize: 'clamp(3rem, 8vw, 6.5rem)',
-            fontWeight: 800,
+            fontFamily: 'var(--font-heading)',
+            fontSize: 'var(--h1)',
+            fontWeight: 'var(--h1-weight)',
             lineHeight: 1.05,
-            letterSpacing: '-0.04em',
+            letterSpacing: 'var(--h1-tracking)',
             color: '#fff',
             marginBottom: '1.8rem',
             textShadow: '0 10px 40px rgba(0,0,0,0.5)'
@@ -134,7 +134,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
           style={{
-            fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+            fontSize: 'var(--body)',
             color: '#A8A8A8',
             maxWidth: '680px',
             lineHeight: 1.7,
