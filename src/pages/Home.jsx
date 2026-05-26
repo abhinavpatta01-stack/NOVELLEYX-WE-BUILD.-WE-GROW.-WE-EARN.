@@ -4,6 +4,7 @@ import HeroSection from '../components/home/HeroSection'
 import About from '../components/home/About'
 import ServicesGrid from '../components/home/ServicesGrid'
 import IdentityStrip from '../components/home/IdentityStrip'
+import AiAutomationSection from '../components/home/AiAutomationSection'
 import StackFeatureSection from '../components/home/StackFeatureSection'
 import PricingOverview from '../components/home/PricingOverview'
 import CreatorPartnership from '../components/home/CreatorPartnership'
@@ -22,6 +23,7 @@ const Home = () => {
         <About />
         <ServicesGrid />
         <IdentityStrip />
+        <AiAutomationSection />
         <StackFeatureSection />
         <PricingOverview />
         <CreatorPartnership />
