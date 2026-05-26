@@ -81,7 +81,7 @@ const DetailedServices = () => {
           <div style={{ color: '#D4AF37', letterSpacing: '0.2em', fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase', marginBottom: '1rem' }}>
             Comprehensive Solutions
           </div>
-          <h1 style={{ fontFamily: '"Poppins", sans-serif', fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#fff', marginBottom: '1rem' }}>
+          <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: '#fff', marginBottom: '1rem' }}>
             PREMIUM SERVICES
           </h1>
           <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem', lineHeight: 1.6 }}>
@@ -125,7 +125,7 @@ const DetailedServices = () => {
                 }
               `}</style>
               <div style={{ color: '#D4AF37', fontSize: '1.5rem', marginBottom: '1rem' }}>✦</div>
-              <h3 style={{ fontFamily: '"Poppins", sans-serif', fontSize: '1.5rem', fontWeight: 600, color: '#fff', marginBottom: '1rem' }}>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 600, color: '#fff', marginBottom: '1rem' }}>
                 {svc.title}
               </h3>
               <p style={{ color: '#A8A8A8', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '2rem' }}>

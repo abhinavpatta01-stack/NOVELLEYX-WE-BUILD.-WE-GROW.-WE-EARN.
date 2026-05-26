@@ -32,7 +32,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'About', path: '/#about' },
     { name: 'Services', path: '/#services' },
-    { name: 'Work Flow', path: '/#workflow' },
+    { name: 'Our Process', path: '/#workflow' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Architect Engine', path: '/#architect' },
     { name: 'Contact', path: '/#contact' }

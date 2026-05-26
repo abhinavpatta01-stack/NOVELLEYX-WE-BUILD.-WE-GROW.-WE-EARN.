@@ -79,7 +79,7 @@ const PricingCard = ({ title, target, price, period, features, featured, delay, 
 
 const BentoGrid = () => {
   return (
-    <section style={{ padding: '8rem 2rem', backgroundColor: '#000' }}>
+    <section id="business" style={{ padding: '8rem 2rem', backgroundColor: '#000' }}>
       <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
         <span style={{ color: '#D4AF37', letterSpacing: '0.2em', fontSize: '0.875rem', fontWeight: 'bold' }}>STARTUPS & RUNNING COMPANIES</span>
         <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '3rem', color: '#fff', marginTop: '1rem', marginBottom: '1rem' }}>

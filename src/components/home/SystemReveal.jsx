@@ -32,10 +32,10 @@ const SystemReveal = () => {
       }}
     >
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-        <h2 style={{ fontFamily: '"Cinzel", serif', fontSize: '3rem', color: '#fff' }}>
+        <h2 style={{ fontFamily: 'var(--font-brand)', fontSize: '3rem', color: '#fff' }}>
           THE LIVE ARCHITECT ENGINE
         </h2>
-        <p style={{ color: '#888', fontFamily: '"Inter", sans-serif', marginTop: '1rem' }}>
+        <p style={{ color: '#888', fontFamily: 'var(--font-body)', marginTop: '1rem' }}>
           Unprecedented speed. Uncompromising luxury.
         </p>
       </div>

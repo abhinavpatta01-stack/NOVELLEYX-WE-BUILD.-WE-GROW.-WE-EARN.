@@ -19,7 +19,7 @@ const DottedSurface = ({ children }) => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        fontFamily: '"Cinzel", serif',
+        fontFamily: 'var(--font-brand)',
         fontSize: '11vw',
         fontWeight: 800,
         color: 'rgba(255,255,255,0.015)',

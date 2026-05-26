@@ -36,7 +36,7 @@ const UIUXEngineering = () => {
             </p>
 
             <div style={{ marginTop: '3rem', textAlign: 'left', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '2.5rem', backdropFilter: 'blur(10px)' }}>
-              <h3 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: '1.5rem', fontFamily: '"Poppins", sans-serif' }}>Detailed Capabilities</h3>
+              <h3 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>Detailed Capabilities</h3>
               <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.2rem', listStyle: 'none', padding: 0 }}>
                 <li style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#D6D6D6', fontSize: '1rem' }}><div style={{ color: '#D4AF37' }}>✦</div>User Research</li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: '#D6D6D6', fontSize: '1rem' }}><div style={{ color: '#D4AF37' }}>✦</div>Wireframing</li>

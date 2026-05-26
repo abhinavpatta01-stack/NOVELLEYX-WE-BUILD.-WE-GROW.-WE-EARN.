@@ -64,7 +64,7 @@ const Media = () => {
         }}>
           Channel Management Hub
         </span>
-        <h2 style={{ fontFamily: '"Poppins", sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1rem', color: '#fff' }}>
+        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, marginBottom: '1rem', color: '#fff' }}>
           Outsourced Media
         </h2>
         <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem', lineHeight: 1.6 }}>
@@ -115,7 +115,7 @@ const Media = () => {
             <div style={{ color: '#22c55e', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '1rem', textTransform: 'uppercase' }}>
               {tier.phase}
             </div>
-            <h3 style={{ fontSize: '2rem', fontWeight: 700, color: '#fff', fontFamily: '"Poppins", sans-serif', marginBottom: '0.5rem' }}>
+            <h3 style={{ fontSize: '2rem', fontWeight: 700, color: '#fff', fontFamily: 'var(--font-heading)', marginBottom: '0.5rem' }}>
               {tier.name}
             </h3>
             <p style={{ color: '#A8A8A8', fontSize: '0.9rem', lineHeight: 1.6, minHeight: '60px', marginBottom: '2rem' }}>

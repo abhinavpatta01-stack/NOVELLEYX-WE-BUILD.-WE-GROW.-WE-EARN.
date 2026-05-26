@@ -117,7 +117,9 @@ const Pricing = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    if (!window.location.hash) {
+      window.scrollTo(0, 0)
+    }
     // 5 second artificial loader
     const timer = setTimeout(() => {
       setIsLoading(false)
@@ -125,6 +127,19 @@ const Pricing = () => {
 
     return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    if (!isLoading && window.location.hash) {
+      setTimeout(() => {
+        const id = window.location.hash.substring(1)
+        const el = document.getElementById(id)
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 100
+          window.scrollTo({ top: y, behavior: 'smooth' })
+        }
+      }, 150)
+    }
+  }, [isLoading])
 
   return (
     <div style={{ backgroundColor: '#050505', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>

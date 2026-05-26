@@ -48,7 +48,7 @@ const Preloader = ({ onComplete }) => {
       </div>
       
       <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <span style={{ fontFamily: '"Cinzel", serif', fontSize: '2rem', fontWeight: 700, letterSpacing: '0.1em' }}>
+        <span style={{ fontFamily: 'var(--font-brand)', fontSize: '2rem', fontWeight: 700, letterSpacing: '0.1em' }}>
           NOVELLEYX
         </span>
         <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.2em', marginTop: '0.5rem', color: '#A8A8A8' }}>
