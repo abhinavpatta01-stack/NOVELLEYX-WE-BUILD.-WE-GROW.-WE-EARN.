@@ -82,12 +82,22 @@ const Footer = () => {
 
           {/* Business Systems Column */}
           <div>
-            <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>Business Solutions</h4>
+            <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>Solutions</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem', fontFamily: 'var(--font-body)' }}>
-              <li><Link to="/#workflow" onClick={() => handleHashLink('/#workflow')} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Our Execution Process</Link></li>
-              <li><Link to="/pricing#business" onClick={() => handleHashLink('/pricing#business')} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Startup & Enterprise Pricing</Link></li>
-              <li><Link to="/services" onClick={() => window.scrollTo(0, 0)} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Detailed Service Grid</Link></li>
-              <li><Link to="/#cta" onClick={() => handleHashLink('/#cta')} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Book Strategy Call</Link></li>
+              <li><Link to="/#workflow" onClick={() => handleHashLink('/#workflow')} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Execution Process</Link></li>
+              <li><Link to="/pricing#business" onClick={() => handleHashLink('/pricing#business')} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Enterprise Pricing</Link></li>
+              <li><Link to="/services" onClick={() => window.scrollTo(0, 0)} style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Service Grid</Link></li>
+              <li><a href="https://github.com/abhinavpatta01-stack/NOVELLEYX-WE-BUILD.-WE-GROW.-WE-EARN." target="_blank" rel="noopener noreferrer" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>GitHub Codebase</a></li>
+            </ul>
+          </div>
+
+          {/* Resources Column */}
+          <div>
+            <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>Resources</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem', fontFamily: 'var(--font-body)' }}>
+              <li><a href="#" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Company Deck</a></li>
+              <li><a href="#" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Founder Note</a></li>
+              <li><a href="#" style={{ color: '#A8A8A8', textDecoration: 'none', fontSize: '0.95rem', transition: 'color 0.3s' }} onMouseEnter={e => e.currentTarget.style.color = '#fff'} onMouseLeave={e => e.currentTarget.style.color = '#A8A8A8'}>Project Roadmap</a></li>
             </ul>
           </div>
           

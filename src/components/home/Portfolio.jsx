@@ -4,6 +4,14 @@ import { ArrowUpRight, Zap, TrendingUp, Layers } from 'lucide-react'
 
 const projects = [
   {
+    category: "Industrial Brand Strategy",
+    title: "Nandini Enterprises",
+    desc: "We engineered a complete B2B brand transformation for a major industrial player. By constructing conversion-focused digital assets and establishing high-whitespace authority layouts, we systematically maximized their market digital trust index.",
+    outcome: "+320% Inbound / Premium Trust",
+    icon: <TrendingUp size={20} color="#D4AF37" />,
+    stats: ["Premium industrial branding", "Conversion-focused assets", "Decoupled from generic templates"]
+  },
+  {
     category: "AI Operational Automation",
     title: "Aether Automation Engine",
     desc: "We deployed custom WhatsApp NLP routing and CRM auto-sync workflows for a major scaling developer agency. Eliminated manual appointment triage and secured 142% conversion spikes.",
@@ -18,20 +26,12 @@ const projects = [
     outcome: "2.4x Strategy Calls Booked",
     icon: <Layers size={20} color="#D4AF37" />,
     stats: ["99th percentile PageSpeed", "Premium interactive charts", "Structured lead funnel"]
-  },
-  {
-    category: "Organic Search Optimization",
-    title: "Horizon Systemic SEO",
-    desc: "An authority-driven organic semantic keyword campaign targeting high-intent commercial keywords. Scaled keyword search ranks from unindexed to top 3 global positions.",
-    outcome: "Top 3 Rank / +320% Traffic",
-    icon: <TrendingUp size={20} color="#D4AF37" />,
-    stats: ["ATS & indexing bypass", "Dynamic content loops", "Multi-channel funnel capture"]
   }
 ]
 
 const Portfolio = () => {
   return (
-    <section id="portfolio" style={{ padding: '8rem 2rem', background: '#0a0a0a', position: 'relative', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+    <section id="portfolio" style={{ padding: '8rem 2rem', background: '#111111', position: 'relative', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
       {/* Background soft glow */}
       <div style={{
         position: 'absolute', bottom: '0%', left: '10%', width: '500px', height: '500px',
@@ -48,7 +48,7 @@ const Portfolio = () => {
             letterSpacing: 'var(--caption-tracking)', textTransform: 'uppercase', color: '#D4AF37', 
             marginBottom: '1rem'
           }}>
-            Case Studies
+            Case Studies & Proof
           </span>
           <div style={{ width: '40px', height: '1px', background: '#D4AF37', margin: '1rem auto' }}></div>
           <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--h2)', fontWeight: 'var(--h2-weight)', color: '#fff', marginBottom: '1.5rem' }}>
@@ -70,7 +70,7 @@ const Portfolio = () => {
               transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 background: 'rgba(255,255,255,0.01)',
-                border: '1px solid rgba(255,255,255,0.04)',
+                border: '1px solid rgba(212,175,55,0.15)',
                 borderRadius: '12px',
                 padding: '3rem 2.5rem',
                 display: 'flex',
@@ -83,7 +83,7 @@ const Portfolio = () => {
             >
               <style>{`
                 .portfolio-case-card:hover {
-                  border-color: rgba(212,175,55,0.35) !important;
+                  border-color: rgba(212,175,55,0.45) !important;
                   box-shadow: 0 20px 45px rgba(0,0,0,0.6), 0 0 20px rgba(212,175,55,0.03) inset;
                   transform: translateY(-6px);
                 }

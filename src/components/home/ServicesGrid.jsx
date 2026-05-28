@@ -1,68 +1,44 @@
 import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
-import { ArrowRight, Sparkles, MonitorSmartphone, TrendingUp, Search, Video, Bot, BrainCircuit, LineChart, Globe, Palette } from 'lucide-react'
+import { ArrowRight, Bot, Cpu, Layers, TrendingUp, BarChart2, Laptop } from 'lucide-react'
 
 const servicesData = [
   {
-    icon: <Sparkles size={24} color="#D4AF37" />,
-    title: "Brand Architecture",
-    glowColor: "rgba(212,175,55,0.22)",
-    desc: "We construct strategic brand frameworks that secure elite market positioning. From visual identity to core messaging, we build the foundation required for lasting industry authority and trust."
+    icon: <Bot size={24} color="#D4AF37" />,
+    title: "AI Automation",
+    glowColor: "rgba(212,175,55,0.18)",
+    desc: "We deploy custom NLP intent routers and autonomous workflow agents. Your operations process inbound opportunities and trigger sequences 24/7 without manual delays."
   },
   {
-    icon: <MonitorSmartphone size={24} color="#D4AF37" />,
-    title: "Website Systems",
-    glowColor: "rgba(34,197,94,0.22)",
-    desc: "We engineer high-performance, SEO-optimized digital platforms. These aren't just websites; they are conversion engines designed with immersive UI and seamless functionality."
+    icon: <Cpu size={24} color="#D4AF37" />,
+    title: "SaaS Development",
+    glowColor: "rgba(212,175,55,0.18)",
+    desc: "Engineering scalable multi-tenant platforms using modern web stacks. We construct database architectures, user subscription metrics, and secure API gateways."
+  },
+  {
+    icon: <Laptop size={24} color="#D4AF37" />,
+    title: "Web Infrastructure",
+    glowColor: "rgba(212,175,55,0.18)",
+    desc: "Custom-built, high-status enterprise web platforms. Designed with single-point conversions, immersive layouts, and perfect Google Core Web Vitals parameters."
   },
   {
     icon: <TrendingUp size={24} color="#D4AF37" />,
-    title: "Social Media Growth",
-    glowColor: "rgba(236,72,153,0.22)",
-    desc: "We deploy curated growth engines to build premium audiences systematically. By decoding platform algorithms, we scale your influence and capture targeted demographics."
+    title: "Marketing Systems",
+    glowColor: "rgba(212,175,55,0.18)",
+    desc: "AI-driven outbound and inbound lead generation matrices. We connect Rotated SMTP loops, scraper enrichments, and client acquisition algorithms."
   },
   {
-    icon: <Search size={24} color="#D4AF37" />,
-    title: "SEO Optimization",
-    glowColor: "rgba(6,182,212,0.22)",
-    desc: "Achieve authority-driven organic visibility through precision keyword engineering. We optimize your digital footprint so your brand ranks at the top when it matters most."
+    icon: <BarChart2 size={24} color="#D4AF37" />,
+    title: "Dashboard Engineering",
+    glowColor: "rgba(212,175,55,0.18)",
+    desc: "Centralized analytical dashboards displaying KPI parameters, conversion indices, and transactional data in real-time with sub-second latency."
   },
   {
-    icon: <Video size={24} color="#D4AF37" />,
-    title: "Content Production",
-    glowColor: "rgba(239,68,68,0.22)",
-    desc: "Deliver your message through cinematic storytelling and editorial content. We craft high-end visual narratives that elevate your brand's perception."
-  },
-  {
-    icon: <Bot size={24} color="#D4AF37" />,
-    title: "AI Integration",
-    glowColor: "rgba(99,102,241,0.22)",
-    desc: "Deploy intelligent automation into your workflows. We integrate custom AI agents and chatbots to streamline operations and enhance client interactions 24/7."
-  },
-  {
-    icon: <BrainCircuit size={24} color="#D4AF37" />,
-    title: "Personal Branding",
-    glowColor: "rgba(245,158,11,0.22)",
-    desc: "Executive presence engineering for founders and leaders. We build your individual authority halo to establish thought leadership and open elite networking channels."
-  },
-  {
-    icon: <LineChart size={24} color="#D4AF37" />,
-    title: "Performance Marketing",
-    glowColor: "rgba(139,92,246,0.22)",
-    desc: "Data-driven paid acquisition systems. We manage high-converting ad campaigns across Google and Meta platforms to generate immediate, scalable ROI."
-  },
-  {
-    icon: <Globe size={24} color="#D4AF37" />,
-    title: "Web3 & Blockchain",
-    glowColor: "rgba(217,70,239,0.22)",
-    desc: "Navigate the decentralized frontier. We provide strategic consulting and aesthetic web architecture for emerging Web3, crypto, and blockchain projects."
-  },
-  {
-    icon: <Palette size={24} color="#D4AF37" />,
-    title: "UI/UX Engineering",
-    glowColor: "rgba(14,165,233,0.22)",
-    desc: "Craft frictionless user journeys. We design intuitive, aesthetically superior interfaces that reduce bounce rates and maximize user retention for your software."
+    icon: <Layers size={24} color="#D4AF37" />,
+    title: "Internal Tools",
+    glowColor: "rgba(212,175,55,0.18)",
+    desc: "Bespoke corporate management portals and software utility dashboards built to streamline administrative overhead and maximize workflow speed."
   }
 ]
 
@@ -72,13 +48,13 @@ const ServicesGrid = () => {
 
   const handleScroll = (dir) => {
     if (scrollRef.current) {
-      const scrollAmount = 344 // 320px width + 24px gap = 1 exactly item
+      const scrollAmount = 344
       scrollRef.current.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' })
     }
   }
 
   return (
-    <section id="services" style={{ padding: 'var(--section-py) 0', background: '#0a0a0a' }}>
+    <section id="services" style={{ padding: 'var(--section-py) 0', background: '#111111' }}>
       <div style={{ width: 'min(1280px, 92%)', marginInline: 'auto' }}>
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem' }}>
@@ -94,23 +70,23 @@ const ServicesGrid = () => {
               letterSpacing: 'var(--caption-tracking)', textTransform: 'uppercase', color: '#D4AF37', 
               marginBottom: '1.2rem' 
             }}>
-              What We Build
+              Solutions & Value
             </span>
-            <div style={{ width: '48px', height: '2px', background: '#D4AF37', margin: '0 0 1.2rem 0' }}></div>
+            <div style={{ width: '40px', height: '1px', background: '#D4AF37', margin: '0 0 1.2rem 0' }}></div>
             <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'var(--h2)', fontWeight: 'var(--h2-weight)', marginBottom: 'var(--heading-subtext-gap)', color: '#fff' }}>
               Premium Digital Systems
             </h2>
-            <p style={{ fontSize: 'var(--body)', color: '#D6D6D6', maxWidth: '560px' }}>
-              Designed for modern brands that demand authority, precision, and lasting presence.
+            <p style={{ fontSize: '1.02rem', color: '#A8A8A8', maxWidth: '560px' }}>
+              Engineered with extreme precision for high-status organizations demanding absolute technical authority.
             </p>
           </motion.div>
 
           {/* Navigation Controls */}
           <div className="desktop-controls">
-            <button onClick={() => handleScroll('left')} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <button onClick={() => handleScroll('left')} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,175,55,0.2)', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               &larr;
             </button>
-            <button onClick={() => handleScroll('right')} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <button onClick={() => handleScroll('right')} style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(212,175,55,0.2)', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               &rarr;
             </button>
           </div>
@@ -121,12 +97,12 @@ const ServicesGrid = () => {
           @media (min-width: 768px) { .desktop-controls { display: flex; } }
           .hide-scroll::-webkit-scrollbar { display: none; }
           .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
-          .service-panel-card:hover { border-color: rgba(212,175,55,0.4) !important; transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+          .service-panel-card:hover { border-color: rgba(212,175,55,0.5) !important; transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 20px rgba(212,175,55,0.04) inset; }
           @media (max-width: 768px) {
             .services-scroll-card {
               min-width: 280px !important;
               width: 280px !important;
-              padding: 1.5rem !important;
+              padding: 1.75rem !important;
             }
           }
         `}</style>
@@ -150,23 +126,22 @@ const ServicesGrid = () => {
           {servicesData.map((service, index) => (
             <motion.div
               key={index}
-              data-glow-color={service.glowColor}
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 minWidth: '320px',
                 width: '320px',
                 scrollSnapAlign: 'start',
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: 'rgba(255,255,255,0.01)',
+                border: '1px solid rgba(212,175,55,0.15)',
                 borderRadius: '12px',
                 padding: '2.5rem',
                 cursor: 'pointer',
                 display: 'flex',
                 flexDirection: 'column',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
               }}
               className="service-panel-card services-scroll-card"
               onClick={() => {
@@ -175,16 +150,18 @@ const ServicesGrid = () => {
                 navigate('/services/' + slug)
               }}
             >
-              <div style={{ marginBottom: '1.5rem' }}>{service.icon}</div>
-              <h3 style={{ fontSize: 'var(--h3)', fontWeight: 'var(--h3-weight)', fontFamily: 'var(--font-heading)', color: '#fff', marginBottom: '1rem' }}>
+              <div style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '44px', height: '44px', borderRadius: '8px', background: 'rgba(212,175,55,0.05)', border: '1px solid rgba(212,175,55,0.25)' }}>
+                {service.icon}
+              </div>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, fontFamily: 'var(--font-heading)', color: '#fff', marginBottom: '1rem' }}>
                 {service.title}
               </h3>
-              <p style={{ fontSize: 'var(--body)', color: '#A8A8A8', lineHeight: 1.7, flexGrow: 1 }}>
+              <p style={{ fontSize: '0.92rem', color: '#A8A8A8', lineHeight: 1.7, flexGrow: 1 }}>
                 {service.desc}
               </p>
               
-              <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#D4AF37', fontSize: '0.85rem', fontWeight: 600 }}>
-                View Details <ArrowRight size={16} />
+              <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#D4AF37', fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                View Details <ArrowRight size={14} />
               </div>
             </motion.div>
           ))}
