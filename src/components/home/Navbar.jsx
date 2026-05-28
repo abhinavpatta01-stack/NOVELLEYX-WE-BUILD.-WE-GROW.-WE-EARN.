@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -7,27 +7,33 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
+  const lastScrolledHash = useRef('')
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 60)
     }
     window.addEventListener('scroll', handleScroll)
-
-    // Handle hash on load or when location changes
-    if (location.hash) {
-      setTimeout(() => {
-        const id = location.hash.substring(1)
-        const el = document.getElementById(id)
-        if (el) {
-          const y = el.getBoundingClientRect().top + window.scrollY - 100
-          window.scrollTo({ top: y, behavior: 'smooth' })
-        }
-      }, 100)
-    }
-
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [location])
+  }, [])
+
+  useEffect(() => {
+    if (location.hash) {
+      if (lastScrolledHash.current !== location.hash) {
+        lastScrolledHash.current = location.hash
+        setTimeout(() => {
+          const id = location.hash.substring(1)
+          const el = document.getElementById(id)
+          if (el) {
+            const y = el.getBoundingClientRect().top + window.scrollY - 100
+            window.scrollTo({ top: y, behavior: 'smooth' })
+          }
+        }, 100)
+      }
+    } else {
+      lastScrolledHash.current = ''
+    }
+  }, [location.pathname, location.hash])
 
   const navLinks = [
     { name: 'About', path: '/#about' },

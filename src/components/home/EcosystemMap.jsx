@@ -247,61 +247,63 @@ const EcosystemMap = () => {
           {/* Details Column */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <AnimatePresence mode="wait">
-              <motion.div
-                key={activeNode.id}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                style={{
-                  background: 'rgba(255,255,255,0.01)',
-                  border: '1px solid rgba(212,175,55,0.15)',
-                  borderRadius: '16px',
-                  padding: '2.5rem',
-                  boxShadow: '0 15px 35px rgba(0,0,0,0.5)',
-                  minHeight: '320px',
-                  display: 'flex',
-                  flexDirection: 'column'
-                }}
-              >
-                {/* Node Title */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                  <div style={{
-                    width: '40px', height: '40px', borderRadius: '8px',
-                    background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.25)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center'
-                  }}>
-                    {activeNode.icon}
-                  </div>
-                  <div>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#fff', fontFamily: 'var(--font-heading)', margin: 0 }}>
-                      {activeNode.label}
-                    </h3>
-                    <span style={{ fontSize: '0.68rem', color: '#D4AF37', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 650 }}>
-                      {activeNode.id === 'core' ? 'Central Orchestrator' : 'Distributed System Node'}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Node Description */}
-                <p style={{ color: '#A8A8A8', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '2rem', flex: 1 }}>
-                  {activeNode.desc}
-                </p>
-
-                {/* Node Features */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-                  <div style={{ color: '#fff', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: '0.2rem' }}>
-                    Active Integration Layer:
-                  </div>
-                  {activeNode.features.map((feat, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.85rem', color: '#D6D6D6' }}>
-                      <Zap size={13} color="#D4AF37" style={{ flexShrink: 0 }} />
-                      <span>{feat}</span>
+              {activeNode && (
+                <motion.div
+                  key={activeNode.id || 'default'}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -30 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  style={{
+                    background: 'rgba(255,255,255,0.01)',
+                    border: '1px solid rgba(212,175,55,0.15)',
+                    borderRadius: '16px',
+                    padding: '2.5rem',
+                    boxShadow: '0 15px 35px rgba(0,0,0,0.5)',
+                    minHeight: '320px',
+                    display: 'flex',
+                    flexDirection: 'column'
+                  }}
+                >
+                  {/* Node Title */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                    <div style={{
+                      width: '40px', height: '40px', borderRadius: '8px',
+                      background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.25)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center'
+                    }}>
+                      {activeNode.icon}
                     </div>
-                  ))}
-                </div>
+                    <div>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#fff', fontFamily: 'var(--font-heading)', margin: 0 }}>
+                        {activeNode.label}
+                      </h3>
+                      <span style={{ fontSize: '0.68rem', color: '#D4AF37', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 650 }}>
+                        {activeNode.id === 'core' ? 'Central Orchestrator' : 'Distributed System Node'}
+                      </span>
+                    </div>
+                  </div>
 
-              </motion.div>
+                  {/* Node Description */}
+                  <p style={{ color: '#A8A8A8', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '2rem', flex: 1 }}>
+                    {activeNode.desc}
+                  </p>
+
+                  {/* Node Features */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                    <div style={{ color: '#fff', fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: '0.2rem' }}>
+                      Active Integration Layer:
+                    </div>
+                    {activeNode.features && activeNode.features.map((feat, idx) => (
+                      <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.85rem', color: '#D6D6D6' }}>
+                        <Zap size={13} color="#D4AF37" style={{ flexShrink: 0 }} />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
 

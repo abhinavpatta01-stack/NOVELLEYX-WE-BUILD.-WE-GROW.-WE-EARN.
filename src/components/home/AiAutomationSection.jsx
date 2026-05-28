@@ -75,7 +75,7 @@ const automationSystems = [
 
 const AiAutomationSection = () => {
   const [activeSystem, setActiveSystem] = useState('whatsapp')
-  const activeData = automationSystems.find(s => s.id === activeSystem)
+  const activeData = automationSystems.find(s => s.id === activeSystem) || automationSystems[0]
 
   return (
     <section id="automation" style={{ padding: 'var(--section-py) 0', background: '#050505', position: 'relative', overflow: 'hidden' }}>
