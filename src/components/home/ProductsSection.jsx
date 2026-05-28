@@ -267,6 +267,7 @@ const ProductsSection = () => {
       padding: '8rem 2rem',
       background: 'var(--bg-base, #0A0A0A)',
       position: 'relative',
+      overflow: 'hidden',
       borderTop: '1px solid rgba(255,255,255,0.05)'
     }}>
 

@@ -59,7 +59,7 @@ const processPhases = [
 
 const StackFeatureSection = () => {
   return (
-    <section id="workflow" style={{ padding: '8rem 2rem', background: '#000000', position: 'relative', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+    <section id="workflow" style={{ padding: '8rem 2rem', background: '#000000', position: 'relative', overflow: 'hidden', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
       {/* Background spotlights */}
       <div style={{
         position: 'absolute', top: '30%', left: '5%', width: '500px', height: '500px',
