@@ -54,7 +54,7 @@ const TrustStrip = () => {
         borderTop: '1px solid rgba(255,255,255,0.04)',
         borderBottom: '1px solid rgba(255,255,255,0.04)',
         background: '#070707',
-        padding: '2.2rem 0',
+        padding: '1.2rem 0',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         position: 'relative',
@@ -73,14 +73,14 @@ const TrustStrip = () => {
       >
         <div style={{ display: 'flex', flexWrap: 'nowrap', alignItems: 'center', gap: '6.5rem', paddingRight: '6.5rem' }}>
           {partners.map((p, idx) => (
-            <div key={idx} style={{ display: 'flex', alignItems: 'center', opacity: 0.85 }}>
+            <div key={idx} style={{ display: 'flex', alignItems: 'center', opacity: 0.85, transform: 'scale(0.85)' }}>
               {p.icon}
             </div>
           ))}
         </div>
         <div style={{ display: 'flex', flexWrap: 'nowrap', alignItems: 'center', gap: '6.5rem', paddingRight: '6.5rem' }}>
           {partners.map((p, idx) => (
-            <div key={`dup-${idx}`} style={{ display: 'flex', alignItems: 'center', opacity: 0.85 }}>
+            <div key={`dup-${idx}`} style={{ display: 'flex', alignItems: 'center', opacity: 0.85, transform: 'scale(0.85)' }}>
               {p.icon}
             </div>
           ))}
