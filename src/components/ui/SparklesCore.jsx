@@ -92,11 +92,7 @@ export const SparklesCore = ({
   className, 
   particleColor 
 }) => {
-  const [webGlAvailable, setWebGlAvailable] = useState(true)
-
-  useEffect(() => {
-    setWebGlAvailable(isWebGLAvailable())
-  }, [])
+  const [webGlAvailable] = useState(() => isWebGLAvailable())
 
   if (!webGlAvailable) {
     const count = particleDensity || 50

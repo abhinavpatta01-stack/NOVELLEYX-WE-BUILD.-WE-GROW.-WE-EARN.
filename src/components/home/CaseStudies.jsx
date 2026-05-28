@@ -453,7 +453,7 @@ const CaseStudies = () => {
 
                       {/* Step 2 */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', padding: '0.6rem 0.8rem', background: 'rgba(212,175,55,0.03)', borderRadius: '8px', border: '1px solid rgba(212,175,55,0.2)' }}>
-                        <div style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#fff', background: '#D4AF37', padding: '0.2rem 0.5rem', borderRadius: '4px', color: '#000' }}>02</div>
+                        <div style={{ fontSize: '0.75rem', fontWeight: 'bold', background: '#D4AF37', padding: '0.2rem 0.5rem', borderRadius: '4px', color: '#000' }}>02</div>
                         <div style={{ flex: 1, fontSize: '0.8rem', color: '#fff', fontWeight: 600 }}>AI Lead Enrichment & Scoring Agent</div>
                         <span style={{ fontSize: '0.65rem', color: '#22c55e' }}>NLP Processing</span>
                       </div>

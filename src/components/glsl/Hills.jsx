@@ -233,11 +233,7 @@ const HillsFallback = ({ color }) => {
 }
 
 const Hills = ({ color }) => {
-  const [webGlAvailable, setWebGlAvailable] = useState(true)
-
-  useEffect(() => {
-    setWebGlAvailable(isWebGLAvailable())
-  }, [])
+  const [webGlAvailable] = useState(() => isWebGLAvailable())
 
   if (!webGlAvailable) {
     return <HillsFallback color={color} />

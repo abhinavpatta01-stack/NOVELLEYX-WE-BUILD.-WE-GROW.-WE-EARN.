@@ -145,20 +145,23 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
           style={{
             fontSize: 'var(--body)',
-            color: '#A8A8A8',
-            maxWidth: '680px',
-            lineHeight: 1.7,
-            marginBottom: '3rem'
+            color: '#D4AF37',
+            maxWidth: '750px',
+            lineHeight: 1.8,
+            marginBottom: '3rem',
+            letterSpacing: '0.02em',
+            textTransform: 'uppercase',
+            fontWeight: 500
           }}
         >
-          Premium digital systems engineered for modern brands, creators, and ambitious businesses. We forge market dominance through code and content.
+          Elite AI infrastructure and automated growth systems built to scale enterprise revenue. We engineer high-conversion digital assets that maximize market capitalization.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: 'center' }}
+          style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}
         >
           <a
             href="#architect"

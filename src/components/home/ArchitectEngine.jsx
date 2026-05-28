@@ -42,9 +42,9 @@ const ArchitectEngine = () => {
   const analyzeData = () => {
     const { role, goal, industry, experience } = formData
     
-    let planTitle = ''
-    let planPhase = ''
-    let planPrice = ''
+    let planTitle
+    let planPhase
+    let planPrice
     
     if (experience === '0-2 Years' || experience === 'Student/Grad') {
       planTitle = 'Starter Plan Career Blueprint'
