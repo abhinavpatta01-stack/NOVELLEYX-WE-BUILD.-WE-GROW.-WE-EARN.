@@ -8,7 +8,6 @@ import ServicesGrid from '../components/home/ServicesGrid'
 import ProductsSection from '../components/home/ProductsSection'
 import EcosystemMap from '../components/home/EcosystemMap'
 import AiAutomationSection from '../components/home/AiAutomationSection'
-import SystemReveal from '../components/home/SystemReveal'
 import StackFeatureSection from '../components/home/StackFeatureSection'
 import WhyChooseUs from '../components/home/WhyChooseUs'
 import ArchitectEngine from '../components/home/ArchitectEngine'
@@ -34,7 +33,6 @@ const Home = () => {
         <ProductsSection />
         <EcosystemMap />
         <AiAutomationSection />
-        <SystemReveal />
         <StackFeatureSection />
         <WhyChooseUs />
         <ArchitectEngine />
