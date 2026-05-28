@@ -212,8 +212,7 @@ const SystemReveal = () => {
                 minHeight: '220px'
               }}>
                 <AnimatePresence mode="wait">
-                  
-                  {activeTab === 'funnel' && (
+                  {activeTab === 'funnel' ? (
                     <motion.div key="funnel" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ width: '100%', textAlign: 'center' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '1.5rem' }}>
                         <div>
@@ -244,9 +243,7 @@ const SystemReveal = () => {
                         Conversion rate optimized at 8.6% yield
                       </div>
                     </motion.div>
-                  )}
-
-                  {activeTab === 'logic' && (
+                  ) : activeTab === 'logic' ? (
                     <motion.div key="logic" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ width: '100%', textAlign: 'center' }}>
                       <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', alignItems: 'center', marginBottom: '1rem' }}>
                         <div style={{ padding: '0.5rem 0.8rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '6px', fontSize: '0.75rem', color: '#888' }}>
@@ -267,9 +264,7 @@ const SystemReveal = () => {
                         <span>AGENT LOGIC VERIFIED: RAG CONTEXT LOADED</span>
                       </div>
                     </motion.div>
-                  )}
-
-                  {activeTab === 'sync' && (
+                  ) : activeTab === 'sync' ? (
                     <motion.div key="sync" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{ width: '100%', textAlign: 'center' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '1.5rem' }}>
                         <div>
@@ -288,8 +283,7 @@ const SystemReveal = () => {
                         Bidirectional syncing active. Low latency payload processing.
                       </div>
                     </motion.div>
-                  )}
-
+                  ) : null}
                 </AnimatePresence>
               </div>
 

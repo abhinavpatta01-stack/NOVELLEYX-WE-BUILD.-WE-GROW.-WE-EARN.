@@ -231,7 +231,13 @@ const ArchitectEngine = () => {
           )}
 
           <AnimatePresence mode="wait">
-            {step === 1 && (
+            {isAnalyzing ? (
+              <motion.div key="analyzing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="analyzing-state">
+                <div className="spinner"></div>
+                <h3>Processing Data Parameters...</h3>
+                <p>Synthesizing exact architectural blueprint for {formData.role}.</p>
+              </motion.div>
+            ) : step === 1 ? (
               <motion.div key="step1" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }} className="audit-card">
                 <h3>What is your current professional role?</h3>
                 <div className="options-grid">
@@ -243,9 +249,7 @@ const ArchitectEngine = () => {
                 </div>
                 <button className="next-btn" disabled={!formData.role} onClick={handleNext}>Initialize Systems &rarr;</button>
               </motion.div>
-            )}
-
-            {step === 2 && (
+            ) : step === 2 ? (
               <motion.div key="step2" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }} className="audit-card">
                 <h3>Primary Objective for this quarter?</h3>
                 <div className="options-grid">
@@ -257,9 +261,7 @@ const ArchitectEngine = () => {
                 </div>
                 <button className="next-btn" disabled={!formData.goal} onClick={handleNext}>Next Phase &rarr;</button>
               </motion.div>
-            )}
-
-            {step === 3 && (
+            ) : step === 3 ? (
               <motion.div key="step3" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }} className="audit-card">
                 <h3>Select your primary industry.</h3>
                 <div className="options-grid">
@@ -271,9 +273,7 @@ const ArchitectEngine = () => {
                 </div>
                 <button className="next-btn" disabled={!formData.industry} onClick={handleNext}>Next Phase &rarr;</button>
               </motion.div>
-            )}
-
-            {step === 4 && (
+            ) : step === 4 ? (
               <motion.div key="step4" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -50 }} className="audit-card">
                 <h3>Years of industry experience?</h3>
                 <div className="options-grid">
@@ -285,17 +285,7 @@ const ArchitectEngine = () => {
                 </div>
                 <button className="next-btn" disabled={!formData.experience} onClick={handleNext}>Run Algorithmic Audit &rarr;</button>
               </motion.div>
-            )}
-
-            {isAnalyzing && (
-              <motion.div key="analyzing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="analyzing-state">
-                <div className="spinner"></div>
-                <h3>Processing Data Parameters...</h3>
-                <p>Synthesizing exact architectural blueprint for {formData.role}.</p>
-              </motion.div>
-            )}
-
-            {step === 5 && recommendation && (
+            ) : (step === 5 && recommendation) ? (
               <motion.div key="result" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="result-card">
                 <div style={{ color: '#D4AF37', fontSize: '0.8rem', letterSpacing: '0.15em', marginBottom: '1rem', fontWeight: 600, textTransform: 'uppercase' }}>
                   SYSTEM AUDIT REPORT
@@ -411,7 +401,7 @@ const ArchitectEngine = () => {
                   </button>
                 </div>
               </motion.div>
-            )}
+            ) : null}
           </AnimatePresence>
 
           <style>{`

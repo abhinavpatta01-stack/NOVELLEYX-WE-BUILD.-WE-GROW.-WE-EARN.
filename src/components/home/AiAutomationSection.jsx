@@ -220,101 +220,96 @@ const AiAutomationSection = () => {
                   </defs>
 
                   {/* Draw Connections */}
-                  <AnimatePresence>
-                    {activeData.diagramPaths.map((p, idx) => {
-                      const fromNode = activeData.diagramNodes.find(n => n.id === p.from);
-                      const toNode = activeData.diagramNodes.find(n => n.id === p.to);
-                      if (!fromNode || !toNode) return null;
+                  {activeData.diagramPaths.map((p, idx) => {
+                    const fromNode = activeData.diagramNodes.find(n => n.id === p.from);
+                    const toNode = activeData.diagramNodes.find(n => n.id === p.to);
+                    if (!fromNode || !toNode) return null;
 
-                      // Control point for smooth curved cubic lines
-                      const dx = Math.abs(toNode.x - fromNode.x) * 0.5;
-                      const dPath = `M ${fromNode.x} ${fromNode.y} C ${fromNode.x + dx} ${fromNode.y}, ${toNode.x - dx} ${toNode.y}, ${toNode.x} ${toNode.y}`;
+                    // Control point for smooth curved cubic lines
+                    const dx = Math.abs(toNode.x - fromNode.x) * 0.5;
+                    const dPath = `M ${fromNode.x} ${fromNode.y} C ${fromNode.x + dx} ${fromNode.y}, ${toNode.x - dx} ${toNode.y}, ${toNode.x} ${toNode.y}`;
 
-                      return (
-                        <g key={`${activeSystem}-path-${idx}`}>
-                          {/* Background static line */}
-                          <path
-                            d={dPath}
-                            fill="none"
-                            stroke="rgba(255,255,255,0.06)"
-                            strokeWidth="2"
-                          />
-                          {/* Animated glowing path */}
-                          <motion.path
-                            d={dPath}
-                            fill="none"
-                            stroke="rgba(212,175,55,0.4)"
-                            strokeWidth="2"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 0.8, delay: idx * 0.2 }}
-                          />
-                          {/* Animated flow pulse dot */}
-                          {p.pulse && (
-                            <motion.circle
-                              r="4"
-                              fill="#D4AF37"
-                              style={{ filter: 'url(#glow)' }}
-                              initial={{ offsetDistance: "0%" }}
-                              animate={{ offsetDistance: "100%" }}
-                              transition={{
-                                duration: 2.2,
-                                repeat: Infinity,
-                                ease: "linear",
-                                delay: idx * 0.4
-                              }}
-                            >
-                              <animateMotion path={dPath} dur="2.5s" repeatCount="indefinite" />
-                            </motion.circle>
-                          )}
-                        </g>
-                      );
-                    })}
-                  </AnimatePresence>
+                    return (
+                      <g key={`${activeSystem}-path-${idx}`}>
+                        {/* Background static line */}
+                        <path
+                          d={dPath}
+                          fill="none"
+                          stroke="rgba(255,255,255,0.06)"
+                          strokeWidth="2"
+                        />
+                        {/* Animated glowing path */}
+                        <motion.path
+                          d={dPath}
+                          fill="none"
+                          stroke="rgba(212,175,55,0.4)"
+                          strokeWidth="2"
+                          initial={{ pathLength: 0 }}
+                          animate={{ pathLength: 1 }}
+                          transition={{ duration: 0.8, delay: idx * 0.2 }}
+                        />
+                        {/* Animated flow pulse dot */}
+                        {p.pulse && (
+                          <motion.circle
+                            r="4"
+                            fill="#D4AF37"
+                            style={{ filter: 'url(#glow)' }}
+                            initial={{ offsetDistance: "0%" }}
+                            animate={{ offsetDistance: "100%" }}
+                            transition={{
+                              duration: 2.2,
+                              repeat: Infinity,
+                              ease: "linear",
+                              delay: idx * 0.4
+                            }}
+                          >
+                            <animateMotion path={dPath} dur="2.5s" repeatCount="indefinite" />
+                          </motion.circle>
+                        )}
+                      </g>
+                    );
+                  })}
 
                   {/* Draw Nodes */}
-                  <AnimatePresence>
+                  <AnimatePresence mode="popLayout">
                     {activeData.diagramNodes.map((node) => (
-                      <g
+                      <motion.g
                         key={`${activeSystem}-node-${node.id}`}
                         transform={`translate(${node.x}, ${node.y})`}
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0, opacity: 0 }}
+                        transition={{ type: 'spring', stiffness: 200, damping: 18 }}
                       >
-                        <motion.g
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          exit={{ scale: 0, opacity: 0 }}
-                          transition={{ type: 'spring', stiffness: 200, damping: 18 }}
+                        <circle
+                          r="6"
+                          fill={node.type === 'source' ? '#333' : node.type === 'target' ? '#D4AF37' : '#1a1a1a'}
+                          stroke={node.type === 'target' ? '#fff' : '#D4AF37'}
+                          strokeWidth="2"
+                          style={{ filter: node.type === 'target' ? 'url(#glow)' : 'none' }}
+                        />
+                        <rect
+                          x="-65"
+                          y="15"
+                          width="130"
+                          height="28"
+                          rx="6"
+                          fill="rgba(10,10,10,0.95)"
+                          stroke="rgba(212,175,55,0.15)"
+                          strokeWidth="1"
+                        />
+                        <text
+                          y="32"
+                          fill="#ffffff"
+                          fontSize="8.5"
+                          fontWeight="700"
+                          textAnchor="middle"
+                          fontFamily="var(--font-body)"
+                          letterSpacing="0.05em"
                         >
-                          <circle
-                            r="6"
-                            fill={node.type === 'source' ? '#333' : node.type === 'target' ? '#D4AF37' : '#1a1a1a'}
-                            stroke={node.type === 'target' ? '#fff' : '#D4AF37'}
-                            strokeWidth="2"
-                            style={{ filter: node.type === 'target' ? 'url(#glow)' : 'none' }}
-                          />
-                          <rect
-                            x="-65"
-                            y="15"
-                            width="130"
-                            height="28"
-                            rx="6"
-                            fill="rgba(10,10,10,0.95)"
-                            stroke="rgba(212,175,55,0.15)"
-                            strokeWidth="1"
-                          />
-                          <text
-                            y="32"
-                            fill="#ffffff"
-                            fontSize="8.5"
-                            fontWeight="700"
-                            textAnchor="middle"
-                            fontFamily="var(--font-body)"
-                            letterSpacing="0.05em"
-                          >
-                            {node.label}
-                          </text>
-                        </motion.g>
-                      </g>
+                          {node.label}
+                        </text>
+                      </motion.g>
                     ))}
                   </AnimatePresence>
                 </svg>
