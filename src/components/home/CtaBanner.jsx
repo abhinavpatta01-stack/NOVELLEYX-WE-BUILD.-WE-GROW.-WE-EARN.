@@ -6,19 +6,21 @@ const CtaBanner = () => {
   return (
     <section id="cta" style={{
       padding: 'var(--section-py) 2rem',
-      background: '#000',
+      background: '#050505',
+      backgroundImage: 'radial-gradient(rgba(212, 175, 55, 0.07) 1px, transparent 1px)',
+      backgroundSize: '24px 24px',
       position: 'relative',
       overflow: 'hidden'
     }}>
       {/* Background glow effects */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'radial-gradient(ellipse at 30% 50%, rgba(212,175,55,0.08) 0%, transparent 60%)',
+        background: 'radial-gradient(circle at 30% 50%, rgba(212,175,55,0.12) 0%, transparent 60%)',
         pointerEvents: 'none'
       }} />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'radial-gradient(ellipse at 70% 50%, rgba(255,209,102,0.05) 0%, transparent 60%)',
+        background: 'radial-gradient(circle at 70% 50%, rgba(255,209,102,0.08) 0%, transparent 60%)',
         pointerEvents: 'none'
       }} />
 
@@ -27,19 +29,29 @@ const CtaBanner = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
+        className="cta-banner-box"
         style={{
           maxWidth: '900px',
           margin: '0 auto',
           textAlign: 'center',
           position: 'relative',
           zIndex: 1,
-          padding: '4rem 3rem',
-          background: 'linear-gradient(135deg, rgba(20,20,20,0.6) 0%, rgba(10,10,10,0.8) 100%)',
-          border: '1px solid rgba(212,175,55,0.2)',
+          background: 'linear-gradient(135deg, rgba(20,20,20,0.7) 0%, rgba(10,10,10,0.9) 100%)',
+          border: '1px solid rgba(212,175,55,0.25)',
           borderRadius: '24px',
-          boxShadow: '0 20px 60px rgba(0,0,0,0.4)'
+          boxShadow: '0 25px 70px rgba(0,0,0,0.6)'
         }}
       >
+        <style>{`
+          .cta-banner-box {
+            padding: 4rem 3rem !important;
+          }
+          @media (max-width: 768px) {
+            .cta-banner-box {
+              padding: 2.5rem 1.25rem !important;
+            }
+          }
+        `}</style>
         {/* Decorative top line */}
         <div style={{
           position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
@@ -96,45 +108,31 @@ const CtaBanner = () => {
         </p>
 
         <div style={{
-          display: 'flex', gap: '1rem',
+          display: 'flex', gap: '1.2rem',
           justifyContent: 'center', flexWrap: 'wrap'
         }}>
           <a
-            href="https://wa.me/917075853225?text=Hello%20NovelleyX%2C%20I%27d%20like%20to%20book%20a%20free%20strategy%20call."
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=NovelleyX+Strategy+Consultation&details=30-Minute+Discovery+%26+Strategy+Consultation+with+NovelleyX.+We+will+discuss+your+digital+identity%2C+platforms%2C+and+growth+strategy.&add=abhinav.patta01@gmail.com,novelleyx@gmail.com"
+            className="cta-gold-glow"
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-              padding: '0.9rem 2rem', borderRadius: '10px',
-              background: 'linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%)',
-              color: '#000', fontWeight: 700, fontSize: '0.95rem',
-              letterSpacing: '0.02em',
-              boxShadow: '0 0 30px rgba(212,175,55,0.3)',
-              transition: 'all 0.3s cubic-bezier(.4,0,.2,1)',
-              cursor: 'pointer'
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)'; e.currentTarget.style.boxShadow = '0 10px 40px rgba(212,175,55,0.5)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.boxShadow = '0 0 30px rgba(212,175,55,0.3)' }}
           >
-            Book Free Call <ArrowRight size={16} />
+            Schedule Strategy Call <ArrowRight size={15} />
           </a>
 
           <a
-            href="#services"
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-              padding: '0.9rem 2rem', borderRadius: '10px',
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              color: '#fff', fontWeight: 600, fontSize: '0.95rem',
-              backdropFilter: 'blur(10px)',
-              transition: 'all 0.3s cubic-bezier(.4,0,.2,1)',
-              cursor: 'pointer'
+            href="#portfolio"
+            className="cta-dark-premium"
+            onClick={(e) => {
+              e.preventDefault()
+              const el = document.getElementById('portfolio')
+              if (el) {
+                const y = el.getBoundingClientRect().top + window.scrollY - 100
+                window.scrollTo({ top: y, behavior: 'smooth' })
+              }
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.background = 'rgba(212,175,55,0.08)'; e.currentTarget.style.borderColor = 'rgba(212,175,55,0.4)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
           >
-            View Our Services
+            Build Your Brand
           </a>
         </div>
       </motion.div>

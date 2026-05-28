@@ -7,51 +7,61 @@ import { ArrowRight } from 'lucide-react'
 const services = [
   {
     title: 'Brand Architecture',
+    glowColor: 'rgba(212,175,55,0.22)',
     desc: 'We construct strategic brand frameworks that secure elite market positioning. From visual identity to core messaging, we build the foundation required for lasting industry authority and trust.',
     features: ['Brand Identity Design', 'Positioning Systems', 'Messaging Frameworks', 'Visual Direction', 'Brand Strategy', 'Competitive Analysis']
   },
   {
     title: 'Website Systems',
+    glowColor: 'rgba(34,197,94,0.22)',
     desc: "We engineer high-performance, SEO-optimized digital platforms. These aren't just websites; they are conversion engines designed with immersive UI and seamless functionality to turn visitors into clients.",
     features: ['Premium UI/UX', 'Mobile Optimization', 'SEO Architecture', 'Speed Optimization', 'Conversion Systems', 'Responsive Development']
   },
   {
     title: 'Social Media Growth',
+    glowColor: 'rgba(236,72,153,0.22)',
     desc: 'We deploy curated growth engines to build premium audiences systematically. By decoding platform algorithms, we scale your influence and capture highly targeted demographics.',
     features: ['Instagram Growth', 'LinkedIn Authority', 'Content Scaling', 'Audience Positioning', 'Engagement Systems', 'Algorithm Optimization']
   },
   {
     title: 'SEO Optimization',
+    glowColor: 'rgba(6,182,212,0.22)',
     desc: 'Achieve authority-driven organic visibility through precision keyword engineering. We optimize your digital footprint so your brand ranks at the top when it matters most.',
     features: ['Technical SEO', 'Keyword Research', 'On-Page SEO', 'Portfolio SEO', 'Search Visibility', 'Ranking Optimization']
   },
   {
     title: 'Content Production',
+    glowColor: 'rgba(239,68,68,0.22)',
     desc: "Deliver your message through cinematic storytelling and editorial content. We craft high-end visual narratives that elevate your brand's perception and captivate your audience.",
     features: ['Video Editing', 'Motion Graphics', 'Short-form Content', 'Thumbnail Systems', 'Creative Direction', 'Content Planning']
   },
   {
     title: 'Media Management',
+    glowColor: 'rgba(99,102,241,0.22)',
     desc: 'End-to-end asset orchestration and multi-platform channel management. We handle the distribution, scheduling, and analytics so your brand remains active and unavoidable.',
     features: ['Channel Management', 'Publishing Systems', 'Scheduling Pipelines', 'Analytics Tracking', 'Optimization Reports', 'Multi-platform Scaling']
   },
   {
     title: 'AI Systems',
+    glowColor: 'rgba(245,158,11,0.22)',
     desc: 'We integrate intelligent automation and decision engines into your workflows. Leverage cutting-edge AI models to analyze data, streamline operations, and stay ahead of the curve.',
     features: ['AI Integrations', 'GPT Systems', 'Workflow Intelligence', 'AI Automation', 'Smart Assistants', 'Prompt Engineering']
   },
   {
     title: 'Automation Systems',
+    glowColor: 'rgba(139,92,246,0.22)',
     desc: 'Eliminate manual friction with seamless process pipelines. We build custom outbound and operational systems that scale your output without scaling your workload.',
     features: ['Workflow Pipelines', 'CRM Automation', 'Outreach Systems', 'Business Automation', 'Lead Systems', 'Process Engineering']
   },
   {
     title: 'Portfolio Engineering',
+    glowColor: 'rgba(217,70,239,0.22)',
     desc: 'We design showcase portfolios specifically engineered to convert opportunity into traction. Perfect for creators and developers looking to highlight their projects with a premium aesthetic.',
     features: ['Portfolio Design', 'Case Studies', 'Resume Systems', 'Developer Showcases', 'Project Positioning', 'Career Branding']
   },
   {
     title: 'Personal Branding',
+    glowColor: 'rgba(14,165,233,0.22)',
     desc: 'We craft compelling personal narratives for founders, creators, and emerging leaders. Transition from an unseen professional to a recognized industry voice.',
     features: ['Founder Branding', 'LinkedIn Identity', 'Public Positioning', 'Authority Building', 'Executive Presence', 'Content Direction']
   }
@@ -96,12 +106,13 @@ const DetailedServices = () => {
           maxWidth: '1280px', 
           margin: '0 auto', 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
           gap: '2.5rem' 
         }}>
           {services.map((svc, idx) => (
             <motion.div
               key={svc.title}
+              data-glow-color={svc.glowColor}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -122,6 +133,11 @@ const DetailedServices = () => {
                   border-color: rgba(212,175,55,0.4) !important;
                   transform: translateY(-5px);
                   box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+                }
+                @media (max-width: 768px) {
+                  .detailed-service-card {
+                    padding: 1.75rem 1.25rem !important;
+                  }
                 }
               `}</style>
               <div style={{ color: '#D4AF37', fontSize: '1.5rem', marginBottom: '1rem' }}>✦</div>

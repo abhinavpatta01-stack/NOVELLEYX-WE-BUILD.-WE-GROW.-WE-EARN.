@@ -19,11 +19,24 @@ const ContactSection = () => {
     e.preventDefault()
     const { firstName, lastName, email, subject, message } = formData
     const bodyText = `Name: ${firstName} ${lastName}\nEmail: ${email}\n\n${message}`
-    window.location.href = `mailto:novelleyx@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`
+    const mailtoUrl = `mailto:novelleyx@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`
+    
+    if (window.novelleyxMailCompose) {
+      window.novelleyxMailCompose(mailtoUrl, 'novelleyx@gmail.com')
+    } else {
+      window.location.href = mailtoUrl
+    }
   }
 
   return (
-    <section id="contact" style={{ padding: '4rem 2rem', background: '#050505', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+    <section id="contact" className="contact-section-container" style={{ padding: '4rem 2rem', background: '#050505', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-section-container {
+            padding: 2.5rem 1rem !important;
+          }
+        }
+      `}</style>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -42,7 +55,7 @@ const ContactSection = () => {
           }}
         >
           {/* Contact Info (Left) */}
-          <div style={{ 
+          <div className="contact-info-col" style={{ 
             flex: '1 1 400px', 
             padding: '4rem', 
             background: 'linear-gradient(180deg, rgba(212,175,55,0.05) 0%, transparent 100%)',
@@ -104,7 +117,7 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Form (Right) */}
-          <div style={{ flex: '1 1 500px', padding: '4rem', display: 'flex', flexDirection: 'column' }}>
+          <div className="contact-form-col" style={{ flex: '1 1 500px', padding: '4rem', display: 'flex', flexDirection: 'column' }}>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', height: '100%' }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>

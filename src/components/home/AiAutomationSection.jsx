@@ -10,13 +10,13 @@ const automationSystems = [
     desc: 'Instant, automated conversational funnel that pre-qualifies incoming prospects and hooks directly into calendar bookings, eliminating manual delays.',
     pros: ['Sub-second latency auto-replies', 'NLP lead qualification rules', 'Direct WhatsApp-to-Calendly scheduling', 'Automatic voice note transcription'],
     diagramNodes: [
-      { id: 'start', label: 'Incoming WhatsApp', x: 50, y: 150, type: 'source' },
-      { id: 'ai', label: 'AI Qualifier Agent', x: 230, y: 150, type: 'process' },
-      { id: 'db', label: 'CRM / Calendar', x: 410, y: 150, type: 'target' }
+      { id: 'n-wa-1', label: 'Incoming WhatsApp', x: 65, y: 130, type: 'source' },
+      { id: 'n-wa-2', label: 'AI Qualifier Agent', x: 240, y: 130, type: 'process' },
+      { id: 'n-wa-3', label: 'CRM / Calendar', x: 415, y: 130, type: 'target' }
     ],
     diagramPaths: [
-      { from: 'start', to: 'ai', pulse: true },
-      { from: 'ai', to: 'db', pulse: true }
+      { from: 'n-wa-1', to: 'n-wa-2', pulse: true },
+      { from: 'n-wa-2', to: 'n-wa-3', pulse: true }
     ]
   },
   {
@@ -26,15 +26,15 @@ const automationSystems = [
     desc: 'Bespoke customer support and consultation agents trained on custom knowledge bases. Resolves up to 80% of support queries autonomously with human-like accuracy.',
     pros: ['RAG vector databases for source truth', 'Automatic fallback to human staff', 'Semantic sentiment scoring', 'Multi-lingual capability support'],
     diagramNodes: [
-      { id: 'start', label: 'Web / App Query', x: 50, y: 90, type: 'source' },
-      { id: 'rag', label: 'RAG Knowledge DB', x: 230, y: 90, type: 'process' },
-      { id: 'ai', label: 'Chatbot Output', x: 230, y: 210, type: 'process' },
-      { id: 'end', label: 'Instant Resolution', x: 410, y: 150, type: 'target' }
+      { id: 'n-cb-1', label: 'Web / App Query', x: 65, y: 80, type: 'source' },
+      { id: 'n-cb-2', label: 'RAG Knowledge DB', x: 240, y: 80, type: 'process' },
+      { id: 'n-cb-3', label: 'Chatbot Output', x: 240, y: 180, type: 'process' },
+      { id: 'n-cb-4', label: 'Instant Resolution', x: 415, y: 130, type: 'target' }
     ],
     diagramPaths: [
-      { from: 'start', to: 'rag', pulse: true },
-      { from: 'rag', to: 'ai', pulse: false },
-      { from: 'ai', to: 'end', pulse: true }
+      { from: 'n-cb-1', to: 'n-cb-2', pulse: true },
+      { from: 'n-cb-2', to: 'n-cb-3', pulse: false },
+      { from: 'n-cb-3', to: 'n-cb-4', pulse: true }
     ]
   },
   {
@@ -44,15 +44,15 @@ const automationSystems = [
     desc: 'Connect all touchpoints to a central database. We sync lead variables, prioritize conversions based on scoring algorithms, and trigger notifications instantly.',
     pros: ['Zero-friction data syncing', 'Score-based prioritization algorithms', 'Instant Slack/Discord team pings', 'Automated email sequence drip loops'],
     diagramNodes: [
-      { id: 'lead', label: 'New Lead Scored', x: 50, y: 150, type: 'source' },
-      { id: 'sync', label: 'CRM Sync Engine', x: 230, y: 150, type: 'process' },
-      { id: 'slack', label: 'Slack Alert', x: 410, y: 90, type: 'target' },
-      { id: 'drip', label: 'Email Auto-Sequence', x: 410, y: 210, type: 'target' }
+      { id: 'n-crm-1', label: 'Incoming Profile', x: 65, y: 130, type: 'source' },
+      { id: 'n-crm-2', label: 'CRM Sync Engine', x: 240, y: 130, type: 'process' },
+      { id: 'n-crm-3', label: 'Slack Alert', x: 415, y: 80, type: 'target' },
+      { id: 'n-crm-4', label: 'Email Auto-Sequence', x: 415, y: 180, type: 'target' }
     ],
     diagramPaths: [
-      { from: 'lead', to: 'sync', pulse: true },
-      { from: 'sync', to: 'slack', pulse: true },
-      { from: 'sync', to: 'drip', pulse: true }
+      { from: 'n-crm-1', to: 'n-crm-2', pulse: true },
+      { from: 'n-crm-2', to: 'n-crm-3', pulse: true },
+      { from: 'n-crm-2', to: 'n-crm-4', pulse: true }
     ]
   },
   {
@@ -62,13 +62,13 @@ const automationSystems = [
     desc: 'Autonomous scraper and enrichment pipelines that identify target companies, verify contact data, write highly personalized copy, and run outreach campaign loops.',
     pros: ['Verified contact data enrichment', 'Personalized dynamic copy AI', 'Spam-safe domain rotations', 'Automated LinkedIn hook triggers'],
     diagramNodes: [
-      { id: 'scrape', label: 'Prospect Enrichment', x: 50, y: 150, type: 'source' },
-      { id: 'copy', label: 'Personalized Mail Builder', x: 230, y: 150, type: 'process' },
-      { id: 'outreach', label: 'Rotated Sending System', x: 410, y: 150, type: 'target' }
+      { id: 'n-lg-1', label: 'Data Enrichment', x: 65, y: 130, type: 'source' },
+      { id: 'n-lg-2', label: 'Dynamic Mail Builder', x: 240, y: 130, type: 'process' },
+      { id: 'n-lg-3', label: 'Rotated SMTP Hub', x: 415, y: 130, type: 'target' }
     ],
     diagramPaths: [
-      { from: 'scrape', to: 'copy', pulse: true },
-      { from: 'copy', to: 'outreach', pulse: true }
+      { from: 'n-lg-1', to: 'n-lg-2', pulse: true },
+      { from: 'n-lg-2', to: 'n-lg-3', pulse: true }
     ]
   }
 ]
@@ -206,7 +206,7 @@ const AiAutomationSection = () => {
 
               {/* SVG Canvas for Diagram */}
               <div style={{ position: 'relative', width: '100%', height: 'calc(100% - 45px)' }}>
-                <svg style={{ width: '100%', height: '100%' }}>
+                <svg translate="no" className="notranslate" viewBox="0 0 480 260" style={{ width: '100%', height: '100%' }}>
                   <defs>
                     <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                       <stop offset="0%" stopColor="rgba(212,175,55,0.1)" />
@@ -275,43 +275,46 @@ const AiAutomationSection = () => {
                   {/* Draw Nodes */}
                   <AnimatePresence>
                     {activeData.diagramNodes.map((node) => (
-                      <motion.g
+                      <g
                         key={`${activeSystem}-node-${node.id}`}
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0, opacity: 0 }}
-                        transition={{ type: 'spring', stiffness: 200, damping: 18 }}
                         transform={`translate(${node.x}, ${node.y})`}
                       >
-                        <circle
-                          r="6"
-                          fill={node.type === 'source' ? '#333' : node.type === 'target' ? '#D4AF37' : '#1a1a1a'}
-                          stroke={node.type === 'target' ? '#fff' : '#D4AF37'}
-                          strokeWidth="2"
-                          style={{ filter: node.type === 'target' ? 'url(#glow)' : 'none' }}
-                        />
-                        <rect
-                          x="-65"
-                          y="15"
-                          width="130"
-                          height="28"
-                          rx="6"
-                          fill="rgba(10,10,10,0.95)"
-                          stroke="rgba(212,175,55,0.15)"
-                          strokeWidth="1"
-                        />
-                        <text
-                          y="32"
-                          fill="#ffffff"
-                          fontSize="8.5"
-                          fontWeight="700"
-                          textAnchor="middle"
-                          fontFamily="var(--font-body)"
-                          letterSpacing="0.05em"
+                        <motion.g
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0, opacity: 0 }}
+                          transition={{ type: 'spring', stiffness: 200, damping: 18 }}
                         >
-                          {node.label}
-                        </text>
-                      </motion.g>
+                          <circle
+                            r="6"
+                            fill={node.type === 'source' ? '#333' : node.type === 'target' ? '#D4AF37' : '#1a1a1a'}
+                            stroke={node.type === 'target' ? '#fff' : '#D4AF37'}
+                            strokeWidth="2"
+                            style={{ filter: node.type === 'target' ? 'url(#glow)' : 'none' }}
+                          />
+                          <rect
+                            x="-65"
+                            y="15"
+                            width="130"
+                            height="28"
+                            rx="6"
+                            fill="rgba(10,10,10,0.95)"
+                            stroke="rgba(212,175,55,0.15)"
+                            strokeWidth="1"
+                          />
+                          <text
+                            y="32"
+                            fill="#ffffff"
+                            fontSize="8.5"
+                            fontWeight="700"
+                            textAnchor="middle"
+                            fontFamily="var(--font-body)"
+                            letterSpacing="0.05em"
+                          >
+                            {node.label}
+                          </text>
+                        </motion.g>
+                      </g>
                     ))}
                   </AnimatePresence>
                 </svg>

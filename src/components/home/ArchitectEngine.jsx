@@ -120,14 +120,25 @@ const ArchitectEngine = () => {
   // Device Lock Screen once limit is hit and NOT currently viewing results
   if (attempts >= 3 && step !== 5) {
     return (
-      <section id="architect" style={{ padding: '6rem 2rem', position: 'relative', backgroundColor: '#000', overflow: 'hidden' }}>
+      <section id="architect" style={{ 
+        padding: '6rem 2rem', 
+        position: 'relative', 
+        background: 'radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.18) 0%, #030303 75%)', 
+        backgroundImage: 'radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 1px)',
+        backgroundSize: '30px 30px',
+        overflow: 'hidden' 
+      }}>
+        {/* Soft luxurious background glow spots */}
+        <div style={{ position: 'absolute', top: '-10%', left: '15%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none', zIndex: 0 }} />
+        <div style={{ position: 'absolute', bottom: '-10%', right: '15%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(255, 209, 102, 0.1) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none', zIndex: 0 }} />
+
         <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
           <SparklesCore
             id="architect-sparkles-lock"
             background="transparent"
             minSize={0.6}
             maxSize={1.5}
-            particleDensity={120}
+            particleDensity={40}
             className="w-full h-full"
             particleColor="#D4AF37"
           />
@@ -185,14 +196,25 @@ const ArchitectEngine = () => {
 
   return (
     <>
-      <section id="architect" style={{ padding: '6rem 2rem', position: 'relative', backgroundColor: '#000', overflow: 'hidden' }}>
+      <section id="architect" style={{ 
+        padding: '6rem 2rem', 
+        position: 'relative', 
+        background: 'radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.18) 0%, #030303 75%)', 
+        backgroundImage: 'radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 1px)',
+        backgroundSize: '30px 30px',
+        overflow: 'hidden' 
+      }}>
+        {/* Soft luxurious background glow spots */}
+        <div style={{ position: 'absolute', top: '-10%', left: '15%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none', zIndex: 0 }} />
+        <div style={{ position: 'absolute', bottom: '-10%', right: '15%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(255, 209, 102, 0.1) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none', zIndex: 0 }} />
+
         <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
           <SparklesCore
             id="architect-sparkles"
             background="transparent"
             minSize={0.6}
             maxSize={1.5}
-            particleDensity={120}
+            particleDensity={40}
             className="w-full h-full"
             particleColor="#D4AF37"
           />
@@ -393,7 +415,7 @@ const ArchitectEngine = () => {
           </AnimatePresence>
 
           <style>{`
-            .audit-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 3rem; border-radius: 16px; width: 100%; max-width: 900px; margin: 0 auto; }
+            .audit-card { background: linear-gradient(135deg, rgba(20,20,20,0.75) 0%, rgba(10,10,10,0.9) 100%); border: 1px solid rgba(212,175,55,0.45); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 3.5rem 3rem; border-radius: 20px; width: 100%; max-width: 900px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(212,175,55,0.03); }
             .audit-card h3 { color: #fff; font-size: 1.5rem; margin-bottom: 2rem; font-family: var(--font-heading); }
             .options-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
             .options-grid button { padding: 1rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 8px; cursor: pointer; transition: all 0.3s; font-family: var(--font-body); }
@@ -418,6 +440,37 @@ const ArchitectEngine = () => {
             .data-box { background: rgba(0,0,0,0.3); border-left: 3px solid #D4AF37; padding: 1rem; border-radius: 0 8px 8px 0; }
             .data-box h6 { color: #fff; font-family: var(--font-heading); font-size: 0.85rem; margin-bottom: 0.5rem; }
             .data-box p { color: #A8A8A8; font-size: 0.85rem; margin-bottom: 0.3rem; line-height: 1.4; }
+
+            @media (max-width: 768px) {
+              .audit-card {
+                padding: 1.5rem !important;
+              }
+              .audit-card h3 {
+                font-size: 1.25rem !important;
+                margin-bottom: 1.5rem !important;
+              }
+              .options-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.5rem !important;
+                margin-bottom: 2rem !important;
+              }
+              .options-grid button {
+                padding: 0.75rem 0.5rem !important;
+                font-size: 0.85rem !important;
+              }
+              .result-card {
+                padding: 2rem 1.25rem !important;
+              }
+              .result-card h3 {
+                font-size: 1.5rem !important;
+              }
+              .synthesis-block {
+                padding: 1rem !important;
+              }
+              .synthesis-block h5 {
+                font-size: 0.95rem !important;
+              }
+            }
           `}</style>
         </div>
       </section>

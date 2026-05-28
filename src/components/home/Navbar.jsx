@@ -32,7 +32,9 @@ const Navbar = () => {
   const navLinks = [
     { name: 'About', path: '/#about' },
     { name: 'Services', path: '/#services' },
+    { name: 'AI Automation', path: '/#automation' },
     { name: 'Our Process', path: '/#workflow' },
+    { name: 'Case Studies', path: '/#portfolio' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Architect Engine', path: '/#architect' },
     { name: 'Contact', path: '/#contact' }
@@ -86,7 +88,7 @@ const Navbar = () => {
 
         <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1.8rem' }}>
           <style>{`
-            @media (max-width: 1150px) { .desktop-nav { display: none !important; } }
+            @media (max-width: 1200px) { .desktop-nav { display: none !important; } }
           `}</style>
           {navLinks.map((link) => (
             <Link
@@ -106,22 +108,16 @@ const Navbar = () => {
           <Link
             to="/#architect"
             onClick={() => handleHashLink('/#architect')}
+            className="cta-gold-glow"
             style={{
-              padding: '0.58rem 1.2rem',
-              borderRadius: '6px',
-              fontSize: '0.84rem',
-              fontWeight: 600,
-              letterSpacing: '0.03em',
-              background: '#D4AF37',
-              color: '#000',
-              transition: 'transform 0.28s, box-shadow 0.28s',
-              display: 'inline-flex',
-              alignItems: 'center'
+              padding: '0.5rem 1.25rem',
+              borderRadius: '80px',
+              fontSize: '0.8rem',
+              fontWeight: 750,
+              boxShadow: '0 0 10px rgba(212,175,55,0.2)'
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 20px rgba(198,161,91,0.28)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
           >
-            Start Project
+            Book Consultation
           </Link>
         </div>
 
@@ -132,7 +128,7 @@ const Navbar = () => {
         >
           <style>{`
             .mobile-nav-toggle { display: none; }
-            @media (max-width: 1150px) { .mobile-nav-toggle { display: flex; } }
+            @media (max-width: 1200px) { .mobile-nav-toggle { display: flex; } }
           `}</style>
           <Menu size={24} />
         </button>

@@ -40,6 +40,7 @@ const HeroSection = () => {
   return (
     <section
       ref={heroRef}
+      className="hero-section-container"
       style={{
         position: 'relative',
         width: '100%',
@@ -51,9 +52,18 @@ const HeroSection = () => {
         justifyContent: 'center',
         overflow: 'hidden',
         textAlign: 'center',
-        padding: '140px 1.5rem var(--section-py)',
       }}
     >
+      <style>{`
+        .hero-section-container {
+          padding: 160px 1.5rem var(--section-py) !important;
+        }
+        @media (max-width: 768px) {
+          .hero-section-container {
+            padding: 110px 1rem var(--section-py) !important;
+          }
+        }
+      `}</style>
       {/* Background Orbs & WebGL */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.8 }}>
         <Hills />
@@ -148,46 +158,19 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}
+          style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: 'center' }}
         >
           <a
             href="#architect"
-            style={{
-              padding: '0.8rem 2rem',
-              borderRadius: '8px',
-              fontSize: '0.95rem',
-              fontWeight: 600,
-              letterSpacing: '0.03em',
-              background: 'linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%)',
-              color: '#000',
-              transition: 'transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s',
-              cursor: 'pointer',
-              boxShadow: '0 0 30px rgba(212,175,55,0.3)'
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)'; e.currentTarget.style.boxShadow = '0 10px 40px rgba(212,175,55,0.5)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0) scale(1)'; e.currentTarget.style.boxShadow = '0 0 30px rgba(212,175,55,0.3)' }}
+            className="cta-gold-glow"
           >
-            Start Your Project
+            Start Scaling
           </a>
           <a
-            href="#services"
-            style={{
-              padding: '0.8rem 2rem',
-              borderRadius: '8px',
-              fontSize: '0.95rem',
-              fontWeight: 600,
-              letterSpacing: '0.03em',
-              background: 'rgba(255,255,255,0.03)',
-              color: '#fff',
-              border: '1px solid rgba(255,255,255,0.1)',
-              transition: 'transform 0.3s cubic-bezier(.4,0,.2,1), background 0.3s, border-color 0.3s',
-              cursor: 'pointer',
-              backdropFilter: 'blur(10px)'
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.background = 'rgba(212,175,55,0.08)'; e.currentTarget.style.borderColor = 'rgba(212,175,55,0.4)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
+            href="#automation"
+            className="cta-dark-premium"
           >
-            Explore Services
+            Get AI Automation
           </a>
         </motion.div>
       </div>

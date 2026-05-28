@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
+import EmiModal from '../ui/EmiModal'
 
-const PricingCard = ({ title, target, price, period, features, featured, delay, isBento = false }) => {
+const PricingCard = ({ title, target, price, period, billedAnnually, totalAmount, billingCycle, features, featured, delay, isBento = false, onTriggerEmi }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -25,6 +26,11 @@ const PricingCard = ({ title, target, price, period, features, featured, delay, 
     >
       <style>{`
         .price-card:hover { border-color: #D4AF37 !important; transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        @media (max-width: 768px) {
+          .price-card {
+            padding: 1.75rem 1.25rem !important;
+          }
+        }
       `}</style>
       
       {featured && (
@@ -40,10 +46,44 @@ const PricingCard = ({ title, target, price, period, features, featured, delay, 
         {target}
       </p>
 
-      <div style={{ marginBottom: '2rem', display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+      <div style={{ marginBottom: '1rem', display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
         <span style={{ fontSize: '1.5rem', color: '#D4AF37', fontWeight: 'bold' }}>₹</span>
         <span style={{ fontSize: '3.5rem', color: '#fff', fontWeight: 'bold', lineHeight: 1 }}>{price}</span>
         <span style={{ color: '#666', fontSize: '1rem' }}>{period}</span>
+      </div>
+
+      {billingCycle === 'yearly' && billedAnnually && (
+        <div style={{ color: '#D4AF37', fontSize: '0.8rem', marginBottom: '1rem', fontWeight: 600 }}>
+          Billed annually: ₹{billedAnnually}
+        </div>
+      )}
+
+      {/* EMI Badge & Trigger */}
+      <div style={{ marginBottom: '2rem', minHeight: '26px' }}>
+        {billingCycle === 'yearly' ? (
+          <button
+            onClick={() => onTriggerEmi(title, totalAmount)}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#D4AF37',
+              fontSize: '0.8rem',
+              padding: 0,
+              textDecoration: 'underline',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.3rem',
+              fontWeight: 700
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#FFD166'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#D4AF37'}
+          >
+            No-Cost EMI available from ₹{Math.round(totalAmount / 12).toLocaleString('en-IN')}/mo
+          </button>
+        ) : (
+          <div style={{ fontSize: '0.8rem', color: '#555' }}>Standard billing terms apply</div>
+        )}
       </div>
 
       <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1, marginBottom: '2.5rem' }}>
@@ -57,7 +97,7 @@ const PricingCard = ({ title, target, price, period, features, featured, delay, 
 
       <div style={{ display: 'flex', gap: '1rem' }}>
         <a 
-          href={`https://wa.me/917075853225?text=${encodeURIComponent(`Hello Novelleyx, I'm interested in the ${title} subscription.`)}`} 
+          href={`https://wa.me/917075853225?text=${encodeURIComponent(`Hello NovelleyX, I'm interested in the ${title} (${billingCycle === 'monthly' ? 'Monthly' : 'Yearly'}) subscription.`)}`} 
           target="_blank" 
           rel="noopener noreferrer"
           style={{ flex: 1, textAlign: 'center', padding: '1rem', background: featured ? '#D4AF37' : 'transparent', border: featured ? 'none' : '1px solid #D4AF37', color: featured ? '#000' : '#D4AF37', fontWeight: 'bold', borderRadius: '8px', textTransform: 'uppercase', fontSize: '0.875rem', textDecoration: 'none' }}
@@ -65,7 +105,7 @@ const PricingCard = ({ title, target, price, period, features, featured, delay, 
           WhatsApp
         </a>
         <a 
-          href={`mailto:novelleyx@gmail.com?subject=${encodeURIComponent(`Inquiry About ${title} Subscription`)}&body=${encodeURIComponent(`Hello Novelleyx team,\n\nI am interested in the ${title} subscription. Please share the details and how we can proceed.\n\nThanks.`)}`}
+          href={`mailto:novelleyx@gmail.com?subject=${encodeURIComponent(`Inquiry About ${title} Subscription`)}&body=${encodeURIComponent(`Hello Novelleyx team,\n\nI am interested in the ${title} (${billingCycle === 'monthly' ? 'Monthly' : 'Yearly'}) subscription. Please share the details and how we can proceed.\n\nThanks.`)}`}
           target="_blank"
           rel="noopener noreferrer"
           style={{ flex: 1, textAlign: 'center', padding: '1rem', background: 'transparent', border: '1px solid #333', color: '#888', fontWeight: 'bold', borderRadius: '8px', textTransform: 'uppercase', fontSize: '0.875rem', textDecoration: 'none' }}
@@ -77,7 +117,91 @@ const PricingCard = ({ title, target, price, period, features, featured, delay, 
   )
 }
 
-const BentoGrid = () => {
+const BentoGrid = ({ billingCycle = 'monthly' }) => {
+  const [emiModalOpen, setEmiModalOpen] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState({ name: '', amount: 0 })
+
+  const handleTriggerEmi = (planName, totalAmount) => {
+    setSelectedPlan({
+      name: `${planName} (Yearly)`,
+      amount: totalAmount
+    })
+    setEmiModalOpen(true)
+  }
+
+  const businessPlans = [
+    {
+      title: "IDENTITY INFLOW",
+      target: "For Creators & Solo Founders",
+      monthly: {
+        price: "20,000",
+        period: "/mo",
+        totalAmount: 20000
+      },
+      yearly: {
+        price: "16,000",
+        period: "/mo",
+        billedAnnually: "1,92,000",
+        totalAmount: 192000
+      },
+      features: [
+        "1 Active task request execution at a time",
+        "48-Hour rapid turnaround delivery",
+        "Static UI mockups & landing variations",
+        "Social media promotional assets",
+        "Unlimited standard asset revisions"
+      ],
+      delay: 0.1
+    },
+    {
+      title: "VELOCITY ENGINE",
+      target: "For Growing Scaleups & Brands",
+      monthly: {
+        price: "60,000",
+        period: "/mo",
+        totalAmount: 60000
+      },
+      yearly: {
+        price: "48,000",
+        period: "/mo",
+        billedAnnually: "5,76,000",
+        totalAmount: 576000
+      },
+      features: [
+        "2 Active development queues simultaneously",
+        "Bespoke Webflow / React system architectures",
+        "Monthly technical SEO automation sweeps",
+        "24-Hour emergency priority support",
+        "Seamless CRM & marketing integrations"
+      ],
+      featured: true,
+      delay: 0.3
+    },
+    {
+      title: "ENTERPRISE DOMINANCE",
+      target: "For Industry Authorities",
+      monthly: {
+        price: "1,50,000",
+        period: "/mo",
+        totalAmount: 150000
+      },
+      yearly: {
+        price: "1,20,000",
+        period: "/mo",
+        billedAnnually: "14,40,000",
+        totalAmount: 1440000
+      },
+      features: [
+        "Unlimited parallel development pipelines",
+        "Custom AI integrations & advanced chatbot logic",
+        "High-volume ad asset production engine",
+        "Dedicated custom Slack communication hub",
+        "On-demand strategic consulting modules"
+      ],
+      delay: 0.5
+    }
+  ]
+
   return (
     <section id="business" style={{ padding: '8rem 2rem', backgroundColor: '#000' }}>
       <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
@@ -86,7 +210,7 @@ const BentoGrid = () => {
           CHOOSE YOUR VELOCITY
         </h2>
         <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto', fontSize: '1rem', lineHeight: 1.6 }}>
-          Predictable, flat-rate monthly subscriptions and one-time engineering systems for aggressive scaling and immediate market impact. Pause or cancel anytime.
+          Predictable, flat-rate {billingCycle === 'monthly' ? 'monthly' : 'yearly'} subscriptions and one-time engineering systems for aggressive scaling and immediate market impact. Pause or cancel anytime.
         </p>
       </div>
 
@@ -94,55 +218,38 @@ const BentoGrid = () => {
         maxWidth: '1200px', 
         margin: '0 auto', 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
         gap: '2rem' 
       }}>
-        <PricingCard
-          title="IDENTITY INFLOW"
-          target="For Creators & Solo Founders"
-          price="20,000"
-          period="/mo"
-          features={[
-            "1 Active task request execution at a time",
-            "48-Hour rapid turnaround delivery",
-            "Static UI mockups & landing variations",
-            "Social media promotional assets",
-            "Unlimited standard asset revisions"
-          ]}
-          delay={0.1}
-        />
-        
-        <PricingCard
-          title="VELOCITY ENGINE"
-          target="For Growing Scaleups & Brands"
-          price="60,000"
-          period="/mo"
-          featured={true}
-          features={[
-            "2 Active development queues simultaneously",
-            "Bespoke Webflow / React system architectures",
-            "Monthly technical SEO automation sweeps",
-            "24-Hour emergency priority support",
-            "Seamless CRM & marketing integrations"
-          ]}
-          delay={0.3}
-        />
-
-        <PricingCard
-          title="ENTERPRISE DOMINANCE"
-          target="For Industry Authorities"
-          price="1,50,000"
-          period="/mo"
-          features={[
-            "Unlimited parallel development pipelines",
-            "Custom AI integrations & advanced chatbot logic",
-            "High-volume ad asset production engine",
-            "Dedicated custom Slack communication hub",
-            "On-demand strategic consulting modules"
-          ]}
-          delay={0.5}
-        />
+        {businessPlans.map((plan, idx) => {
+          const details = billingCycle === 'monthly' ? plan.monthly : plan.yearly;
+          return (
+            <PricingCard
+              key={plan.title}
+              title={plan.title}
+              target={plan.target}
+              price={details.price}
+              period={details.period}
+              billedAnnually={details.billedAnnually}
+              totalAmount={details.totalAmount}
+              billingCycle={billingCycle}
+              featured={plan.featured}
+              features={plan.features}
+              delay={plan.delay}
+              onTriggerEmi={handleTriggerEmi}
+            />
+          )
+        })}
       </div>
+
+      {/* Reusable EMI options dialog for Business plans */}
+      <EmiModal
+        isOpen={emiModalOpen}
+        onClose={() => setEmiModalOpen(false)}
+        planName={selectedPlan.name}
+        totalAmount={selectedPlan.amount}
+        accentColor="#D4AF37"
+      />
     </section>
   )
 }

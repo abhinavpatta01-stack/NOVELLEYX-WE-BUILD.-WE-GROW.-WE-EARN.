@@ -23,10 +23,10 @@
   --font-body: 'Inter', sans-serif;
   --font-brand: 'Cinzel', serif;
 
-  --h1: clamp(3.5rem, 7vw, 6rem);
-  --h2: clamp(2.2rem, 4vw, 3.25rem);
-  --h3: clamp(1.25rem, 2vw, 1.5rem);
-  --body: clamp(0.95rem, 1.2vw, 1.1rem);
+  --h1: clamp(2.25rem, 8vw, 5.5rem);
+  --h2: clamp(1.75rem, 5vw, 3rem);
+  --h3: clamp(1.15rem, 3vw, 1.45rem);
+  --body: clamp(0.88rem, 1.2vw, 1.05rem);
   --caption: 0.8rem;
 
   --h1-weight: 800;
@@ -177,10 +177,111 @@ ul {
   100% { transform: translateX(0); }
 }
 
-/* ── Responsive section padding helper ── */
+/* ── Premium CTA Glow Buttons ── */
+.cta-gold-glow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.2rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #C5B358 100%);
+  background-size: 200% auto;
+  color: #000 !important;
+  font-family: var(--font-body);
+  font-weight: 750;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(212,175,55,0.25), 0 0 30px rgba(212,175,55,0.1) inset;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.cta-gold-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.cta-gold-glow:hover {
+  transform: translateY(-4px) scale(1.03);
+  background-position: right center;
+  box-shadow: 0 15px 35px rgba(212,175,55,0.45), 0 0 25px rgba(212,175,55,0.2) inset;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cta-gold-glow:hover::before {
+  left: 100%;
+}
+
+.cta-gold-glow:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.cta-dark-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.2rem;
+  border-radius: 10px;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(12px);
+  color: #fff !important;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(212,175,55,0.3);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-dark-premium:hover {
+  transform: translateY(-4px);
+  background: rgba(212,175,55,0.06);
+  border-color: rgba(212,175,55,0.8);
+  box-shadow: 0 10px 25px rgba(212,175,55,0.15);
+}
+
+/* ── Responsive section padding helper & overrides ── */
 @media (max-width: 768px) {
   :root {
     --section-py: 64px;
     --section-header-gap: 3rem;
+  }
+  
+  /* Prevent horizontal scrolling on mobile and optimize speed */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Universal grid optimization on mobile */
+  div[style*="gridTemplateColumns"],
+  section div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Form padding adjustments */
+  .contact-info-col, .contact-form-col {
+    padding: 2rem 1.25rem !important;
+    flex: 1 1 100% !important;
   }
 }

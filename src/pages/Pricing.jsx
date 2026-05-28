@@ -6,6 +6,7 @@ import BentoGrid from '../components/pricing/BentoGrid'
 import Media from '../components/home/Media'
 import DottedSurface from '../components/home/DottedSurface'
 import Hills from '../components/glsl/Hills'
+import EmiModal from '../components/ui/EmiModal'
 
 const PricingLoader = () => {
   return (
@@ -68,9 +69,19 @@ const pricingTiers = [
     phase: "Phase 01",
     name: "Starter Plan",
     target: "Baseline engineering for portfolio, resume, and algorithmic visibility.",
-    price: "299",
-    maxPrice: "499",
-    period: "per month",
+    monthly: {
+      price: "299",
+      maxPrice: "499",
+      period: "per month",
+      totalAmount: 499
+    },
+    yearly: {
+      price: "249",
+      maxPrice: "415",
+      period: "per month",
+      billedAnnually: "2,990 — 4,990",
+      totalAmount: 4990
+    },
     features: [
       "Digital Portfolio Engine",
       "Professional Resume Polishing",
@@ -84,9 +95,19 @@ const pricingTiers = [
     phase: "Phase 02",
     name: "Growth Plan",
     target: "High-performers ready to aggressively capture major roles.",
-    price: "999",
-    maxPrice: "1,999",
-    period: "per month",
+    monthly: {
+      price: "999",
+      maxPrice: "1,999",
+      period: "per month",
+      totalAmount: 1999
+    },
+    yearly: {
+      price: "832",
+      maxPrice: "1,665",
+      period: "per month",
+      billedAnnually: "9,990 — 19,990",
+      totalAmount: 19990
+    },
     features: [
       "Custom ATS Keyword Integration",
       "Tailored Resume Engineering",
@@ -100,8 +121,17 @@ const pricingTiers = [
     phase: "Phase 03",
     name: "Premium Plan",
     target: "Ultimate personal-brand architecture for absolute market dominance.",
-    price: "18,000+",
-    period: "per 3 months",
+    monthly: {
+      price: "18,000+",
+      period: "per 3 months",
+      totalAmount: 18000
+    },
+    yearly: {
+      price: "4,990",
+      period: "per month",
+      billedAnnually: "59,900",
+      totalAmount: 59900
+    },
     features: [
       "Full Brand Architecture",
       "Managed LinkedIn Content Stream",
@@ -115,6 +145,9 @@ const pricingTiers = [
 
 const Pricing = () => {
   const [isLoading, setIsLoading] = useState(true)
+  const [billingCycle, setBillingCycle] = useState('monthly')
+  const [emiModalOpen, setEmiModalOpen] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState({ name: '', amount: 0 })
 
   useEffect(() => {
     if (!window.location.hash) {
@@ -143,7 +176,7 @@ const Pricing = () => {
 
   return (
     <div style={{ backgroundColor: '#050505', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.2 }}>
+      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.55 }}>
         <Hills color="#22c55e" />
       </div>
       <AnimatePresence>
@@ -165,7 +198,7 @@ const Pricing = () => {
               {/* Hero section for pricing */}
               <section style={{ 
                 paddingTop: '160px', 
-                paddingBottom: '4rem', 
+                paddingBottom: '2rem', 
                 textAlign: 'center', 
                 position: 'relative'
               }}>
@@ -186,11 +219,70 @@ const Pricing = () => {
                   <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800, color: '#fff', marginBottom: '1rem' }}>
                     Transparent Pricing
                   </h1>
-                  <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem', lineHeight: 1.6 }}>
+                  <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto 2rem', fontSize: '1.1rem', lineHeight: 1.6 }}>
                     Choose the architecture that fits your current velocity. Designed exclusively for students, graduates, and high-performers.
                   </p>
                 </div>
               </section>
+
+              {/* Billing Cycle Switcher */}
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '4rem', position: 'relative', zIndex: 11 }}>
+                <div style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  padding: '0.3rem',
+                  borderRadius: '100px',
+                  display: 'flex',
+                  gap: '0.2rem',
+                  position: 'relative'
+                }}>
+                  <button
+                    onClick={() => setBillingCycle('monthly')}
+                    style={{
+                      padding: '0.6rem 1.6rem',
+                      borderRadius: '100px',
+                      border: 'none',
+                      background: billingCycle === 'monthly' ? '#22c55e' : 'transparent',
+                      color: billingCycle === 'monthly' ? '#000' : '#888',
+                      fontWeight: 700,
+                      fontSize: '0.88rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s'
+                    }}
+                  >
+                    Monthly
+                  </button>
+                  <button
+                    onClick={() => setBillingCycle('yearly')}
+                    style={{
+                      padding: '0.6rem 1.6rem',
+                      borderRadius: '100px',
+                      border: 'none',
+                      background: billingCycle === 'yearly' ? '#22c55e' : 'transparent',
+                      color: billingCycle === 'yearly' ? '#000' : '#888',
+                      fontWeight: 700,
+                      fontSize: '0.88rem',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.4rem'
+                    }}
+                  >
+                    Yearly
+                    <span style={{
+                      background: billingCycle === 'yearly' ? 'rgba(0,0,0,0.15)' : 'rgba(34,197,94,0.15)',
+                      color: billingCycle === 'yearly' ? '#000' : '#22c55e',
+                      fontSize: '0.65rem',
+                      padding: '0.1rem 0.4rem',
+                      borderRadius: '4px',
+                      fontWeight: 700
+                    }}>
+                      Save ~17%
+                    </span>
+                  </button>
+                </div>
+              </div>
 
               {/* Pricing Table (Modern Layout) */}
               <section style={{ padding: '0 2rem 3rem', position: 'relative', zIndex: 10 }}>
@@ -198,107 +290,166 @@ const Pricing = () => {
                   maxWidth: '1200px', 
                   margin: '0 auto', 
                   display: 'grid', 
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
                   gap: '2rem',
                   alignItems: 'center'
                 }}>
-                  {pricingTiers.map((tier, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: idx * 0.1 }}
-                      style={{
-                        background: tier.popular ? 'linear-gradient(180deg, rgba(20,40,20,0.9) 0%, rgba(10,20,10,0.95) 100%)' : 'rgba(15,15,15,0.7)',
-                        border: tier.popular ? '1px solid #22c55e' : '1px solid rgba(255,255,255,0.08)',
-                        borderRadius: '24px',
-                        padding: '3rem 2rem',
-                        position: 'relative',
-                        transform: tier.popular ? 'scale(1.05)' : 'scale(1)',
-                        boxShadow: tier.popular ? '0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(34,197,94,0.15)' : 'none',
-                        zIndex: tier.popular ? 2 : 1
-                      }}
-                      className="modern-pricing-card"
-                    >
-                      <style>{`
-                        .modern-pricing-card:hover { transform: ${tier.popular ? 'scale(1.05) translateY(-5px)' : 'scale(1) translateY(-5px)'}; border-color: rgba(34,197,94,0.5); }
-                        @media (max-width: 1024px) {
-                          .modern-pricing-card { transform: scale(1) !important; }
-                        }
-                      `}</style>
-                      
-                      {tier.popular && (
-                        <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', background: '#22c55e', color: '#000', padding: '0.4rem 1.2rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em' }}>
-                          MOST POPULAR
-                        </div>
-                      )}
-
-                      <div style={{ color: '#22c55e', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '1rem', textTransform: 'uppercase' }}>
-                        {tier.phase}
-                      </div>
-                      <h3 style={{ fontSize: '2rem', fontWeight: 700, color: '#fff', fontFamily: 'var(--font-heading)', marginBottom: '0.5rem' }}>
-                        {tier.name}
-                      </h3>
-                      <p style={{ color: '#A8A8A8', fontSize: '0.9rem', lineHeight: 1.6, minHeight: '60px', marginBottom: '2rem' }}>
-                        {tier.target}
-                      </p>
-
-                      <div style={{ marginBottom: '2.5rem' }}>
-                        <span style={{ fontSize: '2.5rem', fontWeight: 800, color: '#fff' }}>₹{tier.price}</span>
-                        {tier.maxPrice && <span style={{ fontSize: '1.5rem', color: '#888' }}> - {tier.maxPrice}</span>}
-                        <span style={{ color: '#888', fontSize: '0.9rem', marginLeft: '0.5rem' }}>{tier.period}</span>
-                      </div>
-
-                      <a
-                        href={`https://wa.me/917075853225?text=Hello Novelleyx, I'm interested in the ${tier.name}.`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                  {pricingTiers.map((tier, idx) => {
+                    const planDetails = billingCycle === 'monthly' ? tier.monthly : tier.yearly;
+                    return (
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: idx * 0.1 }}
                         style={{
-                          display: 'block',
-                          width: '100%',
-                          textAlign: 'center',
-                          padding: '1rem',
-                          background: tier.popular ? '#22c55e' : 'transparent',
-                          border: tier.popular ? 'none' : '1px solid rgba(255,255,255,0.1)',
-                          color: tier.popular ? '#000' : '#fff',
-                          fontWeight: 700,
-                          borderRadius: '12px',
-                          marginBottom: '2.5rem',
-                          transition: 'all 0.3s ease'
+                          background: tier.popular ? 'linear-gradient(180deg, rgba(20,40,20,0.9) 0%, rgba(10,20,10,0.95) 100%)' : 'rgba(15,15,15,0.7)',
+                          border: tier.popular ? '1px solid #22c55e' : '1px solid rgba(255,255,255,0.08)',
+                          borderRadius: '24px',
+                          padding: '3.5rem 2rem 3rem',
+                          position: 'relative',
+                          transform: tier.popular ? 'scale(1.05)' : 'scale(1)',
+                          boxShadow: tier.popular ? '0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(34,197,94,0.15)' : 'none',
+                          zIndex: tier.popular ? 2 : 1
                         }}
-                        onMouseEnter={(e) => {
-                          if(!tier.popular) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
-                          else e.currentTarget.style.opacity = '0.9'
-                        }}
-                        onMouseLeave={(e) => {
-                          if(!tier.popular) e.currentTarget.style.background = 'transparent'
-                          else e.currentTarget.style.opacity = '1'
-                        }}
+                        className="modern-pricing-card"
                       >
-                        Get Started
-                      </a>
-
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                        {tier.features.map((feature, i) => (
-                          <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                            <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#22c55e' }}>
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            </div>
-                            <span style={{ color: '#D6D6D6', fontSize: '0.9rem' }}>{feature}</span>
+                        <style>{`
+                          .modern-pricing-card:hover { transform: ${tier.popular ? 'scale(1.05) translateY(-5px)' : 'scale(1) translateY(-5px)'}; border-color: rgba(34,197,94,0.5); }
+                          @media (max-width: 1024px) {
+                            .modern-pricing-card { transform: scale(1) !important; }
+                          }
+                          @media (max-width: 768px) {
+                            .modern-pricing-card {
+                              padding: 2rem 1.25rem !important;
+                            }
+                          }
+                        `}</style>
+                        
+                        {tier.popular && (
+                          <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translate(-50%, -50%)', background: '#22c55e', color: '#000', padding: '0.4rem 1.2rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em' }}>
+                            MOST POPULAR
                           </div>
-                        ))}
-                      </div>
-                    </motion.div>
-                  ))}
+                        )}
+
+                        <div style={{ color: '#22c55e', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '1rem', textTransform: 'uppercase' }}>
+                          {tier.phase}
+                        </div>
+                        <h3 style={{ fontSize: '2rem', fontWeight: 700, color: '#fff', fontFamily: 'var(--font-heading)', marginBottom: '0.5rem' }}>
+                          {tier.name}
+                        </h3>
+                        <p style={{ color: '#A8A8A8', fontSize: '0.9rem', lineHeight: 1.6, minHeight: '60px', marginBottom: '1.5rem' }}>
+                          {tier.target}
+                        </p>
+
+                        <div style={{ marginBottom: '1rem', position: 'relative' }}>
+                          <span style={{ fontSize: '2.5rem', fontWeight: 800, color: '#fff' }}>₹{planDetails.price}</span>
+                          {planDetails.maxPrice && <span style={{ fontSize: '1.5rem', color: '#888' }}> - {planDetails.maxPrice}</span>}
+                          <span style={{ color: '#888', fontSize: '0.9rem', marginLeft: '0.5rem' }}>{planDetails.period}</span>
+                          
+                          {billingCycle === 'yearly' && (
+                            <div style={{ color: '#22c55e', fontSize: '0.8rem', marginTop: '0.3rem', fontWeight: 600 }}>
+                              Billed annually: ₹{planDetails.billedAnnually}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* EMI Badge & Modal Trigger */}
+                        <div style={{ marginBottom: '2.2rem', minHeight: '26px' }}>
+                          {billingCycle === 'yearly' ? (
+                            <button
+                              onClick={() => {
+                                setSelectedPlan({
+                                  name: `${tier.name} (Yearly)`,
+                                  amount: planDetails.totalAmount
+                                })
+                                setEmiModalOpen(true)
+                              }}
+                              style={{
+                                background: 'transparent',
+                                border: 'none',
+                                color: '#D4AF37',
+                                fontSize: '0.8rem',
+                                padding: 0,
+                                textDecoration: 'underline',
+                                cursor: 'pointer',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.3rem',
+                                fontWeight: 700
+                              }}
+                              onMouseEnter={(e) => e.currentTarget.style.color = '#FFD166'}
+                              onMouseLeave={(e) => e.currentTarget.style.color = '#D4AF37'}
+                            >
+                              No-Cost EMI available from ₹{Math.round(planDetails.totalAmount / 12)}/mo
+                            </button>
+                          ) : (
+                            <div style={{ fontSize: '0.8rem', color: '#555' }}>Standard billing terms apply</div>
+                          )}
+                        </div>
+
+                        <a
+                          href={`https://wa.me/917075853225?text=${encodeURIComponent(
+                            `Hello NovelleyX, I am interested in the ${tier.name} (${billingCycle === 'monthly' ? 'Monthly' : 'Yearly'}) plan.`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: 'block',
+                            width: '100%',
+                            textAlign: 'center',
+                            padding: '1rem',
+                            background: tier.popular ? '#22c55e' : 'transparent',
+                            border: tier.popular ? 'none' : '1px solid rgba(255,255,255,0.1)',
+                            color: tier.popular ? '#000' : '#fff',
+                            fontWeight: 700,
+                            borderRadius: '12px',
+                            marginBottom: '2.5rem',
+                            transition: 'all 0.3s ease'
+                          }}
+                          onMouseEnter={(e) => {
+                            if(!tier.popular) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+                            else e.currentTarget.style.opacity = '0.9'
+                          }}
+                          onMouseLeave={(e) => {
+                            if(!tier.popular) e.currentTarget.style.background = 'transparent'
+                            else e.currentTarget.style.opacity = '1'
+                          }}
+                        >
+                          Get Started
+                        </a>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                          {tier.features.map((feature, i) => (
+                            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                              <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'rgba(34,197,94,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#22c55e' }}>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                              </div>
+                              <span style={{ color: '#D6D6D6', fontSize: '0.9rem' }}>{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )
+                  })}
                 </div>
               </section>
 
-              <BentoGrid />
+              <BentoGrid billingCycle={billingCycle} />
               <Media />
             </motion.div>
           </main>
           <Footer />
+
+          {/* EMI Options Modal */}
+          <EmiModal 
+            isOpen={emiModalOpen} 
+            onClose={() => setEmiModalOpen(false)} 
+            planName={selectedPlan.name} 
+            totalAmount={selectedPlan.amount}
+            accentColor="#22c55e"
+          />
         </>
       )}
     </div>

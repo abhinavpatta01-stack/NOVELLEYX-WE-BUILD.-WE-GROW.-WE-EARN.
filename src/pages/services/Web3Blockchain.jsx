@@ -12,8 +12,8 @@ const Web3Blockchain = () => {
 
   return (
     <div style={{ backgroundColor: '#050505', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.2 }}>
-        <Hills color="#22c55e" />
+      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.55 }}>
+        <Hills color="#a855f7" />
       </div>
       <Navbar />
       

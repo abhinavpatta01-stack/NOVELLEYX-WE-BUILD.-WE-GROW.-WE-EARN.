@@ -7,51 +7,61 @@ const servicesData = [
   {
     icon: <Sparkles size={24} color="#D4AF37" />,
     title: "Brand Architecture",
+    glowColor: "rgba(212,175,55,0.22)",
     desc: "We construct strategic brand frameworks that secure elite market positioning. From visual identity to core messaging, we build the foundation required for lasting industry authority and trust."
   },
   {
     icon: <MonitorSmartphone size={24} color="#D4AF37" />,
     title: "Website Systems",
+    glowColor: "rgba(34,197,94,0.22)",
     desc: "We engineer high-performance, SEO-optimized digital platforms. These aren't just websites; they are conversion engines designed with immersive UI and seamless functionality."
   },
   {
     icon: <TrendingUp size={24} color="#D4AF37" />,
     title: "Social Media Growth",
+    glowColor: "rgba(236,72,153,0.22)",
     desc: "We deploy curated growth engines to build premium audiences systematically. By decoding platform algorithms, we scale your influence and capture targeted demographics."
   },
   {
     icon: <Search size={24} color="#D4AF37" />,
     title: "SEO Optimization",
+    glowColor: "rgba(6,182,212,0.22)",
     desc: "Achieve authority-driven organic visibility through precision keyword engineering. We optimize your digital footprint so your brand ranks at the top when it matters most."
   },
   {
     icon: <Video size={24} color="#D4AF37" />,
     title: "Content Production",
+    glowColor: "rgba(239,68,68,0.22)",
     desc: "Deliver your message through cinematic storytelling and editorial content. We craft high-end visual narratives that elevate your brand's perception."
   },
   {
     icon: <Bot size={24} color="#D4AF37" />,
     title: "AI Integration",
+    glowColor: "rgba(99,102,241,0.22)",
     desc: "Deploy intelligent automation into your workflows. We integrate custom AI agents and chatbots to streamline operations and enhance client interactions 24/7."
   },
   {
     icon: <BrainCircuit size={24} color="#D4AF37" />,
     title: "Personal Branding",
+    glowColor: "rgba(245,158,11,0.22)",
     desc: "Executive presence engineering for founders and leaders. We build your individual authority halo to establish thought leadership and open elite networking channels."
   },
   {
     icon: <LineChart size={24} color="#D4AF37" />,
     title: "Performance Marketing",
+    glowColor: "rgba(139,92,246,0.22)",
     desc: "Data-driven paid acquisition systems. We manage high-converting ad campaigns across Google and Meta platforms to generate immediate, scalable ROI."
   },
   {
     icon: <Globe size={24} color="#D4AF37" />,
     title: "Web3 & Blockchain",
+    glowColor: "rgba(217,70,239,0.22)",
     desc: "Navigate the decentralized frontier. We provide strategic consulting and aesthetic web architecture for emerging Web3, crypto, and blockchain projects."
   },
   {
     icon: <Palette size={24} color="#D4AF37" />,
     title: "UI/UX Engineering",
+    glowColor: "rgba(14,165,233,0.22)",
     desc: "Craft frictionless user journeys. We design intuitive, aesthetically superior interfaces that reduce bounce rates and maximize user retention for your software."
   }
 ]
@@ -112,6 +122,13 @@ const ServicesGrid = () => {
           .hide-scroll::-webkit-scrollbar { display: none; }
           .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
           .service-panel-card:hover { border-color: rgba(212,175,55,0.4) !important; transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+          @media (max-width: 768px) {
+            .services-scroll-card {
+              min-width: 280px !important;
+              width: 280px !important;
+              padding: 1.5rem !important;
+            }
+          }
         `}</style>
 
         {/* Scrolling Panel */}
@@ -133,6 +150,7 @@ const ServicesGrid = () => {
           {servicesData.map((service, index) => (
             <motion.div
               key={index}
+              data-glow-color={service.glowColor}
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -150,7 +168,7 @@ const ServicesGrid = () => {
                 flexDirection: 'column',
                 transition: 'all 0.3s ease'
               }}
-              className="service-panel-card"
+              className="service-panel-card services-scroll-card"
               onClick={() => {
                 window.scrollTo(0, 0)
                 const slug = service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')

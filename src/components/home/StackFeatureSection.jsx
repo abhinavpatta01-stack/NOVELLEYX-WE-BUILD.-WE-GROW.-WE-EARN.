@@ -36,6 +36,7 @@ const stackData = [
 const StackCard = ({ data, index, total }) => {
   return (
     <div
+      className="stack-card-wrapper"
       style={{
         position: 'sticky',
         top: `calc(50vh - 150px + ${index * 20}px)`,
@@ -113,7 +114,7 @@ const StackFeatureSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          style={{ textAlign: 'center', marginBottom: '8rem' }}
+          style={{ textAlign: 'center', marginBottom: '6rem' }}
         >
           <span style={{ 
             display: 'inline-block', fontSize: 'var(--caption)', fontWeight: 600, 
@@ -141,6 +142,26 @@ const StackFeatureSection = () => {
         </div>
         
       </div>
+      
+      <style>{`
+        .stack-card {
+          transition: all 0.3s;
+        }
+        @media (max-width: 768px) {
+          .stack-card {
+            flex-direction: column !important;
+            gap: 1.25rem !important;
+            padding: 1.75rem !important;
+            min-height: auto !important;
+          }
+          .stack-card-wrapper {
+            position: relative !important;
+            top: auto !important;
+            padding-top: 0 !important;
+            margin-bottom: 2rem !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }
