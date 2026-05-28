@@ -422,52 +422,52 @@ const AiAutomationSection = () => {
 
                     {/* Interactive Nodes */}
                     {activeData.diagramNodes.map((node, idx) => (
-                      <g key={`${activeSystem}-node-${node.id}`} transform={`translate(${node.x}, ${node.y})`}>
-                        <motion.g
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 1 }}
-                          transition={{ type: 'spring', stiffness: 220, damping: 20, delay: idx * 0.1 }}
+                      <motion.g
+                        key={`${activeSystem}-node-${node.id}`}
+                        initial={{ scale: 0, opacity: 0, x: node.x, y: node.y }}
+                        animate={{ scale: 1, opacity: 1, x: node.x, y: node.y }}
+                        transition={{ type: 'spring', stiffness: 220, damping: 20, delay: idx * 0.1 }}
+                        style={{ originX: 0, originY: 0 }}
+                      >
+                        {/* Outer glow ring */}
+                        <circle
+                          r="10"
+                          fill="none"
+                          stroke={node.type === 'target' ? 'rgba(212,175,55,0.2)' : 'rgba(255,255,255,0.05)'}
+                          strokeWidth="1"
+                        />
+                        {/* Main dot */}
+                        <circle
+                          r="6"
+                          fill={node.type === 'source' ? '#333' : node.type === 'target' ? '#D4AF37' : '#1a1a1a'}
+                          stroke={node.type === 'target' ? '#fff' : '#D4AF37'}
+                          strokeWidth="2"
+                          style={{ filter: node.type === 'target' ? `url(#svgGlow-${activeSystem})` : 'none' }}
+                        />
+                        {/* Label background */}
+                        <rect
+                          x="-62"
+                          y="16"
+                          width="124"
+                          height="26"
+                          rx="6"
+                          fill="rgba(10,10,10,0.95)"
+                          stroke={node.type === 'target' ? 'rgba(212,175,55,0.35)' : 'rgba(212,175,55,0.15)'}
+                          strokeWidth="1"
+                        />
+                        {/* Label text */}
+                        <text
+                          y="33"
+                          fill={node.type === 'target' ? '#D4AF37' : '#ffffff'}
+                          fontSize="9"
+                          fontWeight="700"
+                          textAnchor="middle"
+                          fontFamily="var(--font-body)"
+                          letterSpacing="0.04em"
                         >
-                          {/* Outer glow ring */}
-                          <circle
-                            r="10"
-                            fill="none"
-                            stroke={node.type === 'target' ? 'rgba(212,175,55,0.2)' : 'rgba(255,255,255,0.05)'}
-                            strokeWidth="1"
-                          />
-                          {/* Main dot */}
-                          <circle
-                            r="6"
-                            fill={node.type === 'source' ? '#333' : node.type === 'target' ? '#D4AF37' : '#1a1a1a'}
-                            stroke={node.type === 'target' ? '#fff' : '#D4AF37'}
-                            strokeWidth="2"
-                            style={{ filter: node.type === 'target' ? `url(#svgGlow-${activeSystem})` : 'none' }}
-                          />
-                          {/* Label background */}
-                          <rect
-                            x="-62"
-                            y="16"
-                            width="124"
-                            height="26"
-                            rx="6"
-                            fill="rgba(10,10,10,0.95)"
-                            stroke={node.type === 'target' ? 'rgba(212,175,55,0.35)' : 'rgba(212,175,55,0.15)'}
-                            strokeWidth="1"
-                          />
-                          {/* Label text */}
-                          <text
-                            y="33"
-                            fill={node.type === 'target' ? '#D4AF37' : '#ffffff'}
-                            fontSize="9"
-                            fontWeight="700"
-                            textAnchor="middle"
-                            fontFamily="var(--font-body)"
-                            letterSpacing="0.04em"
-                          >
-                            {node.label}
-                          </text>
-                        </motion.g>
-                      </g>
+                          {node.label}
+                        </text>
+                      </motion.g>
                     ))}
                   </svg>
                 </motion.div>
