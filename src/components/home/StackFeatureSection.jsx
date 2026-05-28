@@ -176,13 +176,15 @@ const StackFeatureSection = () => {
                         }}>
                           {phase.icon}
                         </div>
-                        <span style={{ fontSize: 'var(--caption)', fontWeight: 700, color: '#D4AF37', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                          {phase.phase}
-                        </span>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                          <span style={{ fontSize: 'var(--caption)', fontWeight: 700, color: '#D4AF37', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                            {phase.phase}
+                          </span>
+                          <span style={{ fontSize: '0.8rem', color: '#666', fontWeight: 600, letterSpacing: '0.02em', marginTop: '0.1rem' }}>
+                            {phase.timeframe}
+                          </span>
+                        </div>
                       </div>
-                      <span style={{ fontSize: '0.8rem', color: '#666', fontWeight: 600, letterSpacing: '0.02em' }}>
-                        {phase.timeframe}
-                      </span>
                     </div>
 
                     {/* Title */}

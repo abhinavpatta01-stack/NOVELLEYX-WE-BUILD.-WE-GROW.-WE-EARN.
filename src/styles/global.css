@@ -102,6 +102,10 @@ ul {
   list-style: none;
 }
 
+/* ── Hidden Scrollbar Utility ── */
+.hide-scroll::-webkit-scrollbar { display: none; }
+.hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* ── Section Label (overline / badge) ── */
 .section-label {
   display: inline-block;

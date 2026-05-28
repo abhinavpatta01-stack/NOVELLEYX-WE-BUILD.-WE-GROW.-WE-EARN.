@@ -6,13 +6,14 @@ const automationSystems = [
   {
     id: 'whatsapp',
     title: 'WhatsApp Automation Hub',
-    icon: <MessageSquare size={22} color="#D4AF37" />,
+    shortTitle: 'WhatsApp',
+    icon: <MessageSquare size={18} color="#D4AF37" />,
     desc: 'Instant, automated conversational funnel that pre-qualifies incoming prospects and hooks directly into calendar bookings, eliminating manual delays.',
     pros: ['Sub-second latency auto-replies', 'NLP lead qualification rules', 'Direct WhatsApp-to-Calendly scheduling', 'Automatic voice note transcription'],
     diagramNodes: [
-      { id: 'n-wa-1', label: 'Incoming WhatsApp', x: 65, y: 110, type: 'source' },
-      { id: 'n-wa-2', label: 'AI Qualifier Agent', x: 240, y: 110, type: 'process' },
-      { id: 'n-wa-3', label: 'CRM / Calendar', x: 415, y: 110, type: 'target' }
+      { id: 'n-wa-1', label: 'Incoming WhatsApp', x: 80, y: 90, type: 'source' },
+      { id: 'n-wa-2', label: 'AI Qualifier Agent', x: 240, y: 90, type: 'process' },
+      { id: 'n-wa-3', label: 'CRM / Calendar', x: 400, y: 90, type: 'target' }
     ],
     diagramPaths: [
       { from: 'n-wa-1', to: 'n-wa-2', pulse: true },
@@ -39,14 +40,15 @@ const automationSystems = [
   {
     id: 'chatbots',
     title: 'AI Chatbot Integration',
-    icon: <Bot size={22} color="#D4AF37" />,
+    shortTitle: 'AI Chatbots',
+    icon: <Bot size={18} color="#D4AF37" />,
     desc: 'Bespoke customer support and consultation agents trained on custom knowledge bases. Resolves up to 80% of support queries autonomously with human-like accuracy.',
     pros: ['RAG vector databases for source truth', 'Automatic fallback to human staff', 'Semantic sentiment scoring', 'Multi-lingual capability support'],
     diagramNodes: [
-      { id: 'n-cb-1', label: 'Web / App Query', x: 65, y: 65, type: 'source' },
-      { id: 'n-cb-2', label: 'RAG Knowledge DB', x: 240, y: 65, type: 'process' },
-      { id: 'n-cb-3', label: 'Chatbot Output', x: 240, y: 155, type: 'process' },
-      { id: 'n-cb-4', label: 'Instant Resolution', x: 415, y: 110, type: 'target' }
+      { id: 'n-cb-1', label: 'Web / App Query', x: 80, y: 55, type: 'source' },
+      { id: 'n-cb-2', label: 'RAG Knowledge DB', x: 240, y: 55, type: 'process' },
+      { id: 'n-cb-3', label: 'Chatbot Output', x: 240, y: 135, type: 'process' },
+      { id: 'n-cb-4', label: 'Instant Resolution', x: 400, y: 90, type: 'target' }
     ],
     diagramPaths: [
       { from: 'n-cb-1', to: 'n-cb-2', pulse: true },
@@ -74,14 +76,15 @@ const automationSystems = [
   {
     id: 'crm',
     title: 'CRM Automation Pipeline',
-    icon: <Database size={22} color="#D4AF37" />,
+    shortTitle: 'CRM Pipeline',
+    icon: <Database size={18} color="#D4AF37" />,
     desc: 'Connect all touchpoints to a central database. We sync lead variables, prioritize conversions based on scoring algorithms, and trigger notifications instantly.',
     pros: ['Zero-friction data syncing', 'Score-based prioritization algorithms', 'Instant Slack/Discord team pings', 'Automated email sequence drip loops'],
     diagramNodes: [
-      { id: 'n-crm-1', label: 'Incoming Profile', x: 65, y: 110, type: 'source' },
-      { id: 'n-crm-2', label: 'CRM Sync Engine', x: 240, y: 110, type: 'process' },
-      { id: 'n-crm-3', label: 'Slack Alert', x: 415, y: 65, type: 'target' },
-      { id: 'n-crm-4', label: 'Email Auto-Drip', x: 415, y: 155, type: 'target' }
+      { id: 'n-crm-1', label: 'Incoming Profile', x: 80, y: 90, type: 'source' },
+      { id: 'n-crm-2', label: 'CRM Sync Engine', x: 240, y: 90, type: 'process' },
+      { id: 'n-crm-3', label: 'Slack Alert', x: 400, y: 50, type: 'target' },
+      { id: 'n-crm-4', label: 'Email Auto-Drip', x: 400, y: 130, type: 'target' }
     ],
     diagramPaths: [
       { from: 'n-crm-1', to: 'n-crm-2', pulse: true },
@@ -109,13 +112,14 @@ const automationSystems = [
   {
     id: 'leadgen',
     title: 'AI Lead Generation Engine',
-    icon: <UserCheck size={22} color="#D4AF37" />,
+    shortTitle: 'Lead Gen',
+    icon: <UserCheck size={18} color="#D4AF37" />,
     desc: 'Autonomous scraper and enrichment pipelines that identify target companies, verify contact data, write highly personalized copy, and run outreach campaign loops.',
     pros: ['Verified contact data enrichment', 'Personalized dynamic copy AI', 'Spam-safe domain rotations', 'Automated LinkedIn hook triggers'],
     diagramNodes: [
-      { id: 'n-lg-1', label: 'Data Enrichment', x: 65, y: 110, type: 'source' },
-      { id: 'n-lg-2', label: 'Dynamic Mail AI', x: 240, y: 110, type: 'process' },
-      { id: 'n-lg-3', label: 'Rotated SMTP Hub', x: 415, y: 110, type: 'target' }
+      { id: 'n-lg-1', label: 'Data Enrichment', x: 80, y: 90, type: 'source' },
+      { id: 'n-lg-2', label: 'Dynamic Mail AI', x: 240, y: 90, type: 'process' },
+      { id: 'n-lg-3', label: 'Rotated SMTP Hub', x: 400, y: 90, type: 'target' }
     ],
     diagramPaths: [
       { from: 'n-lg-1', to: 'n-lg-2', pulse: true },
@@ -146,23 +150,27 @@ const AiAutomationSection = () => {
   const activeData = automationSystems.find(s => s.id === activeSystem) || automationSystems[0]
 
   const [logs, setLogs] = useState([])
-  const [logIndex, setLogIndex] = useState(4)
+  const logIndexRef = useRef(4) // Use ref to avoid stale closure
   const logsContainerRef = useRef(null)
 
-  // System status simulation logic
+  // System status simulation logic — uses ref for index to avoid stale closure bug
   useEffect(() => {
     const systemLogs = activeData.systemLogs
     // Initialize with first 4 logs
     setLogs(systemLogs.slice(0, 4))
-    setLogIndex(4)
+    logIndexRef.current = 4
 
     const interval = setInterval(() => {
-      setLogs(prev => {
-        const nextLogs = [...prev, systemLogs[logIndex]]
-        if (nextLogs.length > 5) nextLogs.shift() // keep last 5 logs for styling space
-        return nextLogs
-      })
-      setLogIndex(prev => (prev + 1) % systemLogs.length)
+      const currentIndex = logIndexRef.current
+      const nextLog = systemLogs[currentIndex]
+      if (nextLog) {
+        setLogs(prev => {
+          const nextLogs = [...prev, nextLog]
+          if (nextLogs.length > 5) nextLogs.shift()
+          return nextLogs
+        })
+      }
+      logIndexRef.current = (currentIndex + 1) % systemLogs.length
     }, 3200)
 
     return () => clearInterval(interval)
@@ -189,6 +197,42 @@ const AiAutomationSection = () => {
         pointerEvents: 'none', zIndex: 0
       }} />
 
+      {/* Styles — defined ONCE, outside any loop */}
+      <style>{`
+        .ai-auto-tab-btn:hover {
+          border-color: rgba(212,175,55,0.5) !important;
+          background: rgba(212,175,55,0.06) !important;
+          color: #fff !important;
+        }
+        .console-lower-grid {
+          display: grid;
+          grid-template-columns: 1.25fr 1fr;
+          gap: 1.2rem;
+        }
+        .ai-auto-tabs-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.6rem;
+        }
+        @media (max-width: 768px) {
+          .ai-auto-tabs-row {
+            gap: 0.5rem;
+          }
+          .ai-auto-tabs-row button {
+            font-size: 0.78rem !important;
+            padding: 0.6rem 1rem !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .console-lower-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+        }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+
       <div style={{ width: 'min(1280px, 92%)', marginInline: 'auto', position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
@@ -213,76 +257,83 @@ const AiAutomationSection = () => {
           </p>
         </div>
 
+        {/* Horizontal System Tabs — pill-style buttons, all visible */}
+        <div className="ai-auto-tabs-row" style={{ justifyContent: 'center', marginBottom: '3rem' }}>
+          {automationSystems.map(sys => (
+            <button
+              key={sys.id}
+              onClick={() => setActiveSystem(sys.id)}
+              className="ai-auto-tab-btn"
+              style={{
+                display: 'flex', alignItems: 'center', gap: '0.6rem',
+                padding: '0.75rem 1.4rem', borderRadius: '100px',
+                background: activeSystem === sys.id ? 'rgba(212,175,55,0.1)' : 'rgba(255,255,255,0.02)',
+                border: activeSystem === sys.id ? '1px solid #D4AF37' : '1px solid rgba(255,255,255,0.08)',
+                color: activeSystem === sys.id ? '#D4AF37' : '#888',
+                fontFamily: 'var(--font-body)', fontSize: '0.88rem', fontWeight: 600,
+                cursor: 'pointer', textAlign: 'left', transition: 'all 0.3s ease',
+                whiteSpace: 'nowrap'
+              }}
+            >
+              <span style={{
+                width: '30px', height: '30px', borderRadius: '50%',
+                background: activeSystem === sys.id ? 'rgba(212,175,55,0.15)' : 'rgba(255,255,255,0.03)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                border: activeSystem === sys.id ? '1px solid rgba(212,175,55,0.3)' : '1px solid transparent',
+                transition: 'all 0.3s', flexShrink: 0
+              }}>
+                {sys.icon}
+              </span>
+              <span>{sys.shortTitle}</span>
+            </button>
+          ))}
+        </div>
+
         {/* Dynamic Interactive Layout */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'flex-start' }}>
           
-          {/* Left Column: Selector and Details */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            {/* System Select Tabs */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-              {automationSystems.map(sys => (
-                <button
-                   key={sys.id}
-                   onClick={() => setActiveSystem(sys.id)}
-                   style={{
-                     display: 'flex', alignItems: 'center', gap: '1rem',
-                     padding: '1.2rem 1.5rem', borderRadius: '14px',
-                     background: activeSystem === sys.id ? 'rgba(212,175,55,0.06)' : 'rgba(255,255,255,0.02)',
-                     border: activeSystem === sys.id ? '1px solid #D4AF37' : '1px solid rgba(255,255,255,0.06)',
-                     color: activeSystem === sys.id ? '#fff' : '#888',
-                     fontFamily: 'var(--font-body)', fontSize: '0.95rem', fontWeight: 600,
-                     cursor: 'pointer', textAlign: 'left', transition: 'all 0.3s ease'
-                   }}
-                   className="automation-tab-btn"
-                >
-                  <div style={{
-                    width: '38px', height: '38px', borderRadius: '10px',
-                    background: activeSystem === sys.id ? 'rgba(212,175,55,0.1)' : 'rgba(255,255,255,0.02)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    border: activeSystem === sys.id ? '1px solid rgba(212,175,55,0.2)' : '1px solid transparent',
-                    transition: 'all 0.3s'
-                  }}>
-                    {sys.icon}
-                  </div>
-                  <span>{sys.title}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* System Details Box */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeSystem}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4 }}
-                style={{
-                  background: 'rgba(255,255,255,0.01)',
-                  border: '1px solid rgba(255,255,255,0.04)',
-                  padding: '2.5rem', borderRadius: '20px'
-                }}
-              >
+          {/* Left Column: System Details */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSystem}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4 }}
+              style={{
+                background: 'rgba(255,255,255,0.01)',
+                border: '1px solid rgba(255,255,255,0.04)',
+                padding: '2.5rem', borderRadius: '20px'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.2rem' }}>
+                <div style={{
+                  width: '42px', height: '42px', borderRadius: '12px',
+                  background: 'rgba(212,175,55,0.08)', border: '1px solid rgba(212,175,55,0.2)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
+                }}>
+                  {activeData.icon}
+                </div>
                 <h3 style={{
                   fontFamily: 'var(--font-heading)', fontSize: 'var(--h3)',
-                  fontWeight: 'var(--h3-weight)', color: '#fff', marginBottom: '1rem'
+                  fontWeight: 'var(--h3-weight)', color: '#fff', margin: 0
                 }}>
                   {activeData.title}
                 </h3>
-                <p style={{ fontSize: '0.95rem', color: '#A8A8A8', lineHeight: 1.7, marginBottom: '1.8rem' }}>
-                  {activeData.desc}
-                </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                  {activeData.pros.map((pro, idx) => (
-                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: '#D6D6D6', fontSize: '0.88rem' }}>
-                      <Zap size={14} color="#D4AF37" style={{ flexShrink: 0 }} />
-                      <span>{pro}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              </div>
+              <p style={{ fontSize: '0.95rem', color: '#A8A8A8', lineHeight: 1.7, marginBottom: '1.8rem' }}>
+                {activeData.desc}
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                {activeData.pros.map((pro, idx) => (
+                  <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: '#D6D6D6', fontSize: '0.88rem' }}>
+                    <Zap size={14} color="#D4AF37" style={{ flexShrink: 0 }} />
+                    <span>{pro}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
           {/* Right Column: Integrated AI Systems Console */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
@@ -308,106 +359,122 @@ const AiAutomationSection = () => {
               </div>
 
               {/* Upper Section: SVG Interactive Workflow Diagram */}
-              <div style={{ position: 'relative', width: '100%', height: '190px' }}>
-                <svg viewBox="0 0 480 180" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
-                  <defs>
-                    <linearGradient id="flowGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="rgba(212,175,55,0.1)" />
-                      <stop offset="50%" stopColor="#D4AF37" />
-                      <stop offset="100%" stopColor="rgba(212,175,55,0.1)" />
-                    </linearGradient>
-                    <filter id="svgGlow" x="-20%" y="-20%" width="140%" height="140%">
-                      <feGaussianBlur stdDeviation="5" result="blur" />
-                      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
-                  </defs>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`diagram-${activeSystem}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ position: 'relative', width: '100%', height: '200px' }}
+                >
+                  <svg viewBox="0 0 480 180" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
+                    <defs>
+                      <linearGradient id={`flowGlow-${activeSystem}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="rgba(212,175,55,0.1)" />
+                        <stop offset="50%" stopColor="#D4AF37" />
+                        <stop offset="100%" stopColor="rgba(212,175,55,0.1)" />
+                      </linearGradient>
+                      <filter id={`svgGlow-${activeSystem}`} x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="4" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                      </filter>
+                    </defs>
 
-                  {/* Connection Paths */}
-                  {activeData.diagramPaths.map((p, idx) => {
-                    const fromNode = activeData.diagramNodes.find(n => n.id === p.from)
-                    const toNode = activeData.diagramNodes.find(n => n.id === p.to)
-                    if (!fromNode || !toNode) return null
+                    {/* Connection Paths */}
+                    {activeData.diagramPaths.map((p, idx) => {
+                      const fromNode = activeData.diagramNodes.find(n => n.id === p.from)
+                      const toNode = activeData.diagramNodes.find(n => n.id === p.to)
+                      if (!fromNode || !toNode) return null
 
-                    const dx = Math.abs(toNode.x - fromNode.x) * 0.5
-                    const dPath = `M ${fromNode.x} ${fromNode.y} C ${fromNode.x + dx} ${fromNode.y}, ${toNode.x - dx} ${toNode.y}, ${toNode.x} ${toNode.y}`
+                      const dx = Math.abs(toNode.x - fromNode.x) * 0.45
+                      const dPath = `M ${fromNode.x} ${fromNode.y} C ${fromNode.x + dx} ${fromNode.y}, ${toNode.x - dx} ${toNode.y}, ${toNode.x} ${toNode.y}`
 
-                    return (
-                      <g key={`${activeSystem}-path-${idx}`}>
-                        <path
-                          d={dPath}
-                          fill="none"
-                          stroke="rgba(255,255,255,0.06)"
-                          strokeWidth="2"
-                        />
-                        <motion.path
-                          d={dPath}
-                          fill="none"
-                          stroke="rgba(212,175,55,0.4)"
-                          strokeWidth="2"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 0.8, delay: idx * 0.2 }}
-                        />
-                        {p.pulse && (
-                          <motion.circle
-                            r="4.5"
-                            fill="#D4AF37"
-                            style={{ filter: 'url(#svgGlow)' }}
-                          >
-                            <animateMotion path={dPath} dur="2.8s" repeatCount="indefinite" />
-                          </motion.circle>
-                        )}
-                      </g>
-                    )
-                  })}
+                      return (
+                        <g key={`${activeSystem}-path-${idx}`}>
+                          <path
+                            d={dPath}
+                            fill="none"
+                            stroke="rgba(255,255,255,0.06)"
+                            strokeWidth="2"
+                          />
+                          <motion.path
+                            d={dPath}
+                            fill="none"
+                            stroke="rgba(212,175,55,0.5)"
+                            strokeWidth="2"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 1, delay: idx * 0.25 }}
+                          />
+                          {p.pulse && (
+                            <circle
+                              r="5"
+                              fill="#D4AF37"
+                              style={{ filter: `url(#svgGlow-${activeSystem})` }}
+                            >
+                              <animateMotion path={dPath} dur="2.8s" repeatCount="indefinite" />
+                            </circle>
+                          )}
+                        </g>
+                      )
+                    })}
 
-                  {/* Interactive Nodes: Using AnimatePresence mode="wait" to prevent position absolute layout collapsing */}
-                  <AnimatePresence mode="wait">
-                    {activeData.diagramNodes.map((node) => (
-                      <motion.g
-                        key={`${activeSystem}-node-${node.id}`}
-                        transform={`translate(${node.x}, ${node.y})`}
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0, opacity: 0 }}
-                        transition={{ type: 'spring', stiffness: 220, damping: 20 }}
-                      >
-                        <circle
-                          r="6"
-                          fill={node.type === 'source' ? '#333' : node.type === 'target' ? '#D4AF37' : '#1a1a1a'}
-                          stroke={node.type === 'target' ? '#fff' : '#D4AF37'}
-                          strokeWidth="2"
-                          style={{ filter: node.type === 'target' ? 'url(#svgGlow)' : 'none' }}
-                        />
-                        <rect
-                          x="-65"
-                          y="15"
-                          width="130"
-                          height="28"
-                          rx="6"
-                          fill="rgba(10,10,10,0.98)"
-                          stroke="rgba(212,175,55,0.2)"
-                          strokeWidth="1"
-                        />
-                        <text
-                          y="32"
-                          fill="#ffffff"
-                          fontSize="8.5"
-                          fontWeight="700"
-                          textAnchor="middle"
-                          fontFamily="var(--font-body)"
-                          letterSpacing="0.05em"
+                    {/* Interactive Nodes */}
+                    {activeData.diagramNodes.map((node, idx) => (
+                      <g key={`${activeSystem}-node-${node.id}`} transform={`translate(${node.x}, ${node.y})`}>
+                        <motion.g
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ type: 'spring', stiffness: 220, damping: 20, delay: idx * 0.1 }}
                         >
-                          {node.label}
-                        </text>
-                      </motion.g>
+                          {/* Outer glow ring */}
+                          <circle
+                            r="10"
+                            fill="none"
+                            stroke={node.type === 'target' ? 'rgba(212,175,55,0.2)' : 'rgba(255,255,255,0.05)'}
+                            strokeWidth="1"
+                          />
+                          {/* Main dot */}
+                          <circle
+                            r="6"
+                            fill={node.type === 'source' ? '#333' : node.type === 'target' ? '#D4AF37' : '#1a1a1a'}
+                            stroke={node.type === 'target' ? '#fff' : '#D4AF37'}
+                            strokeWidth="2"
+                            style={{ filter: node.type === 'target' ? `url(#svgGlow-${activeSystem})` : 'none' }}
+                          />
+                          {/* Label background */}
+                          <rect
+                            x="-62"
+                            y="16"
+                            width="124"
+                            height="26"
+                            rx="6"
+                            fill="rgba(10,10,10,0.95)"
+                            stroke={node.type === 'target' ? 'rgba(212,175,55,0.35)' : 'rgba(212,175,55,0.15)'}
+                            strokeWidth="1"
+                          />
+                          {/* Label text */}
+                          <text
+                            y="33"
+                            fill={node.type === 'target' ? '#D4AF37' : '#ffffff'}
+                            fontSize="9"
+                            fontWeight="700"
+                            textAnchor="middle"
+                            fontFamily="var(--font-body)"
+                            letterSpacing="0.04em"
+                          >
+                            {node.label}
+                          </text>
+                        </motion.g>
+                      </g>
                     ))}
-                  </AnimatePresence>
-                </svg>
-              </div>
+                  </svg>
+                </motion.div>
+              </AnimatePresence>
 
               {/* Separator */}
-              <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', margin: '1.2rem 0' }} />
+              <div style={{ height: '1px', background: 'rgba(255,255,255,0.06)', margin: '1rem 0' }} />
 
               {/* Lower Section: Split console logger & Real-time Metrics */}
               <div className="console-lower-grid">
@@ -421,13 +488,21 @@ const AiAutomationSection = () => {
                     </span>
                   </div>
                   <div ref={logsContainerRef} style={{ flex: 1, fontFamily: 'monospace', fontSize: '0.75rem', color: '#888', display: 'flex', flexDirection: 'column', gap: '0.5rem', overflowY: 'auto', maxHeight: '110px' }} className="hide-scroll">
-                    {logs.map((log, idx) => (
-                      <div key={idx} style={{
-                        color: log.includes('SOURCE:') ? '#D4AF37' : log.includes('AI_AGENT:') ? '#fff' : log.includes('SECURE:') ? '#22c55e' : '#A8A8A8'
-                      }}>
-                        &gt; {log}
-                      </div>
-                    ))}
+                    <AnimatePresence>
+                      {logs.map((log, idx) => (
+                        <motion.div
+                          key={`${activeSystem}-log-${idx}-${log.slice(0,20)}`}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3 }}
+                          style={{
+                            color: log.includes('SOURCE:') ? '#D4AF37' : log.includes('AI_AGENT:') ? '#fff' : log.includes('SECURE:') ? '#22c55e' : log.includes('MONITOR:') ? '#3b82f6' : '#A8A8A8'
+                          }}
+                        >
+                          &gt; {log}
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
                   </div>
                 </div>
 
@@ -441,29 +516,38 @@ const AiAutomationSection = () => {
                   </div>
                   
                   {/* Stats Grid */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem', marginBottom: '0.8rem' }}>
-                    {activeData.metrics.map((m, idx) => (
-                      <div key={idx} style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '10px', padding: '0.6rem 0.4rem', textAlign: 'center' }}>
-                        <div style={{ color: '#D4AF37', fontSize: '1.05rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>
-                          {m.value}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`metrics-${activeSystem}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.5rem', marginBottom: '0.8rem' }}
+                    >
+                      {activeData.metrics.map((m, idx) => (
+                        <div key={idx} style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '10px', padding: '0.7rem 0.4rem', textAlign: 'center' }}>
+                          <div style={{ color: '#D4AF37', fontSize: '1.1rem', fontWeight: 800, fontFamily: 'var(--font-heading)' }}>
+                            {m.value}
+                          </div>
+                          <div style={{ color: '#fff', fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', marginTop: '0.25rem', letterSpacing: '0.05em' }}>
+                            {m.label}
+                          </div>
+                          <div style={{ color: '#555', fontSize: '0.5rem', fontWeight: 500, marginTop: '0.15rem' }}>
+                            {m.sub}
+                          </div>
                         </div>
-                        <div style={{ color: '#fff', fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', marginTop: '0.2rem' }}>
-                          {m.label}
-                        </div>
-                        <div style={{ color: '#555', fontSize: '0.5rem', fontWeight: 500, marginTop: '0.1rem' }}>
-                          {m.sub}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </motion.div>
+                  </AnimatePresence>
 
                   {/* Efficiency Badge */}
                   <div style={{
                     background: 'rgba(212,175,55,0.04)',
                     border: '1px solid rgba(212,175,55,0.2)',
-                    padding: '0.5rem 0.8rem',
+                    padding: '0.6rem 0.8rem',
                     borderRadius: '8px',
-                    fontSize: '0.7rem',
+                    fontSize: '0.72rem',
                     color: '#D4AF37',
                     fontWeight: 650,
                     textAlign: 'center',
@@ -481,24 +565,6 @@ const AiAutomationSection = () => {
 
         </div>
       </div>
-
-      <style>{`
-        .automation-tab-btn:hover {
-          border-color: rgba(212,175,55,0.5) !important;
-          color: #fff !important;
-        }
-        .console-lower-grid {
-          display: grid;
-          grid-template-columns: 1.25fr 1fr;
-          gap: 1.2rem;
-        }
-        @media (max-width: 640px) {
-          .console-lower-grid {
-            grid-template-columns: 1fr !important;
-            gap: 1.5rem !important;
-          }
-        }
-      `}</style>
     </section>
   )
 }

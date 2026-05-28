@@ -15,6 +15,14 @@ import PersonalBranding from './pages/services/PersonalBranding'
 import PerformanceMarketing from './pages/services/PerformanceMarketing'
 import Web3Blockchain from './pages/services/Web3Blockchain'
 import UIUXEngineering from './pages/services/UIUXEngineering'
+
+// Product sub-pages
+import EarningDashboard from './pages/products/EarningDashboard'
+import AIWorkflowsCanvas from './pages/products/AIWorkflowsCanvas'
+import EcosystemMarketplace from './pages/products/EcosystemMarketplace'
+import PerformanceLeaderboard from './pages/products/PerformanceLeaderboard'
+import InternalConsole from './pages/products/InternalConsole'
+
 import Loader from './components/home/Loader'
 import MouseGlowFollower from './components/ui/MouseGlowFollower'
 
@@ -184,6 +192,13 @@ function App() {
         <Route path="/services/performance-marketing" element={<PerformanceMarketing />} />
         <Route path="/services/web3-blockchain" element={<Web3Blockchain />} />
         <Route path="/services/ui-ux-engineering" element={<UIUXEngineering />} />
+        
+        {/* 5 Individual Product Routes */}
+        <Route path="/products/earning-dashboard" element={<EarningDashboard />} />
+        <Route path="/products/ai-workflows-canvas" element={<AIWorkflowsCanvas />} />
+        <Route path="/products/ecosystem-marketplace" element={<EcosystemMarketplace />} />
+        <Route path="/products/performance-leaderboard" element={<PerformanceLeaderboard />} />
+        <Route path="/products/internal-console" element={<InternalConsole />} />
         
         {/* Wildcard Catch-All Redirect */}
         <Route path="*" element={<Navigate to="/" replace />} />

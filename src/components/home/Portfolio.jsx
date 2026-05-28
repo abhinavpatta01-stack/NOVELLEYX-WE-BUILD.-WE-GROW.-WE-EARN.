@@ -1,11 +1,13 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { ArrowUpRight, Zap, TrendingUp, Layers } from 'lucide-react'
 
 const projects = [
   {
     category: "Industrial Brand Strategy",
     title: "Nandini Enterprises",
+    slug: "/services/brand-architecture",
     desc: "We engineered a complete B2B brand transformation for a major industrial player. By constructing conversion-focused digital assets and establishing high-whitespace authority layouts, we systematically maximized their market digital trust index.",
     outcome: "+320% Inbound / Premium Trust",
     icon: <TrendingUp size={20} color="#D4AF37" />,
@@ -14,6 +16,7 @@ const projects = [
   {
     category: "AI Operational Automation",
     title: "Aether Automation Engine",
+    slug: "/services/ai-integration",
     desc: "We deployed custom WhatsApp NLP routing and CRM auto-sync workflows for a major scaling developer agency. Eliminated manual appointment triage and secured 142% conversion spikes.",
     outcome: "+142% Lead Conversion",
     icon: <Zap size={20} color="#D4AF37" />,
@@ -22,6 +25,7 @@ const projects = [
   {
     category: "Premium Web Architecture",
     title: "Apex Wealth Portal",
+    slug: "/services/website-systems",
     desc: "A luxury, high-whitespace investor relation system and conversion pipeline built on high-performance React. Designed to command trust, resulting in doubled inbound strategy calls within 60 days.",
     outcome: "2.4x Strategy Calls Booked",
     icon: <Layers size={20} color="#D4AF37" />,
@@ -30,6 +34,8 @@ const projects = [
 ]
 
 const Portfolio = () => {
+  const navigate = useNavigate()
+
   return (
     <section id="portfolio" style={{ padding: '8rem 2rem', background: '#111111', position: 'relative', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
       {/* Background soft glow */}
@@ -77,9 +83,11 @@ const Portfolio = () => {
                 flexDirection: 'column',
                 position: 'relative',
                 overflow: 'hidden',
-                transition: 'border-color 0.4s, box-shadow 0.4s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+                transition: 'border-color 0.4s, box-shadow 0.4s, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                cursor: 'pointer'
               }}
               className="portfolio-case-card"
+              onClick={() => { window.scrollTo(0, 0); navigate(project.slug); }}
             >
               <style>{`
                 .portfolio-case-card:hover {
