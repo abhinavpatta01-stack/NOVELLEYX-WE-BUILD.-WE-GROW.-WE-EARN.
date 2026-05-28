@@ -83,6 +83,28 @@ const SparklesFallback = ({ count = 50, color = '#FFFFFF', minSize = 0.6, maxSiz
   )
 }
 
+class SparklesErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false }
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true }
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("Sparkles WebGL Error caught by boundary:", error, errorInfo)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback
+    }
+    return this.props.children
+  }
+}
+
 export const SparklesCore = ({ 
   id, 
   background, 
@@ -103,22 +125,29 @@ export const SparklesCore = ({
     )
   }
 
+  const count = particleDensity || 50
+  const fallbackNode = (
+    <SparklesFallback count={count} color={particleColor} minSize={minSize} maxSize={maxSize} />
+  )
+
   return (
     <div className={className} style={{ width: '100%', height: '100%', background: background || 'transparent', position: 'relative' }}>
-      <Canvas
-        camera={{ position: [0, 0, 10], fov: 75 }}
-        style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
-      >
-        <DreiSparkles 
-          count={particleDensity || 100} 
-          scale={20} 
-          size={maxSize || 2} 
-          speed={0.4} 
-          opacity={1} 
-          color={particleColor || "#FFFFFF"}
-          noise={1}
-        />
-      </Canvas>
+      <SparklesErrorBoundary fallback={fallbackNode}>
+        <Canvas
+          camera={{ position: [0, 0, 10], fov: 75 }}
+          style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}
+        >
+          <DreiSparkles 
+            count={particleDensity || 100} 
+            scale={20} 
+            size={maxSize || 2} 
+            speed={0.4} 
+            opacity={1} 
+            color={particleColor || "#FFFFFF"}
+            noise={1}
+          />
+        </Canvas>
+      </SparklesErrorBoundary>
     </div>
   )
 }

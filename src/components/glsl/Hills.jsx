@@ -232,6 +232,28 @@ const HillsFallback = ({ color }) => {
   )
 }
 
+class HillsErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false }
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true }
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("Hills WebGL Error caught by boundary:", error, errorInfo)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback
+    }
+    return this.props.children
+  }
+}
+
 const Hills = ({ color }) => {
   const [webGlAvailable] = useState(() => isWebGLAvailable())
 
@@ -240,21 +262,23 @@ const Hills = ({ color }) => {
   }
 
   return (
-    <div
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        zIndex: 0,
-        pointerEvents: 'none',
-      }}
-    >
-      <Canvas camera={{ position: [0, 0, 2], fov: 75 }}>
-        <HillsMesh color={color} />
-      </Canvas>
-    </div>
+    <HillsErrorBoundary fallback={<HillsFallback color={color} />}>
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+      >
+        <Canvas camera={{ position: [0, 0, 2], fov: 75 }}>
+          <HillsMesh color={color} />
+        </Canvas>
+      </div>
+    </HillsErrorBoundary>
   )
 }
 
