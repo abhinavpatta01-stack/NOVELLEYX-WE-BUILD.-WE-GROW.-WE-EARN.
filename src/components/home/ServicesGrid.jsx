@@ -146,7 +146,14 @@ const ServicesGrid = () => {
               className="service-panel-card services-scroll-card"
               onClick={() => {
                 window.scrollTo(0, 0)
-                const slug = service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+                let slug = service.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')
+                // Map the 6 services grid titles to the 10 available service subpages
+                if (slug === 'ai-automation') slug = 'ai-integration'
+                else if (slug === 'saas-development') slug = 'website-systems'
+                else if (slug === 'web-infrastructure') slug = 'ui-ux-engineering'
+                else if (slug === 'marketing-systems') slug = 'performance-marketing'
+                else if (slug === 'dashboard-engineering') slug = 'ui-ux-engineering'
+                else if (slug === 'internal-tools') slug = 'website-systems'
                 navigate('/services/' + slug)
               }}
             >

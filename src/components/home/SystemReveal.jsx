@@ -24,7 +24,7 @@ const SystemReveal = () => {
   const [logs, setLogs] = useState([SYSTEM_LOGS[0], SYSTEM_LOGS[1], SYSTEM_LOGS[2], SYSTEM_LOGS[3]])
   const [logIndex, setLogIndex] = useState(4)
   const [simulationActive, setSimulationActive] = useState(true)
-  const logsEndRef = useRef(null)
+  const logsContainerRef = useRef(null)
 
   // Append logs periodically to simulate a live active engine
   useEffect(() => {
@@ -43,7 +43,10 @@ const SystemReveal = () => {
   }, [logIndex, simulationActive])
 
   useEffect(() => {
-    logsEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const el = logsContainerRef.current
+    if (el) {
+      el.scrollTop = el.scrollHeight
+    }
   }, [logs])
 
   return (
@@ -155,7 +158,7 @@ const SystemReveal = () => {
               </div>
 
               {/* Logs output */}
-              <div style={{ flex: 1, fontFamily: 'monospace', fontSize: '0.82rem', color: '#A8A8A8', display: 'flex', flexDirection: 'column', gap: '0.75rem', overflowY: 'auto' }} className="hide-scroll">
+              <div ref={logsContainerRef} style={{ flex: 1, fontFamily: 'monospace', fontSize: '0.82rem', color: '#A8A8A8', display: 'flex', flexDirection: 'column', gap: '0.75rem', overflowY: 'auto' }} className="hide-scroll">
                 {logs.map((log, idx) => (
                   <div key={idx} style={{
                     color: log.includes('SYSTEM:') ? '#D4AF37' : log.includes('AI_AGENT:') ? '#fff' : log.includes('SECURE:') ? '#22c55e' : '#A8A8A8',
@@ -165,7 +168,6 @@ const SystemReveal = () => {
                     &gt; {log}
                   </div>
                 ))}
-                <div ref={logsEndRef} />
               </div>
             </div>
 

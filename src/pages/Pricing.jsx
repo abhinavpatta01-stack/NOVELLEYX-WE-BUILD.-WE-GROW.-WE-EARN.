@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 import Navbar from '../components/home/Navbar'
 import Footer from '../components/home/Footer'
 import BentoGrid from '../components/pricing/BentoGrid'
@@ -148,12 +149,17 @@ const Pricing = () => {
   const [billingCycle, setBillingCycle] = useState('monthly')
   const [emiModalOpen, setEmiModalOpen] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState({ name: '', amount: 0 })
+  const location = useLocation()
 
+  // Scroll to top on mount if there's no hash
   useEffect(() => {
-    if (!window.location.hash) {
+    if (!location.hash) {
       window.scrollTo(0, 0)
     }
-    // 5 second artificial loader
+  }, [location.hash])
+
+  // 5 second artificial loader
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
     }, 5000)

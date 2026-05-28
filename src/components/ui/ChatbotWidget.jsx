@@ -21,10 +21,13 @@ const ChatbotWidget = () => {
   ])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const messagesEndRef = useRef(null)
+  const chatContainerRef = useRef(null)
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const el = chatContainerRef.current
+    if (el) {
+      el.scrollTop = el.scrollHeight
+    }
   }
 
   useEffect(() => {
@@ -187,7 +190,7 @@ const ChatbotWidget = () => {
             </div>
 
             {/* Message Area */}
-            <div style={{
+            <div ref={chatContainerRef} style={{
               flex: 1,
               padding: '1.5rem',
               overflowY: 'auto',
@@ -235,8 +238,6 @@ const ChatbotWidget = () => {
                   <div style={{ width: '6px', height: '6px', background: '#D4AF37', borderRadius: '50%', animation: 'float 1s ease-in-out infinite 0.4s' }}></div>
                 </div>
               )}
-
-              <div ref={messagesEndRef} />
             </div>
 
             {/* Quick Options Selector */}

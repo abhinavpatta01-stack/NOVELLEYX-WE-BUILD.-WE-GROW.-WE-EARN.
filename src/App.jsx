@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Pricing from './pages/Pricing'
 import DetailedServices from './pages/DetailedServices'
@@ -184,6 +184,9 @@ function App() {
         <Route path="/services/performance-marketing" element={<PerformanceMarketing />} />
         <Route path="/services/web3-blockchain" element={<Web3Blockchain />} />
         <Route path="/services/ui-ux-engineering" element={<UIUXEngineering />} />
+        
+        {/* Wildcard Catch-All Redirect */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   )
