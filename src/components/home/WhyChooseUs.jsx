@@ -100,7 +100,7 @@ const WhyChooseUs = () => {
             <p style={{ color: '#888', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '3rem' }}>
               We eliminate administrative friction, capture high-intent buyers organically, and automate client processing. We provide absolute capital efficiency.
             </p>
-            <a href="#contact" className="cta-gold-glow">
+            <a href="#system" className="cta-gold-glow">
               Explore Our System
             </a>
           </motion.div>

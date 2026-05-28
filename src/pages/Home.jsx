@@ -5,6 +5,7 @@ import TrustStrip from '../components/home/TrustStrip'
 import About from '../components/home/About'
 import ServicesGrid from '../components/home/ServicesGrid'
 import WhyChooseUs from '../components/home/WhyChooseUs'
+import SystemReveal from '../components/home/SystemReveal'
 import IdentityStrip from '../components/home/IdentityStrip'
 import AiAutomationSection from '../components/home/AiAutomationSection'
 import StackFeatureSection from '../components/home/StackFeatureSection'
@@ -29,6 +30,7 @@ const Home = () => {
         <About />
         <ServicesGrid />
         <WhyChooseUs />
+        <SystemReveal />
         <IdentityStrip />
         <AiAutomationSection />
         <StackFeatureSection />
