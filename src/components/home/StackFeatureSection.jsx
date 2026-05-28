@@ -100,15 +100,15 @@ const StackFeatureSection = () => {
           </div>
 
           {/* Right Column: Premium Vertical Timeline */}
-          <div style={{ position: 'relative', paddingLeft: '2.5rem' }}>
+          <div style={{ position: 'relative', paddingRight: '2.5rem' }}>
             
             {/* Core Vertical Timeline Connector Line */}
             <div style={{
               position: 'absolute',
-              left: '9px',
+              right: '10px',
               top: '20px',
               bottom: '20px',
-              width: '2px',
+              width: '1px',
               background: 'linear-gradient(180deg, #D4AF37 0%, rgba(212,175,55,0.2) 80%, transparent 100%)',
               zIndex: 0
             }} />
@@ -130,13 +130,13 @@ const StackFeatureSection = () => {
                   {/* Timeline Node Point */}
                   <div style={{
                     position: 'absolute',
-                    left: '-40px',
+                    right: '-40px',
                     top: '20px',
                     width: '20px',
                     height: '20px',
                     borderRadius: '50%',
                     background: '#000',
-                    border: '3px solid #D4AF37',
+                    border: '2px solid #D4AF37',
                     boxShadow: '0 0 10px rgba(212,175,55,0.5)',
                     zIndex: 2
                   }} />
